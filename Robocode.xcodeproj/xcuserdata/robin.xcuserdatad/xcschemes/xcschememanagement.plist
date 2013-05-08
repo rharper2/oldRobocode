@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>RobocodeDelta.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>RobocodeMvP.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -27,6 +32,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>004F50F6173A4F4200E9BF62</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0054000A1371298C0008E5AB</key>
 		<dict>
 			<key>primary</key>
