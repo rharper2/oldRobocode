@@ -1,0 +1,640 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		000F09241241F9EC00DAC023 /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000F09231241F9EC00DAC023 /* spatial.cpp */; };
+		0054000C1371298C0008E5AB /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC0123F2ED20026C2F8 /* entity.cpp */; };
+		0054000D1371298C0008E5AB /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC2123F2ED20026C2F8 /* critter.cpp */; };
+		0054000E1371298C0008E5AB /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */; };
+		0054000F1371298C0008E5AB /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC6123F2ED20026C2F8 /* myrandom.cpp */; };
+		005400101371298C0008E5AB /* TournamentBreeder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */; };
+		005400111371298C0008E5AB /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ECE123F2ED20026C2F8 /* DataCollector.cpp */; };
+		005400121371298C0008E5AB /* popHandlerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */; };
+		005400131371298C0008E5AB /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED1123F2ED20026C2F8 /* functions.cpp */; };
+		005400141371298C0008E5AB /* robocodeAlpha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EED123F2F4D0026C2F8 /* robocodeAlpha.cpp */; };
+		005400151371298C0008E5AB /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000F09231241F9EC00DAC023 /* spatial.cpp */; };
+		005400161371298C0008E5AB /* robocodeBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */; };
+		0054001B1371298C0008E5AB /* Robocode.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Robocode.1 */; };
+		00540023137129B40008E5AB /* spatialRobocodeCreatureTheta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00540021137129B40008E5AB /* spatialRobocodeCreatureTheta.cpp */; };
+		0054002713725E5F0008E5AB /* RobocodeThetaMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0054002613725E5F0008E5AB /* RobocodeThetaMain.cpp */; };
+		0054003313725EE30008E5AB /* robocodeTheta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0054003113725EE30008E5AB /* robocodeTheta.cpp */; };
+		00542ED2123F2ED20026C2F8 /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC0123F2ED20026C2F8 /* entity.cpp */; };
+		00542ED3123F2ED20026C2F8 /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC2123F2ED20026C2F8 /* critter.cpp */; };
+		00542ED4123F2ED20026C2F8 /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */; };
+		00542ED5123F2ED20026C2F8 /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC6123F2ED20026C2F8 /* myrandom.cpp */; };
+		00542ED6123F2ED20026C2F8 /* TournamentBreeder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */; };
+		00542ED7123F2ED20026C2F8 /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ECE123F2ED20026C2F8 /* DataCollector.cpp */; };
+		00542ED8123F2ED20026C2F8 /* popHandlerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */; };
+		00542ED9123F2ED20026C2F8 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED1123F2ED20026C2F8 /* functions.cpp */; };
+		0080AE5E1263ACEC00631E8B /* robocodeBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */; };
+		0080AE7412648B7200631E8B /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC0123F2ED20026C2F8 /* entity.cpp */; };
+		0080AE7512648B7200631E8B /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC2123F2ED20026C2F8 /* critter.cpp */; };
+		0080AE7612648B7200631E8B /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */; };
+		0080AE7712648B7200631E8B /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC6123F2ED20026C2F8 /* myrandom.cpp */; };
+		0080AE7812648B7200631E8B /* TournamentBreeder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */; };
+		0080AE7912648B7200631E8B /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ECE123F2ED20026C2F8 /* DataCollector.cpp */; };
+		0080AE7A12648B7200631E8B /* popHandlerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */; };
+		0080AE7B12648B7200631E8B /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED1123F2ED20026C2F8 /* functions.cpp */; };
+		0080AE7C12648B7200631E8B /* robocodeAlpha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EED123F2F4D0026C2F8 /* robocodeAlpha.cpp */; };
+		0080AE7E12648B7200631E8B /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000F09231241F9EC00DAC023 /* spatial.cpp */; };
+		0080AE7F12648B7200631E8B /* robocodeBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */; };
+		0080AE8212648B7200631E8B /* Robocode.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Robocode.1 */; };
+		0080AE9B12648BA000631E8B /* RobocodeBetaMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE9A12648BA000631E8B /* RobocodeBetaMain.cpp */; };
+		0080AE9F12648CCE00631E8B /* RobocodeBetaMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE9A12648BA000631E8B /* RobocodeBetaMain.cpp */; };
+		0080AF31126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AF2F126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp */; };
+		0080AF33126D068C00631E8B /* spatialRobocodeCreatureBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AF2F126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp */; };
+		00DA2AAC12863B77003F9E66 /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC0123F2ED20026C2F8 /* entity.cpp */; };
+		00DA2AAD12863B77003F9E66 /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC2123F2ED20026C2F8 /* critter.cpp */; };
+		00DA2AAE12863B77003F9E66 /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */; };
+		00DA2AAF12863B77003F9E66 /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC6123F2ED20026C2F8 /* myrandom.cpp */; };
+		00DA2AB012863B77003F9E66 /* TournamentBreeder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */; };
+		00DA2AB112863B77003F9E66 /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ECE123F2ED20026C2F8 /* DataCollector.cpp */; };
+		00DA2AB212863B77003F9E66 /* popHandlerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */; };
+		00DA2AB312863B77003F9E66 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED1123F2ED20026C2F8 /* functions.cpp */; };
+		00DA2AB612863B77003F9E66 /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000F09231241F9EC00DAC023 /* spatial.cpp */; };
+		00DA2AB712863B77003F9E66 /* robocodeBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */; };
+		00DA2ABC12863B77003F9E66 /* Robocode.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Robocode.1 */; };
+		00DA2AD512863BBC003F9E66 /* RobocodeMvPMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00DA2AD412863BBC003F9E66 /* RobocodeMvPMain.cpp */; };
+		00DA2ADE12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00DA2ADC12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp */; };
+		8DD76F6A0486A84900D96B5E /* Robocode.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Robocode.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0054001A1371298C0008E5AB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				0054001B1371298C0008E5AB /* Robocode.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		0080AE8112648B7200631E8B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				0080AE8212648B7200631E8B /* Robocode.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		00DA2ABB12863B77003F9E66 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				00DA2ABC12863B77003F9E66 /* Robocode.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		8DD76F690486A84900D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				8DD76F6A0486A84900D96B5E /* Robocode.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		000F091B1241D78900DAC023 /* spatialRobocodeCreature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatialRobocodeCreature.cpp; sourceTree = "<group>"; };
+		000F091C1241D78900DAC023 /* spatialRobocodeCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spatialRobocodeCreature.h; sourceTree = "<group>"; };
+		000F09231241F9EC00DAC023 /* spatial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = spatial.cpp; path = ../../../CurrentProjects/CurrentGE/Spatial/spatial.cpp; sourceTree = SOURCE_ROOT; };
+		000F09251241F9F600DAC023 /* spatial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spatial.h; path = ../../../CurrentProjects/CurrentGE/Spatial/spatial.h; sourceTree = SOURCE_ROOT; };
+		0054001F1371298C0008E5AB /* Robocode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Robocode; sourceTree = BUILT_PRODUCTS_DIR; };
+		00540021137129B40008E5AB /* spatialRobocodeCreatureTheta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatialRobocodeCreatureTheta.cpp; sourceTree = "<group>"; };
+		00540022137129B40008E5AB /* spatialRobocodeCreatureTheta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spatialRobocodeCreatureTheta.h; sourceTree = "<group>"; };
+		0054002613725E5F0008E5AB /* RobocodeThetaMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobocodeThetaMain.cpp; sourceTree = "<group>"; };
+		0054003113725EE30008E5AB /* robocodeTheta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = robocodeTheta.cpp; sourceTree = "<group>"; };
+		0054003213725EE30008E5AB /* robocodeTheta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = robocodeTheta.h; sourceTree = "<group>"; };
+		00542EBE123F2ED20026C2F8 /* grammarBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = grammarBase.h; path = ../../../CurrentProjects/CurrentGE/Base/grammarBase.h; sourceTree = SOURCE_ROOT; };
+		00542EBF123F2ED20026C2F8 /* entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = entity.h; path = ../../../CurrentProjects/CurrentGE/Base/entity.h; sourceTree = SOURCE_ROOT; };
+		00542EC0123F2ED20026C2F8 /* entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = entity.cpp; path = ../../../CurrentProjects/CurrentGE/Base/entity.cpp; sourceTree = SOURCE_ROOT; };
+		00542EC1123F2ED20026C2F8 /* critter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = critter.h; path = ../../../CurrentProjects/CurrentGE/Base/critter.h; sourceTree = SOURCE_ROOT; };
+		00542EC2123F2ED20026C2F8 /* critter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = critter.cpp; path = ../../../CurrentProjects/CurrentGE/Base/critter.cpp; sourceTree = SOURCE_ROOT; };
+		00542EC3123F2ED20026C2F8 /* ptc2Grow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ptc2Grow.h; path = ../../../CurrentProjects/CurrentGE/Base/ptc2Grow.h; sourceTree = SOURCE_ROOT; };
+		00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ptc2Grow.cpp; path = ../../../CurrentProjects/CurrentGE/Base/ptc2Grow.cpp; sourceTree = SOURCE_ROOT; };
+		00542EC5123F2ED20026C2F8 /* params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = params.h; path = ../../../CurrentProjects/CurrentGE/Base/params.h; sourceTree = SOURCE_ROOT; };
+		00542EC6123F2ED20026C2F8 /* myrandom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = myrandom.cpp; path = ../../../CurrentProjects/CurrentGE/Base/myrandom.cpp; sourceTree = SOURCE_ROOT; };
+		00542EC7123F2ED20026C2F8 /* popHandlerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = popHandlerBase.h; path = ../../../CurrentProjects/CurrentGE/Base/popHandlerBase.h; sourceTree = SOURCE_ROOT; };
+		00542EC8123F2ED20026C2F8 /* interpreterBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = interpreterBase.h; path = ../../../CurrentProjects/CurrentGE/Base/interpreterBase.h; sourceTree = SOURCE_ROOT; };
+		00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TournamentBreeder.cpp; path = ../../../CurrentProjects/CurrentGE/Base/TournamentBreeder.cpp; sourceTree = SOURCE_ROOT; };
+		00542ECA123F2ED20026C2F8 /* TournamentBreeder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TournamentBreeder.h; path = ../../../CurrentProjects/CurrentGE/Base/TournamentBreeder.h; sourceTree = SOURCE_ROOT; };
+		00542ECB123F2ED20026C2F8 /* BreederBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreederBase.h; path = ../../../CurrentProjects/CurrentGE/Base/BreederBase.h; sourceTree = SOURCE_ROOT; };
+		00542ECC123F2ED20026C2F8 /* functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = functions.h; path = ../../../CurrentProjects/CurrentGE/Base/functions.h; sourceTree = SOURCE_ROOT; };
+		00542ECD123F2ED20026C2F8 /* myrandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myrandom.h; path = ../../../CurrentProjects/CurrentGE/Base/myrandom.h; sourceTree = SOURCE_ROOT; };
+		00542ECE123F2ED20026C2F8 /* DataCollector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DataCollector.cpp; path = ../../../CurrentProjects/CurrentGE/Base/DataCollector.cpp; sourceTree = SOURCE_ROOT; };
+		00542ECF123F2ED20026C2F8 /* DataCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCollector.h; path = ../../../CurrentProjects/CurrentGE/Base/DataCollector.h; sourceTree = SOURCE_ROOT; };
+		00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = popHandlerBase.cpp; path = ../../../CurrentProjects/CurrentGE/Base/popHandlerBase.cpp; sourceTree = SOURCE_ROOT; };
+		00542ED1123F2ED20026C2F8 /* functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = functions.cpp; path = ../../../CurrentProjects/CurrentGE/Base/functions.cpp; sourceTree = SOURCE_ROOT; };
+		00542EED123F2F4D0026C2F8 /* robocodeAlpha.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = robocodeAlpha.cpp; sourceTree = "<group>"; };
+		00542EEE123F2F4D0026C2F8 /* robocodeAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = robocodeAlpha.h; sourceTree = "<group>"; };
+		0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = robocodeBeta.cpp; sourceTree = "<group>"; };
+		0080AE5D1263ACEC00631E8B /* robocodeBeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = robocodeBeta.h; sourceTree = "<group>"; };
+		0080AE8612648B7200631E8B /* Robocode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Robocode; sourceTree = BUILT_PRODUCTS_DIR; };
+		0080AE9A12648BA000631E8B /* RobocodeBetaMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobocodeBetaMain.cpp; sourceTree = "<group>"; };
+		0080AF2F126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatialRobocodeCreatureBeta.cpp; sourceTree = "<group>"; };
+		0080AF30126C3BCC00631E8B /* spatialRobocodeCreatureBeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spatialRobocodeCreatureBeta.h; sourceTree = "<group>"; };
+		00DA2AC012863B77003F9E66 /* Robocode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Robocode; sourceTree = BUILT_PRODUCTS_DIR; };
+		00DA2AD412863BBC003F9E66 /* RobocodeMvPMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobocodeMvPMain.cpp; sourceTree = "<group>"; };
+		00DA2ADC12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatialRobocodeCreatureMvP.cpp; sourceTree = "<group>"; };
+		00DA2ADD12863BFA003F9E66 /* spatialRobocodeCreatureMvP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spatialRobocodeCreatureMvP.h; sourceTree = "<group>"; };
+		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8DD76F6C0486A84900D96B5E /* Robocode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Robocode; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6859E8B029090EE04C91782 /* Robocode.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Robocode.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		005400191371298C0008E5AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0080AE8012648B7200631E8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00DA2ABA12863B77003F9E66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DD76F660486A84900D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00542EDA123F2EE00026C2F8 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				00542EBE123F2ED20026C2F8 /* grammarBase.h */,
+				00542EBF123F2ED20026C2F8 /* entity.h */,
+				00542EC0123F2ED20026C2F8 /* entity.cpp */,
+				00542EC1123F2ED20026C2F8 /* critter.h */,
+				00542EC2123F2ED20026C2F8 /* critter.cpp */,
+				00542EC3123F2ED20026C2F8 /* ptc2Grow.h */,
+				00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */,
+				00542EC5123F2ED20026C2F8 /* params.h */,
+				00542EC6123F2ED20026C2F8 /* myrandom.cpp */,
+				00542EC7123F2ED20026C2F8 /* popHandlerBase.h */,
+				00542EC8123F2ED20026C2F8 /* interpreterBase.h */,
+				00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */,
+				00542ECA123F2ED20026C2F8 /* TournamentBreeder.h */,
+				00542ECB123F2ED20026C2F8 /* BreederBase.h */,
+				00542ECC123F2ED20026C2F8 /* functions.h */,
+				00542ECD123F2ED20026C2F8 /* myrandom.h */,
+				00542ECE123F2ED20026C2F8 /* DataCollector.cpp */,
+				00542ECF123F2ED20026C2F8 /* DataCollector.h */,
+				00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */,
+				00542ED1123F2ED20026C2F8 /* functions.cpp */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		08FB7794FE84155DC02AAC07 /* Robocode */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6859E8C029090F304C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = Robocode;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				0054003113725EE30008E5AB /* robocodeTheta.cpp */,
+				0054003213725EE30008E5AB /* robocodeTheta.h */,
+				00540021137129B40008E5AB /* spatialRobocodeCreatureTheta.cpp */,
+				00540022137129B40008E5AB /* spatialRobocodeCreatureTheta.h */,
+				0080AF2F126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp */,
+				0080AF30126C3BCC00631E8B /* spatialRobocodeCreatureBeta.h */,
+				00DA2ADC12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp */,
+				00DA2ADD12863BFA003F9E66 /* spatialRobocodeCreatureMvP.h */,
+				0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */,
+				0080AE5D1263ACEC00631E8B /* robocodeBeta.h */,
+				000F09251241F9F600DAC023 /* spatial.h */,
+				000F09231241F9EC00DAC023 /* spatial.cpp */,
+				000F091B1241D78900DAC023 /* spatialRobocodeCreature.cpp */,
+				000F091C1241D78900DAC023 /* spatialRobocodeCreature.h */,
+				00542EED123F2F4D0026C2F8 /* robocodeAlpha.cpp */,
+				00542EEE123F2F4D0026C2F8 /* robocodeAlpha.h */,
+				00542EDA123F2EE00026C2F8 /* Base */,
+				08FB7796FE84155DC02AAC07 /* main.cpp */,
+				0054002613725E5F0008E5AB /* RobocodeThetaMain.cpp */,
+				00DA2AD412863BBC003F9E66 /* RobocodeMvPMain.cpp */,
+				0080AE9A12648BA000631E8B /* RobocodeBetaMain.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76F6C0486A84900D96B5E /* Robocode */,
+				0080AE8612648B7200631E8B /* Robocode */,
+				00DA2AC012863B77003F9E66 /* Robocode */,
+				0054001F1371298C0008E5AB /* Robocode */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6859E8C029090F304C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6859E8B029090EE04C91782 /* Robocode.1 */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0054000A1371298C0008E5AB /* RobocodeTheta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0054001C1371298C0008E5AB /* Build configuration list for PBXNativeTarget "RobocodeTheta" */;
+			buildPhases = (
+				0054000B1371298C0008E5AB /* Sources */,
+				005400191371298C0008E5AB /* Frameworks */,
+				0054001A1371298C0008E5AB /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RobocodeTheta;
+			productInstallPath = "$(HOME)/bin";
+			productName = Robocode;
+			productReference = 0054001F1371298C0008E5AB /* Robocode */;
+			productType = "com.apple.product-type.tool";
+		};
+		0080AE7112648B7200631E8B /* RobocodeBeta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0080AE8312648B7200631E8B /* Build configuration list for PBXNativeTarget "RobocodeBeta" */;
+			buildPhases = (
+				0080AE7212648B7200631E8B /* Sources */,
+				0080AE8012648B7200631E8B /* Frameworks */,
+				0080AE8112648B7200631E8B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RobocodeBeta;
+			productInstallPath = "$(HOME)/bin";
+			productName = Robocode;
+			productReference = 0080AE8612648B7200631E8B /* Robocode */;
+			productType = "com.apple.product-type.tool";
+		};
+		00DA2AA912863B77003F9E66 /* RobocodeMvP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00DA2ABD12863B77003F9E66 /* Build configuration list for PBXNativeTarget "RobocodeMvP" */;
+			buildPhases = (
+				00DA2AAA12863B77003F9E66 /* Sources */,
+				00DA2ABA12863B77003F9E66 /* Frameworks */,
+				00DA2ABB12863B77003F9E66 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RobocodeMvP;
+			productInstallPath = "$(HOME)/bin";
+			productName = Robocode;
+			productReference = 00DA2AC012863B77003F9E66 /* Robocode */;
+			productType = "com.apple.product-type.tool";
+		};
+		8DD76F620486A84900D96B5E /* Robocode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "Robocode" */;
+			buildPhases = (
+				8DD76F640486A84900D96B5E /* Sources */,
+				8DD76F660486A84900D96B5E /* Frameworks */,
+				8DD76F690486A84900D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Robocode;
+			productInstallPath = "$(HOME)/bin";
+			productName = Robocode;
+			productReference = 8DD76F6C0486A84900D96B5E /* Robocode */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Robocode" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* Robocode */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76F620486A84900D96B5E /* Robocode */,
+				0080AE7112648B7200631E8B /* RobocodeBeta */,
+				00DA2AA912863B77003F9E66 /* RobocodeMvP */,
+				0054000A1371298C0008E5AB /* RobocodeTheta */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0054000B1371298C0008E5AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0054000C1371298C0008E5AB /* entity.cpp in Sources */,
+				0054000D1371298C0008E5AB /* critter.cpp in Sources */,
+				0054000E1371298C0008E5AB /* ptc2Grow.cpp in Sources */,
+				0054000F1371298C0008E5AB /* myrandom.cpp in Sources */,
+				005400101371298C0008E5AB /* TournamentBreeder.cpp in Sources */,
+				005400111371298C0008E5AB /* DataCollector.cpp in Sources */,
+				005400121371298C0008E5AB /* popHandlerBase.cpp in Sources */,
+				005400131371298C0008E5AB /* functions.cpp in Sources */,
+				005400141371298C0008E5AB /* robocodeAlpha.cpp in Sources */,
+				005400151371298C0008E5AB /* spatial.cpp in Sources */,
+				005400161371298C0008E5AB /* robocodeBeta.cpp in Sources */,
+				00540023137129B40008E5AB /* spatialRobocodeCreatureTheta.cpp in Sources */,
+				0054002713725E5F0008E5AB /* RobocodeThetaMain.cpp in Sources */,
+				0054003313725EE30008E5AB /* robocodeTheta.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0080AE7212648B7200631E8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0080AE7412648B7200631E8B /* entity.cpp in Sources */,
+				0080AE7512648B7200631E8B /* critter.cpp in Sources */,
+				0080AE7612648B7200631E8B /* ptc2Grow.cpp in Sources */,
+				0080AE7712648B7200631E8B /* myrandom.cpp in Sources */,
+				0080AE7812648B7200631E8B /* TournamentBreeder.cpp in Sources */,
+				0080AE7912648B7200631E8B /* DataCollector.cpp in Sources */,
+				0080AE7A12648B7200631E8B /* popHandlerBase.cpp in Sources */,
+				0080AE7B12648B7200631E8B /* functions.cpp in Sources */,
+				0080AE7C12648B7200631E8B /* robocodeAlpha.cpp in Sources */,
+				0080AE7E12648B7200631E8B /* spatial.cpp in Sources */,
+				0080AE7F12648B7200631E8B /* robocodeBeta.cpp in Sources */,
+				0080AE9B12648BA000631E8B /* RobocodeBetaMain.cpp in Sources */,
+				0080AF31126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00DA2AAA12863B77003F9E66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00DA2AAC12863B77003F9E66 /* entity.cpp in Sources */,
+				00DA2AAD12863B77003F9E66 /* critter.cpp in Sources */,
+				00DA2AAE12863B77003F9E66 /* ptc2Grow.cpp in Sources */,
+				00DA2AAF12863B77003F9E66 /* myrandom.cpp in Sources */,
+				00DA2AB012863B77003F9E66 /* TournamentBreeder.cpp in Sources */,
+				00DA2AB112863B77003F9E66 /* DataCollector.cpp in Sources */,
+				00DA2AB212863B77003F9E66 /* popHandlerBase.cpp in Sources */,
+				00DA2AB312863B77003F9E66 /* functions.cpp in Sources */,
+				00DA2AB612863B77003F9E66 /* spatial.cpp in Sources */,
+				00DA2AB712863B77003F9E66 /* robocodeBeta.cpp in Sources */,
+				00DA2AD512863BBC003F9E66 /* RobocodeMvPMain.cpp in Sources */,
+				00DA2ADE12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DD76F640486A84900D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00542ED2123F2ED20026C2F8 /* entity.cpp in Sources */,
+				00542ED3123F2ED20026C2F8 /* critter.cpp in Sources */,
+				00542ED4123F2ED20026C2F8 /* ptc2Grow.cpp in Sources */,
+				00542ED5123F2ED20026C2F8 /* myrandom.cpp in Sources */,
+				00542ED6123F2ED20026C2F8 /* TournamentBreeder.cpp in Sources */,
+				00542ED7123F2ED20026C2F8 /* DataCollector.cpp in Sources */,
+				00542ED8123F2ED20026C2F8 /* popHandlerBase.cpp in Sources */,
+				00542ED9123F2ED20026C2F8 /* functions.cpp in Sources */,
+				000F09241241F9EC00DAC023 /* spatial.cpp in Sources */,
+				0080AE5E1263ACEC00631E8B /* robocodeBeta.cpp in Sources */,
+				0080AE9F12648CCE00631E8B /* RobocodeBetaMain.cpp in Sources */,
+				0080AF33126D068C00631E8B /* spatialRobocodeCreatureBeta.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0054001D1371298C0008E5AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Robocode;
+			};
+			name = Debug;
+		};
+		0054001E1371298C0008E5AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Robocode;
+			};
+			name = Release;
+		};
+		0080AE8412648B7200631E8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Robocode;
+			};
+			name = Debug;
+		};
+		0080AE8512648B7200631E8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Robocode;
+			};
+			name = Release;
+		};
+		00DA2ABE12863B77003F9E66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Robocode;
+			};
+			name = Debug;
+		};
+		00DA2ABF12863B77003F9E66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Robocode;
+			};
+			name = Release;
+		};
+		1DEB923208733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Robocode;
+			};
+			name = Debug;
+		};
+		1DEB923308733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Robocode;
+			};
+			name = Release;
+		};
+		1DEB923608733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		1DEB923708733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0054001C1371298C0008E5AB /* Build configuration list for PBXNativeTarget "RobocodeTheta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0054001D1371298C0008E5AB /* Debug */,
+				0054001E1371298C0008E5AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0080AE8312648B7200631E8B /* Build configuration list for PBXNativeTarget "RobocodeBeta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0080AE8412648B7200631E8B /* Debug */,
+				0080AE8512648B7200631E8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00DA2ABD12863B77003F9E66 /* Build configuration list for PBXNativeTarget "RobocodeMvP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00DA2ABE12863B77003F9E66 /* Debug */,
+				00DA2ABF12863B77003F9E66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "Robocode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923208733DC60010E9CD /* Debug */,
+				1DEB923308733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Robocode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923608733DC60010E9CD /* Debug */,
+				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

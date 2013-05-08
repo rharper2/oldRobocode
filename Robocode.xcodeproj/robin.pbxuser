@@ -1,0 +1,771 @@
+// !$*UTF8*$!
+{
+	000F091B1241D78900DAC023 /* spatialRobocodeCreature.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1104, 9594}}";
+			sepNavSelRange = "{7652, 0}";
+			sepNavVisRange = "{1378, 857}";
+			sepNavWindowFrame = "{{918, 84}, {1612, 1494}}";
+		};
+	};
+	000F091C1241D78900DAC023 /* spatialRobocodeCreature.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1969, 2106}}";
+			sepNavSelRange = "{4031, 0}";
+			sepNavVisRange = "{3341, 1813}";
+		};
+	};
+	000F09231241F9EC00DAC023 /* spatial.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1134, 770}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 2141}";
+		};
+	};
+	000F09251241F9F600DAC023 /* spatial.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 18330}}";
+			sepNavSelRange = "{59004, 0}";
+			sepNavVisRange = "{58492, 826}";
+			sepNavWindowFrame = "{{633, 107}, {2017, 1465}}";
+		};
+	};
+	000F0A33124306D800DAC023 /* RobocodeRunner.java */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.java;
+		name = RobocodeRunner.java;
+		path = /Development/robocode/RobocodeRunner.java;
+		sourceTree = "<absolute>";
+	};
+	000F0A9A124346AF00DAC023 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 000F0A33124306D800DAC023 /* RobocodeRunner.java */;
+		name = "RobocodeRunner.java: 117";
+		rLen = 0;
+		rLoc = 3089;
+		rType = 0;
+		vrLen = 2140;
+		vrLoc = 0;
+	};
+	0020E42313B58D2B00285BDF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0054003113725EE30008E5AB /* robocodeTheta.cpp */;
+		name = "robocodeTheta.cpp: 2129";
+		rLen = 0;
+		rLoc = 76110;
+		rType = 0;
+		vrLen = 1927;
+		vrLoc = 117675;
+	};
+	0020E42413B58D2B00285BDF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00540022137129B40008E5AB /* spatialRobocodeCreatureTheta.h */;
+		name = "spatialRobocodeCreatureTheta.h: 19";
+		rLen = 0;
+		rLoc = 320;
+		rType = 0;
+		vrLen = 1308;
+		vrLoc = 0;
+	};
+	00540003137129540008E5AB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00DA2ADC12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp */;
+		name = "spatialRobocodeCreatureMvP.cpp: 450";
+		rLen = 0;
+		rLoc = 16208;
+		rType = 0;
+		vrLen = 838;
+		vrLoc = 1936;
+	};
+	0054000A1371298C0008E5AB /* RobocodeTheta */ = {
+		activeExec = 0;
+		executables = (
+			005400201371298C0008E5AB /* RobocodeTheta */,
+		);
+	};
+	005400201371298C0008E5AB /* RobocodeTheta */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = RobocodeTheta;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	00540021137129B40008E5AB /* spatialRobocodeCreatureTheta.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1398, 9633}}";
+			sepNavSelRange = "{19378, 5}";
+			sepNavVisRange = "{22530, 1500}";
+			sepNavWindowFrame = "{{0, 75}, {1280, 927}}";
+		};
+	};
+	00540022137129B40008E5AB /* spatialRobocodeCreatureTheta.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1878, 2106}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{1914, 3310}";
+		};
+	};
+	0054002613725E5F0008E5AB /* RobocodeThetaMain.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1342, 3861}}";
+			sepNavSelRange = "{4757, 0}";
+			sepNavVisRange = "{1803, 1311}";
+			sepNavWindowFrame = "{{213, -238}, {1280, 925}}";
+		};
+	};
+	0054003113725EE30008E5AB /* robocodeTheta.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {957, 48659}}";
+			sepNavSelRange = "{76110, 0}";
+			sepNavVisRange = "{118683, 933}";
+			sepNavWindowFrame = "{{0, 67}, {1280, 935}}";
+		};
+	};
+	0054003213725EE30008E5AB /* robocodeTheta.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1287, 4303}}";
+			sepNavSelRange = "{4159, 0}";
+			sepNavVisRange = "{3469, 995}";
+		};
+	};
+	0054007E137756860008E5AB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0080AF30126C3BCC00631E8B /* spatialRobocodeCreatureBeta.h */;
+		name = "spatialRobocodeCreatureBeta.h: 12";
+		rLen = 0;
+		rLoc = 216;
+		rType = 0;
+		vrLen = 802;
+		vrLoc = 3147;
+	};
+	00540082137756860008E5AB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0054003213725EE30008E5AB /* robocodeTheta.h */;
+		name = "robocodeTheta.h: 132";
+		rLen = 0;
+		rLoc = 4159;
+		rType = 0;
+		vrLen = 569;
+		vrLoc = 3753;
+	};
+	00540083137756860008E5AB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00540084137756860008E5AB /* mersenne_twister.hpp */;
+		name = "mersenne_twister.hpp: 164";
+		rLen = 0;
+		rLoc = 5607;
+		rType = 0;
+		vrLen = 793;
+		vrLoc = 5100;
+	};
+	00540084137756860008E5AB /* mersenne_twister.hpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.h;
+		name = mersenne_twister.hpp;
+		path = /usr/local/include/boost/random/mersenne_twister.hpp;
+		sourceTree = "<absolute>";
+	};
+	00540085137756860008E5AB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0080AE9A12648BA000631E8B /* RobocodeBetaMain.cpp */;
+		name = "RobocodeBetaMain.cpp: 298";
+		rLen = 0;
+		rLoc = 9351;
+		rType = 0;
+		vrLen = 916;
+		vrLoc = 790;
+	};
+	00540086137756860008E5AB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00542EC1123F2ED20026C2F8 /* critter.h */;
+		name = "critter.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1750;
+		vrLoc = 4169;
+	};
+	00540123137954D60008E5AB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0080AF2F126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp */;
+		name = "spatialRobocodeCreatureBeta.cpp: 85";
+		rLen = 6;
+		rLoc = 2344;
+		rType = 0;
+		vrLen = 1479;
+		vrLoc = 2169;
+	};
+	00542EB7123F2E940026C2F8 /* Robocode */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Robocode;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	00542EBC123F2EB20026C2F8 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	00542EBD123F2EB20026C2F8 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	00542EBE123F2ED20026C2F8 /* grammarBase.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1076, 1417}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1554}";
+		};
+	};
+	00542EC0123F2ED20026C2F8 /* entity.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1878, 8788}}";
+			sepNavSelRange = "{11836, 0}";
+			sepNavVisRange = "{0, 2579}";
+			sepNavWindowFrame = "{{681, 118}, {1879, 1371}}";
+		};
+	};
+	00542EC1123F2ED20026C2F8 /* critter.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {910, 6123}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{4169, 1750}";
+			sepNavWindowFrame = "{{669, 84}, {1612, 1494}}";
+		};
+	};
+	00542EC2123F2ED20026C2F8 /* critter.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1658, 9321}}";
+			sepNavSelRange = "{15254, 0}";
+			sepNavVisRange = "{14524, 1449}";
+			sepNavWindowFrame = "{{500, 145}, {1879, 1371}}";
+		};
+	};
+	00542EC3123F2ED20026C2F8 /* ptc2Grow.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1658, 780}}";
+			sepNavSelRange = "{740, 0}";
+			sepNavVisRange = "{361, 612}";
+		};
+	};
+	00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1134, 830}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 211}";
+		};
+	};
+	00542EC5123F2ED20026C2F8 /* params.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1553, 1366}}";
+			sepNavSelRange = "{1930, 0}";
+			sepNavVisRange = "{0, 2015}";
+		};
+	};
+	00542EC6123F2ED20026C2F8 /* myrandom.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1658, 2223}}";
+			sepNavSelRange = "{4027, 0}";
+			sepNavVisRange = "{3275, 924}";
+		};
+	};
+	00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1958, 2431}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 2425}";
+			sepNavWindowFrame = "{{467, 113}, {2017, 1465}}";
+		};
+	};
+	00542ED1123F2ED20026C2F8 /* functions.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1243, 1022}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 189}";
+		};
+	};
+	00542EED123F2F4D0026C2F8 /* robocodeAlpha.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {3071, 64259}}";
+			sepNavSelRange = "{172765, 0}";
+			sepNavVisRange = "{415, 2343}";
+			sepNavWindowFrame = "{{532, 187}, {1879, 1371}}";
+		};
+	};
+	00542EEE123F2F4D0026C2F8 /* robocodeAlpha.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1969, 3016}}";
+			sepNavSelRange = "{1481, 0}";
+			sepNavVisRange = "{1040, 1702}";
+			sepNavWindowFrame = "{{420, 149}, {1879, 1371}}";
+		};
+	};
+	00709DD612E38E350095EED9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00DA2AD412863BBC003F9E66 /* RobocodeMvPMain.cpp */;
+		name = "RobocodeMvPMain.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 878;
+		vrLoc = 6828;
+	};
+	0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1622, 42978}}";
+			sepNavSelRange = "{118793, 0}";
+			sepNavVisRange = "{117117, 5379}";
+			sepNavWindowFrame = "{{487, 106}, {1632, 1129}}";
+		};
+	};
+	0080AE5D1263ACEC00631E8B /* robocodeBeta.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1585, 4095}}";
+			sepNavSelRange = "{5814, 19}";
+			sepNavVisRange = "{5720, 1705}";
+			sepNavWindowFrame = "{{367, 383}, {1632, 1129}}";
+		};
+	};
+	0080AE7112648B7200631E8B /* RobocodeBeta */ = {
+		activeExec = 0;
+		executables = (
+			0080AE8712648B7200631E8B /* RobocodeBeta */,
+		);
+	};
+	0080AE8712648B7200631E8B /* RobocodeBeta */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = RobocodeBeta;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	0080AE8812648B8600631E8B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00542EEE123F2F4D0026C2F8 /* robocodeAlpha.h */;
+		name = "robocodeAlpha.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2697;
+		vrLoc = 0;
+	};
+	0080AE8912648B8600631E8B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */;
+		name = "ptc2Grow.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 211;
+		vrLoc = 0;
+	};
+	0080AE8B12648B8600631E8B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0080AE5D1263ACEC00631E8B /* robocodeBeta.h */;
+		name = "robocodeBeta.h: 171";
+		rLen = 0;
+		rLoc = 4716;
+		rType = 0;
+		vrLen = 1009;
+		vrLoc = 3979;
+	};
+	0080AE9A12648BA000631E8B /* RobocodeBetaMain.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {910, 4264}}";
+			sepNavSelRange = "{9351, 0}";
+			sepNavVisRange = "{790, 916}";
+			sepNavWindowFrame = "{{295, 84}, {2017, 1465}}";
+		};
+	};
+	0080AEBB1264FFA500631E8B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00542EC0123F2ED20026C2F8 /* entity.cpp */;
+		name = "entity.cpp: 329";
+		rLen = 0;
+		rLoc = 11743;
+		rType = 0;
+		vrLen = 2097;
+		vrLoc = 10487;
+	};
+	0080AF2F126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1287, 9906}}";
+			sepNavSelRange = "{2344, 6}";
+			sepNavVisRange = "{2169, 1479}";
+			sepNavWindowFrame = "{{309, 91}, {2017, 1327}}";
+		};
+	};
+	0080AF30126C3BCC00631E8B /* spatialRobocodeCreatureBeta.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {910, 2158}}";
+			sepNavSelRange = "{216, 0}";
+			sepNavVisRange = "{3147, 802}";
+		};
+	};
+	008E4A7012CD394A00282E2E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00542EBE123F2ED20026C2F8 /* grammarBase.h */;
+		name = "grammarBase.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1554;
+		vrLoc = 0;
+	};
+	009E9BB313F7A8E700FAEB97 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00540021137129B40008E5AB /* spatialRobocodeCreatureTheta.cpp */;
+		name = "spatialRobocodeCreatureTheta.cpp: 562";
+		rLen = 5;
+		rLoc = 19378;
+		rType = 0;
+		vrLen = 730;
+		vrLoc = 23043;
+	};
+	009E9BB413F7A8E700FAEB97 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0054002613725E5F0008E5AB /* RobocodeThetaMain.cpp */;
+		name = "RobocodeThetaMain.cpp: 140";
+		rLen = 0;
+		rLoc = 4757;
+		rType = 0;
+		vrLen = 1311;
+		vrLoc = 1803;
+	};
+	009E9BB513F7A8E700FAEB97 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0054003113725EE30008E5AB /* robocodeTheta.cpp */;
+		name = "robocodeTheta.cpp: 2129";
+		rLen = 0;
+		rLoc = 76110;
+		rType = 0;
+		vrLen = 933;
+		vrLoc = 118683;
+	};
+	00B9ED0E13E9346E00CD7204 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 000F09251241F9F600DAC023 /* spatial.h */;
+		name = "spatial.h: 1216";
+		rLen = 0;
+		rLoc = 59004;
+		rType = 0;
+		vrLen = 826;
+		vrLoc = 58492;
+	};
+	00B9ED1013E9346E00CD7204 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* main.cpp */;
+		name = "main.cpp: 7";
+		rLen = 0;
+		rLoc = 140;
+		rType = 0;
+		vrLen = 982;
+		vrLoc = 62;
+	};
+	00DA2AA912863B77003F9E66 /* RobocodeMvP */ = {
+		activeExec = 0;
+		executables = (
+			00DA2AC112863B77003F9E66 /* RobocodeMvP */,
+		);
+	};
+	00DA2AC112863B77003F9E66 /* RobocodeMvP */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = RobocodeMvP;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	00DA2AD412863BBC003F9E66 /* RobocodeMvPMain.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1958, 4407}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{5060, 3769}";
+			sepNavWindowFrame = "{{49, 60}, {2017, 1465}}";
+		};
+	};
+	00DA2ADC12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1878, 9529}}";
+			sepNavSelRange = "{16208, 0}";
+			sepNavVisRange = "{13904, 5421}";
+			sepNavWindowFrame = "{{578, 98}, {1644, 1241}}";
+		};
+	};
+	00DA2ADD12863BFA003F9E66 /* spatialRobocodeCreatureMvP.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1958, 2717}}";
+			sepNavSelRange = "{4172, 42}";
+			sepNavVisRange = "{0, 3315}";
+		};
+	};
+	00DA2B1B12878B92003F9E66 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */;
+		name = "robocodeBeta.cpp: 1174";
+		rLen = 0;
+		rLoc = 45198;
+		rType = 0;
+		vrLen = 1935;
+		vrLoc = 44455;
+	};
+	00DA2B1F12878B92003F9E66 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00542EED123F2F4D0026C2F8 /* robocodeAlpha.cpp */;
+		name = "robocodeAlpha.cpp: 4910";
+		rLen = 0;
+		rLoc = 172765;
+		rType = 0;
+		vrLen = 2343;
+		vrLoc = 415;
+	};
+	00DA2CBA129DD383003F9E66 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00DA2ADD12863BFA003F9E66 /* spatialRobocodeCreatureMvP.h */;
+		name = "spatialRobocodeCreatureMvP.h: 2";
+		rLen = 0;
+		rLoc = 22;
+		rType = 0;
+		vrLen = 765;
+		vrLoc = 3315;
+	};
+	08FB7793FE84155DC02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 005400201371298C0008E5AB /* RobocodeTheta */;
+		activeTarget = 0054000A1371298C0008E5AB /* RobocodeTheta */;
+		addToTargets = (
+			0054000A1371298C0008E5AB /* RobocodeTheta */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = 00542EBD123F2EB20026C2F8 /* Code sense */;
+		executables = (
+			00542EB7123F2E940026C2F8 /* Robocode */,
+			0080AE8712648B7200631E8B /* RobocodeBeta */,
+			00DA2AC112863B77003F9E66 /* RobocodeMvP */,
+			005400201371298C0008E5AB /* RobocodeTheta */,
+		);
+		expressions = (
+			"currentNT.size()",
+			"currentFds.end()",
+			"(*at)",
+			at,
+			testfds,
+			currentFds,
+			"(int) (*at)",
+			readfds,
+			"(int) (*(currentFds.begin()))",
+			"currentFds.begin()",
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					229,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					559,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					692,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 334050435;
+			PBXWorkspaceStateSaveDate = 334050435;
+		};
+		perUserProjectItems = {
+			000F0A9A124346AF00DAC023 /* PBXTextBookmark */ = 000F0A9A124346AF00DAC023 /* PBXTextBookmark */;
+			0020E42313B58D2B00285BDF /* PBXTextBookmark */ = 0020E42313B58D2B00285BDF /* PBXTextBookmark */;
+			0020E42413B58D2B00285BDF /* PBXTextBookmark */ = 0020E42413B58D2B00285BDF /* PBXTextBookmark */;
+			00540003137129540008E5AB /* PBXTextBookmark */ = 00540003137129540008E5AB /* PBXTextBookmark */;
+			0054007E137756860008E5AB /* PBXTextBookmark */ = 0054007E137756860008E5AB /* PBXTextBookmark */;
+			00540082137756860008E5AB /* PBXTextBookmark */ = 00540082137756860008E5AB /* PBXTextBookmark */;
+			00540083137756860008E5AB /* PBXTextBookmark */ = 00540083137756860008E5AB /* PBXTextBookmark */;
+			00540085137756860008E5AB /* PBXTextBookmark */ = 00540085137756860008E5AB /* PBXTextBookmark */;
+			00540086137756860008E5AB /* PBXTextBookmark */ = 00540086137756860008E5AB /* PBXTextBookmark */;
+			00540123137954D60008E5AB /* PBXTextBookmark */ = 00540123137954D60008E5AB /* PBXTextBookmark */;
+			00709DD612E38E350095EED9 /* PBXTextBookmark */ = 00709DD612E38E350095EED9 /* PBXTextBookmark */;
+			0080AE8812648B8600631E8B /* PBXTextBookmark */ = 0080AE8812648B8600631E8B /* PBXTextBookmark */;
+			0080AE8912648B8600631E8B /* PBXTextBookmark */ = 0080AE8912648B8600631E8B /* PBXTextBookmark */;
+			0080AE8B12648B8600631E8B /* PBXTextBookmark */ = 0080AE8B12648B8600631E8B /* PBXTextBookmark */;
+			0080AEBB1264FFA500631E8B /* PBXTextBookmark */ = 0080AEBB1264FFA500631E8B /* PBXTextBookmark */;
+			008E4A7012CD394A00282E2E /* PBXTextBookmark */ = 008E4A7012CD394A00282E2E /* PBXTextBookmark */;
+			009E9BB313F7A8E700FAEB97 /* PBXTextBookmark */ = 009E9BB313F7A8E700FAEB97 /* PBXTextBookmark */;
+			009E9BB413F7A8E700FAEB97 /* PBXTextBookmark */ = 009E9BB413F7A8E700FAEB97 /* PBXTextBookmark */;
+			009E9BB513F7A8E700FAEB97 /* PBXTextBookmark */ = 009E9BB513F7A8E700FAEB97 /* PBXTextBookmark */;
+			00B9ED0E13E9346E00CD7204 /* PBXTextBookmark */ = 00B9ED0E13E9346E00CD7204 /* PBXTextBookmark */;
+			00B9ED1013E9346E00CD7204 /* PBXTextBookmark */ = 00B9ED1013E9346E00CD7204 /* PBXTextBookmark */;
+			00DA2B1B12878B92003F9E66 /* PBXTextBookmark */ = 00DA2B1B12878B92003F9E66 /* PBXTextBookmark */;
+			00DA2B1F12878B92003F9E66 /* PBXTextBookmark */ = 00DA2B1F12878B92003F9E66 /* PBXTextBookmark */;
+			00DA2CBA129DD383003F9E66 /* PBXTextBookmark */ = 00DA2CBA129DD383003F9E66 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 00542EBC123F2EB20026C2F8 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	08FB7796FE84155DC02AAC07 /* main.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {737, 3913}}";
+			sepNavSelRange = "{140, 0}";
+			sepNavVisRange = "{62, 982}";
+			sepNavWindowFrame = "{{884, 132}, {1302, 1198}}";
+		};
+	};
+	8DD76F620486A84900D96B5E /* Robocode */ = {
+		activeExec = 0;
+		executables = (
+			00542EB7123F2E940026C2F8 /* Robocode */,
+		);
+	};
+}

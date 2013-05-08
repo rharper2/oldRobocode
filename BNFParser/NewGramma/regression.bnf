@@ -1,0 +1,14 @@
+code:	value 
+
+
+value: 	( value + value )
+        | ( value - value )
+        | ( value * value )
+        | ( value % value )
+        | XVAL
+  	| XVAL
+	| CVAL 
+	| CVAL
+
+
+%%

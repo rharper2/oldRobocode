@@ -1,0 +1,93 @@
+code:	DEFUN *(  )* FUNCBODY
+		| defineFunc code
+
+defineFunc:	NOP
+			| DEFUN *( )*
+			| DEFUN *( )* DEFUN *( )*
+
+
+FUNCBODY: if ( bool ) then { commands } else { FUNCBODY } |
+		  commands
+
+commands:	command | command
+			| command commands
+			| if ( cond ) then { commands } else { commands }
+			
+command:	newNetwork
+        	| connection
+			| setweight ( Value )
+			| wait
+			| end
+			| FUNC			
+
+loopCommands:	{ commands } ( Value )
+
+Value:	Number
+		| ( Value Op Value )
+
+Number: CVAL
+        | PUSE
+
+Op:		+ | - | % | *
+
+PARAMS:  PARAM | PARAM PARAMS
+
+FPARS: Value 
+
+newNetwork: 	threeCommand *{ commands }* *{ commands }* commands
+			    | twoCommand *{ commands }* commands
+				| oneCommand commands
+      
+
+threeCommand: 	add_split ( Value )
+                | add_split_cont ( Value , Value )
+				| attach
+    
+twoCommand: add_reverse
+            | connect
+            | loop
+            | destinationToNext
+            | sourceToNext
+            | sourceToParent
+			| Seq
+			| Par
+			| SeqCopyIn
+			| SeqCopyOut
+			| LSPLITNo ( Value )
+			| USPLITNo ( Value )
+			| xSPLIT ( Value , Value )
+			| tSplit ( Value , Value )
+
+oneCommand: push ( Value )
+	   | pushr ( Value , Value )
+	   | setSigma
+	   | setExpa
+	   | setBias ( Value )
+    
+connection:	connectInput ( Value )  *{ commands }* commands
+            | connectOutput ( Value ) *{ commands }* commands
+			| splitInputHorizontally ( Value ) *{ commands }* *{ commands }* commands
+			| splitInputVertically ( Value ) *{ commands }* *{ commands }* commands
+			| connectHeight *{ commands }* *{ commands }*
+			| connectAOA *{ commands }* *{ commands }*
+			
+bool: PUSE comp Value
+
+cond: 	cond boolop cond 
+	| NOT cond 
+	| [ Value comp Value ]
+
+boolop:	AND | OR
+	
+DFVAL: command
+
+DPVAL: Value
+
+comp: 		= | < | >
+
+NotUsed:    NOPP | 
+            AMOUNT | JMP | JMPIFTRUE |JMPIFFALSE | DUMMY | XOR 
+            | EXEC | CALL | DUP | POP | PPR | NORMALISELOOPCOUNT | AVALUE | PAR1 | PAR2 | PVAL
+            
+
+%%

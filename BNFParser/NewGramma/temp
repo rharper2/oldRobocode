@@ -1,0 +1,13 @@
+30c30
+< 
+---
+> #include "regressionG_Enums.h"
+51c51
+<           
+---
+>           bool doParse(int &);
+74a75,78
+> 		  bool doingPCT2;
+> 		  int balloonExpansion;
+> 		  bool expandPCT2;
+> 		  int lastCodonPos;

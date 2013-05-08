@@ -1,0 +1,14 @@
+----------------------------------------------------------------------
+FILE: gramma (BNF Parser)
+AUTHOR: Miguel Nicolau
+CURRENT VERSION: 0.63 (April 2001)
+----------------------------------------------------------------------
+
+To create BNF file one must use a plain text editor such as vi or pico,
+emacs won't work!
+
+To compile:
+  Just run make. If your system does not have lex and yacc but instead
+flex and bison, you will need to change the makefile, replacing "lex"
+by "flex", and "yacc" by "bison -y".
+Enjoy!

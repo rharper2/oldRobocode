@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	00709CA612DB175C0095EED9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00709CA712DB175C0095EED9 /* robocodeBeta.bnf */;
+		name = "robocodeBeta.bnf: 78";
+		rLen = 0;
+		rLoc = 2182;
+		rType = 0;
+		vrLen = 1841;
+		vrLoc = 1952;
+	};
+	00709CA712DB175C0095EED9 /* robocodeBeta.bnf */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text;
+		name = robocodeBeta.bnf;
+		path = /Development/CurrentProjects/CurrentGE/BNFParser/NewGramma/robocodeBeta.bnf;
+		sourceTree = "<absolute>";
+	};
+	00709D8F12DF92D00095EED9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* main.cpp */;
+		name = "main.cpp: 339";
+		rLen = 0;
+		rLoc = 11775;
+		rType = 0;
+		vrLen = 1602;
+		vrLoc = 10293;
+	};
+	00709D9012DF92D00095EED9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00DA29151282447C003F9E66 /* MultiMain.cpp */;
+		name = "MultiMain.cpp: 92";
+		rLen = 0;
+		rLoc = 2132;
+		rType = 0;
+		vrLen = 3360;
+		vrLoc = 6692;
+	};
+	009E9BB613F7A8E700FAEB97 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00DA29E512828ECE003F9E66 /* SampleComparisonMain.cpp */;
+		name = "SampleComparisonMain.cpp: 420";
+		rLen = 0;
+		rLoc = 13570;
+		rType = 0;
+		vrLen = 903;
+		vrLoc = 12737;
+	};
+	009E9BB713F7A8E700FAEB97 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* main.cpp */;
+		name = "main.cpp: 339";
+		rLen = 0;
+		rLoc = 11775;
+		rType = 0;
+		vrLen = 1072;
+		vrLoc = 10823;
+	};
+	009E9BBA13F7A8E700FAEB97 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* main.cpp */;
+		name = "main.cpp: 331";
+		rLen = 92;
+		rLoc = 11618;
+		rType = 0;
+		vrLen = 1510;
+		vrLoc = 10385;
+	};
+	009E9BBB13F7A8E700FAEB97 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00DA29E512828ECE003F9E66 /* SampleComparisonMain.cpp */;
+		name = "SampleComparisonMain.cpp: 420";
+		rLen = 0;
+		rLoc = 13570;
+		rType = 0;
+		vrLen = 1202;
+		vrLoc = 12438;
+	};
+	009E9BBC13F7A8E700FAEB97 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00DA29151282447C003F9E66 /* MultiMain.cpp */;
+		name = "MultiMain.cpp: 342";
+		rLen = 0;
+		rLoc = 11941;
+		rType = 0;
+		vrLen = 1559;
+		vrLoc = 228;
+	};
+	009E9BBD13F7A8E700FAEB97 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 00DA29151282447C003F9E66 /* MultiMain.cpp */;
+		name = "MultiMain.cpp: 28";
+		rLen = 0;
+		rLoc = 485;
+		rType = 0;
+		vrLen = 1581;
+		vrLoc = 206;
+	};
+	00DA2846127D5077003F9E66 /* RobocodeTournament */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = RobocodeTournament;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	00DA284D127D5095003F9E66 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	00DA284E127D5095003F9E66 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	00DA285612813566003F9E66 /* myrandom.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1585, 2184}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 3396}";
+		};
+	};
+	00DA285712813566003F9E66 /* myrandom.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1463, 836}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1848}";
+		};
+	};
+	00DA28AC128139A4003F9E66 /* main.cpp:283 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 08FB7796FE84155DC02AAC07 /* main.cpp */;
+		functionName = "doATournament()";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 283;
+		location = RobocodeTournament;
+		modificationTime = 316696432.038625;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	00DA28C912813A98003F9E66 /* main.cpp:92 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 08FB7796FE84155DC02AAC07 /* main.cpp */;
+		functionName = "readInBattlers()";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 92;
+		location = RobocodeTournament;
+		modificationTime = 316696432.038688;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	00DA290712824445003F9E66 /* RobocodeMultiGenTournament */ = {
+		activeExec = 0;
+		executables = (
+			00DA291212824446003F9E66 /* RobocodeMultiGenTournament */,
+		);
+	};
+	00DA291212824446003F9E66 /* RobocodeMultiGenTournament */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = RobocodeMultiGenTournament;
+		savedGlobals = {
+			/Development/testProjects/robocode/Robocode/RobocodeTournament/build/Debug/RobocodeTournament = (
+				{
+					display = 1;
+					filename = /Development/testProjects/robocode/Robocode/RobocodeTournament/MultiMain.cpp;
+					name = theRound;
+				},
+			);
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	00DA29151282447C003F9E66 /* MultiMain.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1377, 5486}}";
+			sepNavSelRange = "{485, 0}";
+			sepNavVisRange = "{206, 1581}";
+			sepNavWindowFrame = "{{141, 55}, {1280, 934}}";
+		};
+	};
+	00DA292912824875003F9E66 /* MultiMain.cpp:92 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 00DA29151282447C003F9E66 /* MultiMain.cpp */;
+		functionName = "readInWinners()";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 92;
+		location = RobocodeTournament;
+		modificationTime = 316696432.038702;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	00DA293E12824BF6003F9E66 /* MultiMain.cpp:99 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 00DA29151282447C003F9E66 /* MultiMain.cpp */;
+		functionName = "readInWinners()";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 99;
+		location = RobocodeTournament;
+		modificationTime = 316696432.039503;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	00DA29B612825E35003F9E66 /* MultiMain.cpp:340 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 00DA29151282447C003F9E66 /* MultiMain.cpp */;
+		functionName = "doTheTournament()";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 340;
+		location = RobocodeTournament;
+		modificationTime = 316696432.0396;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	00DA29D312828E8D003F9E66 /* RobocodeSampleComparison */ = {
+		activeExec = 0;
+		executables = (
+			00DA29DE12828E8D003F9E66 /* RobocodeSampleComparison */,
+		);
+	};
+	00DA29DE12828E8D003F9E66 /* RobocodeSampleComparison */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = RobocodeSampleComparison;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	00DA29E512828ECE003F9E66 /* SampleComparisonMain.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1300, 5655}}";
+			sepNavSelRange = "{13570, 0}";
+			sepNavVisRange = "{12438, 1202}";
+			sepNavWindowFrame = "{{595, 144}, {1644, 1241}}";
+		};
+	};
+	08FB7793FE84155DC02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 00DA29DE12828E8D003F9E66 /* RobocodeSampleComparison */;
+		activeTarget = 00DA29D312828E8D003F9E66 /* RobocodeSampleComparison */;
+		addToTargets = (
+			00DA29D312828E8D003F9E66 /* RobocodeSampleComparison */,
+		);
+		breakpoints = (
+			00DA28AC128139A4003F9E66 /* main.cpp:283 */,
+			00DA28C912813A98003F9E66 /* main.cpp:92 */,
+			00DA292912824875003F9E66 /* MultiMain.cpp:92 */,
+			00DA293E12824BF6003F9E66 /* MultiMain.cpp:99 */,
+			00DA29B612825E35003F9E66 /* MultiMain.cpp:340 */,
+		);
+		codeSenseManager = 00DA284E127D5095003F9E66 /* Code sense */;
+		executables = (
+			00DA2846127D5077003F9E66 /* RobocodeTournament */,
+			00DA291212824446003F9E66 /* RobocodeMultiGenTournament */,
+			00DA29DE12828E8D003F9E66 /* RobocodeSampleComparison */,
+		);
+		expressions = (
+			theRound,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					800,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					1245,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 334883904;
+			PBXWorkspaceStateSaveDate = 334883904;
+		};
+		perUserProjectItems = {
+			00709CA612DB175C0095EED9 /* PBXTextBookmark */ = 00709CA612DB175C0095EED9 /* PBXTextBookmark */;
+			00709D8F12DF92D00095EED9 /* PBXTextBookmark */ = 00709D8F12DF92D00095EED9 /* PBXTextBookmark */;
+			00709D9012DF92D00095EED9 /* PBXTextBookmark */ = 00709D9012DF92D00095EED9 /* PBXTextBookmark */;
+			009E9BB613F7A8E700FAEB97 /* PBXTextBookmark */ = 009E9BB613F7A8E700FAEB97 /* PBXTextBookmark */;
+			009E9BB713F7A8E700FAEB97 /* PBXTextBookmark */ = 009E9BB713F7A8E700FAEB97 /* PBXTextBookmark */;
+			009E9BBA13F7A8E700FAEB97 /* PBXTextBookmark */ = 009E9BBA13F7A8E700FAEB97 /* PBXTextBookmark */;
+			009E9BBB13F7A8E700FAEB97 /* PBXTextBookmark */ = 009E9BBB13F7A8E700FAEB97 /* PBXTextBookmark */;
+			009E9BBC13F7A8E700FAEB97 /* PBXTextBookmark */ = 009E9BBC13F7A8E700FAEB97 /* PBXTextBookmark */;
+			009E9BBD13F7A8E700FAEB97 /* PBXTextBookmark */ = 009E9BBD13F7A8E700FAEB97 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 00DA284D127D5095003F9E66 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	08FB7796FE84155DC02AAC07 /* main.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1300, 4433}}";
+			sepNavSelRange = "{11775, 0}";
+			sepNavVisRange = "{10823, 1072}";
+			sepNavWindowFrame = "{{494, 213}, {1644, 1241}}";
+		};
+	};
+	8DD76F620486A84900D96B5E /* RobocodeTournament */ = {
+		activeExec = 0;
+		executables = (
+			00DA2846127D5077003F9E66 /* RobocodeTournament */,
+		);
+	};
+}

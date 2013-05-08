@@ -1,0 +1,43 @@
+code:	DEFUN *( )* code |
+	    DEFUN *( )* Iterations CVAL CALL CVAL *( equation , equation )*
+		
+FUNCBODY: if ( bool ) then { commands }
+          else { FUNCBODY } |
+          commands
+
+commands: command | command commands
+
+command: [ commands ]
+        | { commands } PValue
+        | CALL CVAL *( equation , equation )*
+        | increment
+        | decrement
+        | movement
+
+movement: left | right | up | down | forward
+
+increment: incX | incY | incZ
+
+decrement: decX | decY | decZ
+
+i_value:    CVAL
+
+bool:   Par bool_op equation
+
+bool_op: > | < | =
+
+Par:    Par1 | Par2
+
+PValue: Par | i_value
+
+
+equation:   PValue |
+            equation  op  equation |
+            ( equation )
+			
+
+op: + | - | * | %
+
+PARAMS: PARAM PARAM
+
+%%

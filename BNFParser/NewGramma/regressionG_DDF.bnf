@@ -1,0 +1,25 @@
+code:	value |
+	defineFunc code
+
+defineFunc: NOP | DEFUN *( )*
+
+
+value: 	( value + value )
+        | ( value - value )
+        | ( value * value )
+        | ( value % value )
+        | XVAL
+  	| CVAL
+	| FUNC 
+	| PUSE
+            
+FUNCBODY: value
+
+FPARS:	value
+
+PARAMS: PARAM
+
+DFVAL: value
+
+DPVAL: XVAL
+%%

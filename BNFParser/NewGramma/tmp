@@ -1,0 +1,416 @@
+57c57
+< // DVAL: value
+---
+> // DFVAL: value
+58a59
+> // DPVAL: XVAL
+61c62
+< using namespace regressionG_namespace;
+---
+> using namespace regressionG_DDF_namespace;
+110c111
+<             funcVector = funcVec;
+---
+> 			funcVector = funcVec;
+145c146,147
+< 			//cout << "Expanding.\n";
+---
+> 
+> 
+149c151
+< //				//cout << "Expansions Done " << expansionsDone << endl;
+---
+> //				cout << "Expansions Done " << expansionsDone << endl;
+155d156
+< 			//cout << "Terminating\n";
+176,177c177
+< 			//cout << "Parsing\n";
+<            
+---
+> 
+221,226c221
+< 		   //cout << "Done\n";
+< 		   if (toreturn) cout << "It parsed.\n";
+< 		   else {
+< 			cout << "It failed!\n";
+< 			exit(1);
+< 		   }
+---
+> 
+236c231
+< 	
+---
+> 
+244,246c239,241
+< 	
+< 	// ok toUse points at the expansion we want to expand
+< 	
+---
+> 
+> // ok toUse points at the expansion we want to expand
+> 
+271d265
+< 	//cout << toUse->value << "-> ";
+295d288
+< 		//cout << tomake->value << " ";
+298d290
+< 	//cout << endl;
+311,318d302
+<     expression[0] = cNode->value;
+< 	*expressionLength = 1;
+< 	if (cNode->value == CVAL) {
+< 				expression[1] = codons[codonPos-1];
+< 				*expressionLength = 2;
+< 	}
+< 	//print_grammar_individual(cout,expression,*expressionLength);
+< 	//cout << endl;
+328,336d311
+< 	    expression[0] = cNode->value;
+<      	*expressionLength = 1;
+< 	    if (cNode->value == CVAL) {
+< 				expression[1] = codons[codonPos-1];
+< 				*expressionLength = 2;
+< 	    }
+< 	    //print_grammar_individual(cout,expression,*expressionLength);
+<         //if (cNode->codonUsed) cout << " Using (" << (cNode->codonValue & CODONMASK) << ") ";
+< 		//cout << "----> ";
+344,345c319
+< 			    //cout << "Skipping: ";
+< 			    expression[0] = cNode->value;
+---
+> /*			    expression[0] = cNode->value;
+351,352c325,327
+< 				//print_grammar_individual(cout,expression,*expressionLength);
+< 				//cout << endl;
+---
+> 				print_grammar_individual(cout,expression,*expressionLength);
+> 				cout << endl;
+> */
+404a380,381
+> // dc->resetCounters();
+> 		  
+430,456c407,425
+< 								  if (!dealtWithPop(expression,&expressionPos,expressionLength)) {
+< 									  if (expression[expressionPos]== CVAL) {
+< 										  // Make room to put in the codon value
+< 										  for (int i=*expressionLength-1; i > expressionPos;i--)
+< 											  expression[i+1]=expression[i];
+< 										  *expressionLength = *expressionLength + 1;
+< 										  expressionPos++;
+< 										  expression[expressionPos]= codons[codonPos] & FCODONMASK;
+<   										if (balloonExpansion) {
+< 											// shift the codons one to the right
+< 											//	cout << "Codons pre balllon expansion codonPos is " << codonPos << "\n";
+< 											//	for (int i=0;i<10;i++) {
+< 											//		cout << (codons[codonPos+i] & CODONMASK) << ", ";
+< 											//	}
+< 											//	cout << endl;
+< 											if (lastCodonPos != codonPos) {
+< 											// shift the codons one to the right
+< 											for(int i=maxCodons-1;i>=codonPos;i--)
+< 												codons[i+1]=codons[i];
+< 											codons[codonPos]=randomint(4096);
+< 											//cout << "Codons post balllon expansion codonPos is " << codonPos << "\n";
+< 											//for (int i=0;i<10;i++) {
+< 											//	cout << (codons[codonPos+i] & CODONMASK) << ", ";
+< 											//}
+< 											//cout << endl;
+< 											} else {
+< 											//	cout << "Didn't move codons cause the last one was not chewed.\n";
+---
+>                                         if (!dealtWithPop(expression,&expressionPos,expressionLength)) {
+>                                             if (expression[expressionPos]== CVAL) {
+>                                                     // Make room to put in the codon value
+>                                                 for (int i=*expressionLength-1; i > expressionPos;i--)
+>                                                        expression[i+1]=expression[i];
+>                                                 *expressionLength = *expressionLength + 1;
+>                                                 expressionPos++;
+>                                                 expression[expressionPos]= codons[codonPos] & FCODONMASK;
+> 												if (balloonExpansion) {
+> 												   if (lastCodonPos != codonPos) {
+> 												       // shift the codons one to the right
+> 													   for(int i=maxCodons-1;i>=codonPos;i--)
+> 															codons[i+1]=codons[i];
+> 													   codons[codonPos]=randomint(4096);
+> 													} 
+> 													lastCodonPos = codonPos;
+> 												}
+>                                                 codons[codonPos] =  ( (codons[codonPos] & FCODONMASK) | ((0) << CODON)); // so we store it as 1000 (or 0) 
+>                                                 codonPos = codonPos + 1;
+458,462d426
+< 											lastCodonPos = codonPos;
+< 										}
+<                                                     codons[codonPos] =  ( (codons[codonPos] & CODONMASK) | ((0) << CODON)); // so we store it as 1000 (or 0) 
+<                                                     codonPos = codonPos + 1;
+<                                                 }
+467,472d430
+< 											// shift the codons one to the right
+< 												//cout << "Codons pre balllon expansion codonPos is " << codonPos << "\n";
+< 												//for (int i=0;i<10;i++) {
+< 												//	cout << (codons[codonPos+i] & CODONMASK) << ", ";
+< 												//}
+< 												//cout << endl;
+474,485c432,436
+< 											// shift the codons one to the right
+< 											for(int i=maxCodons-1;i>=codonPos;i--)
+< 												codons[i+1]=codons[i];
+< 											codons[codonPos]=randomint(4096);
+< 											//cout << "Codons post balllon expansion codonPos is " << codonPos << "\n";
+< 											//for (int i=0;i<10;i++) {
+< 											//	cout << (codons[codonPos+i] & CODONMASK) << ", ";
+< 											//}
+< 											//cout << endl;
+< 											} else {
+< 											//	cout << "Didn't move codons cause the last one was not chewed.\n";
+< 											}
+---
+> 												// shift the codons one to the right
+> 												for(int i=maxCodons-1;i>=codonPos;i--)
+> 													codons[i+1]=codons[i];
+> 												codons[codonPos]=randomint(4096);
+> 											} 
+511,523c462
+< 	//		for (int i=codonPos;i<maxCodons-1;i++) {
+< 	//			codons[i]=codons[i+1]; // expansion is off so shuffle them back one
+< 				// not terribly elegant, but its by far easier than only making
+< 				// the room (so we don't need to shuffle back in this case)
+< 				// only when we need it.
+< 			}
+< 		//cout << "Decremented balloonExpansion it is now: " << balloonExpansion << endl;
+< 		//										cout << "Codons from codonPos is " << codonPos << "\n";
+< 		//										for (int i=0;i<10;i++) {
+< 		//											cout << (codons[codonPos+i] & CODONMASK) << ", ";
+< 		//										}
+< 		//										cout << endl;
+< 
+---
+> 		}
+529d467
+< 	
+673,680c611,612
+<                               } else {
+<   										if (balloonExpansion) {
+< 											// shift the codons one to the right
+< 												//cout << "Codons pre balllon expansion codonPos is " << codonPos << "\n";
+< 												//for (int i=0;i<10;i++) {
+< 												//	cout << (codons[codonPos+i] & CODONMASK) << ", ";
+< 												//}
+< 												//cout << endl;
+---
+>                               } else {  
+> 							  			if (balloonExpansion) {
+686,693c618
+< 											//cout << "Codons post balllon expansion codonPos is " << codonPos << "\n";
+< 											//for (int i=0;i<10;i++) {
+< 											//	cout << (codons[codonPos+i] & CODONMASK) << ", ";
+< 											//}
+< 											//cout << endl;
+< 											} else {
+< 												cout << "Didn't move codons cause the last one was not chewed.\n";
+< 											}
+---
+> 											} 
+755,778c680,691
+<   										if (balloonExpansion) {
+< 											// shift the codons one to the right
+< 												//cout << "Codons pre balllon expansion codonPos is " << codonPos << "\n";
+< 												//for (int i=0;i<10;i++) {
+< 												//	cout << (codons[codonPos+i] & CODONMASK) << ", ";
+< 												//}
+< 												//cout << endl;
+< 											if (lastCodonPos != codonPos) {
+< 											// shift the codons one to the right
+< 											for(int i=maxCodons-1;i>=codonPos;i--)
+< 												codons[i+1]=codons[i];
+< 											codons[codonPos]=randomint(4096);
+< 											//cout << "Codons post balllon expansion codonPos is " << codonPos << "\n";
+< 											//for (int i=0;i<10;i++) {
+< 											//	cout << (codons[codonPos+i] & CODONMASK) << ", ";
+< 											//}
+< 											//cout << endl;
+< 											} else {
+< 											//	cout << "Didn't move codons cause the last one was not chewed.\n";
+< 											}
+< 											lastCodonPos = codonPos;
+< 										}
+<         // Make room to put in the codon value
+<                                                     for(int i=(*funcVector)[functionNos].expLength-1;i>funcPos;i--)
+---
+> 												if (balloonExpansion) {
+> 													// shift the codons one to the right
+> 													if (lastCodonPos != codonPos) {
+> 														// shift the codons one to the right
+> 														for(int i=maxCodons-1;i>=codonPos;i--)
+> 															codons[i+1]=codons[i];
+> 														codons[codonPos]=randomint(4096);
+> 													}
+> 													lastCodonPos = codonPos;
+> 												}	
+>                                                 // Make room to put in the codon value
+>                                                 for(int i=(*funcVector)[functionNos].expLength-1;i>funcPos;i--)
+780,784c693,697
+<                                                     (*funcVector)[functionNos].expLength++;
+<                                                     funcPos++;
+<                                                     (*funcVector)[functionNos].expression[funcPos]= codons[codonPos] & FCODONMASK;
+<                                                     codons[codonPos] =  ( (codons[codonPos] & FCODONMASK) | ((0) << CODON)); // so we store it as 1000 (or 0) 
+<                                                     codonPos = codonPos + 1;
+---
+>                                                 (*funcVector)[functionNos].expLength++;
+>                                                 funcPos++;
+>                                                 (*funcVector)[functionNos].expression[funcPos]= codons[codonPos] & FCODONMASK;
+>                                                 codons[codonPos] =  ( (codons[codonPos] & FCODONMASK) | ((0) << CODON)); // so we store it as 1000 (or 0) 
+>                                                 codonPos = codonPos + 1;
+790,795d702
+< 											// shift the codons one to the right
+< 												//cout << "Codons pre balllon expansion codonPos is " << codonPos << "\n";
+< 												//for (int i=0;i<10;i++) {
+< 												//	cout << (codons[codonPos+i] & CODONMASK) << ", ";
+< 												//}
+< 												//cout << endl;
+797,807c704,707
+< 											// shift the codons one to the right
+< 											for(int i=maxCodons-1;i>=codonPos;i--)
+< 												codons[i+1]=codons[i];
+< 											codons[codonPos]=randomint(4096);
+< 											//cout << "Codons post balllon expansion codonPos is " << codonPos << "\n";
+< 											//for (int i=0;i<10;i++) {
+< 											//	cout << (codons[codonPos+i] & CODONMASK) << ", ";
+< 											//}
+< 											//cout << endl;
+< 											} else {
+< 											//	cout << "Didn't move codons cause the last one was not chewed.\n";
+---
+> 												// shift the codons one to the right
+> 												for(int i=maxCodons-1;i>=codonPos;i--)
+> 													codons[i+1]=codons[i];
+> 												codons[codonPos]=randomint(4096);
+844,847d743
+< 	//cout << "Possibly using " << currentCodon << " to expand ";
+< 	//print_grammar_individual(cout,&(curr_expr[*curr]),1);
+< 	//cout << " codon Pos is " << codonPos;
+< 	//cout << endl;
+856a753
+> 				terminals.push_back(1);
+877,878c774
+< 					curr_expr[*curr+2]=POPTREED;
+< 					if (growing) depth++;
+---
+> 					curr_expr[*curr+2]=POPTREE;
+894,896d789
+< 				terminals.push_back(0);
+< 				terminals.push_back(1);
+< 				nonTerminals.push_back(1);
+939c832
+< 				//nonTerminals.push_back(6);
+---
+> 				nonTerminals.push_back(6);
+946d838
+< 				    //cout << "value to v + v\n";
+961d852
+< 				    //cout << "value to v - v\n";
+976d866
+< 				    //cout << "value to v * v\n";
+991d880
+< 				    //cout << "value to v % v\n";
+1006d894
+< 				    //cout << "value to xval\n";
+1016d903
+< 				    //cout << "value to cval\n";
+1026d912
+< 				    //cout << "value to dofunc\n";
+1036d921
+< 				    //cout << "value to usepar\n";
+1053,1054c938,939
+< 				curr_expr[0]=FUNCPLACEHOLDER;
+< 				break;
+---
+> 			curr_expr[0]=FUNCPLACEHOLDER;
+> 			break;
+1057c942
+< 			    //cout << "Hit a dofun with expandPCT2 true\n";
+---
+> 				//cout << "Hit a dofun with expandPCT2 true";
+1064d948
+< 				
+1070c954
+< 				curr_expr[*curr]=_CHECKEDDOFUNC;	// And no functions happen to have been defined. 
+---
+> 				curr_expr[*curr]=_DOFUNC;	// And no functions happen to have been defined. 
+1072c956
+< 				if (ExtractingGrammarInfo) stack.push_back(codonPos);
+---
+> 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
+1076,1078d959
+< 		     }
+< 			 curr_expr[*curr]=_CHECKEDDOFUNC;
+< 			 break;
+1080c961,964
+< 		  case (_CHECKEDDOFUNC): {
+---
+> 			 curr_expr[*curr]=_DOFUNC;
+> 			break;
+> 				}
+> 		case(_DOFUNC):{ /* _DOFUNC */
+1087c971
+< 				curr_expr[*curr]=DVAL;	// And no functions happen to have been defined. 
+---
+> 				curr_expr[*curr]=DFVAL;	// And no functions happen to have been defined. 
+1140c1024
+< 				curr_expr[*curr]=XVAL;	// And no functions/params happen to have been defined. 
+---
+> 				curr_expr[*curr]=DPVAL;	// And no functions/params happen to have been defined. 
+1211,1212d1094
+< 				terminals.push_back(0);
+< 				nonTerminals.push_back(0);
+1224c1106
+< 		case(DVAL):{ /* DVAL */
+---
+> 		case(DFVAL):{ /* DFVAL */
+1240a1123,1138
+> 		case(DPVAL):{ /* DPVAL */
+> 			divisor = 1;
+> 			if (growing) {
+> 				nonTerminals.clear();
+> 				terminals.clear();
+> 				changeCodonsForGrow(divisor);
+> 				currentCodon = (terminating?0:codons[codonPos]) & CODONMASK;
+> 			}
+> 			switch(currentCodon%divisor){
+> 				case(0):{
+> 					curr_expr[*curr+0]=XVAL; //XVAL
+> 					break;
+> 					}
+> 			}//of switch
+> 			break;
+> 			}//of case XVAL
+1250,1259d1147
+< 		case CODE: {output_stream << " CODE ";break;}
+< 		case DEFINEFUNC: {output_stream << " DEFINEFUNC ";break;}
+< 		case VALUE: {output_stream << " VALUE ";break;}
+< 		case DOFUNC: {output_stream << " DOFUNC ";break;}
+< 		case USEPAR: {output_stream << " USEPAR ";break;}
+< 		case FUNCBODY: {output_stream << " FUNCBODY ";break;}
+< 		case FPARS: {output_stream << " FPARS ";break;}
+< 		case PARAMS: {output_stream << " PARAMS ";break;}
+< 		case DVAL: {output_stream << " DVAL ";break;}
+< 		
+1292a1181,1182
+> 		case FUNCPLACEHOLDER: {output_stream << " FUNCPLACEHOLDER ";break;}
+> 		case BEPOPTREE: {output_stream << " BEPOPTREE ";break;}
+1294c1184
+< 		case 35: { output_stream << " CVAL :"; i++ ; output_stream << curr_expr[i] << ": "; break;}
+---
+> 		case CVAL: { output_stream << " CVAL :"; i++ ; output_stream << curr_expr[i] << ": "; break;}
+1300,1301c1190
+< 		case FUNCPLACEHOLDER: { output_stream << " FUNCPLACEHOLDER "; break; }
+< 		case BEPOPTREE: { output_stream << " BEPOPTREE "; break; }
+---
+> 		case _DOFUNC: {output_stream << " _DOFUNC ";break;}
+1308c1197
+< 				output_stream << " Unknown(" << curr_expr[i] << ") "; 
+---
+> 				output_stream << " UNKNOWN(" << curr_expr[i] << ") ";
+1313c1202
+< //	output_stream << endl;
+---
+> 	output_stream << endl;

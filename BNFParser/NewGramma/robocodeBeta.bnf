@@ -1,0 +1,129 @@
+code:	import robocodeDOTSTAR ; N public class NAME extends AdvancedRobot { N static stack globalStack1, globalStack2 ; N SOMEFUNCTIONS N MAINCODE N SCANROBOTCODE N HITBYBULLETCODE N HITROBOTCODE N HITWALLCODE }
+
+MAINCODE: public void run__ { N INMAINLOOP ONSTART1 N Sentences N while ( true_ ) { Sentences } N } 
+
+SCANROBOTCODE: public void onScannedRobot_ScannedRobotEvent e_CB { N static ScannedRobotEvent pe ; N ONSTART INSCANNEDLOOP Sentences ONEXIT } N 
+
+HITBYBULLETCODE: public void onHitByBullet_HitByBulletEvent e_CB { N static HitByBulletEvent pe ; N ONSTART INHITBYBULLETLOOP Sentences ONEXIT } N 
+
+HITROBOTCODE: public void onHitRobot_HitRobotEvent e_CB { N static HitRobotEvent pe ; N ONSTART INHITROBOTLOOP Sentences ONEXIT } N 
+
+HITWALLCODE: public void onHitWall_HitWallEvent e_CB { N static HitWallEvent pe ; N ONSTART INHITWALLLOOP Sentences ONEXIT } N 
+
+
+Sentences:  Sentence  Sentences
+		| Sentence 
+
+
+Sentence:	if ( Bool ) { Sentences } else { Sentences }
+		| Action ;
+
+
+Action:	turnAction 
+		| moveAction
+		| setAction
+		| fireAction
+
+turnAction:	setTurnRight_OB Variable )
+	 	| setTurnLeft_OB Variable )
+		| setTurnGunRight_OB Variable )
+		| setTurnGunLeft_OB Variable )
+		| setTurnRadarRight_OB Variable )
+		| setTurnRadarLeft_OB Variable )
+
+moveAction:	setAhead_OB Variables )
+		| setBack_OB Variables )
+		| resume__
+		| stop__
+
+setAction:	setAdjustGunForRobotTurn_OB Bool )
+		| setAdjustRadarForRobotTurn_OB Bool )
+		| setAdjustRadarForGunTurn_OB Bool )
+		| safePush_OB stackType , Variables )
+		| safeSwap_OB stackType )
+
+fireAction:	fire_OB Variable % 5 )
+		| setfire_OB Variable % 5 )
+		
+Variables: 	twoVariables
+		|  Variable
+
+Variable:	globalVariable
+		|  contextVariable
+	
+contextVariable: globalVariable
+
+twoVariables:	( Variables + Variables )
+		| ( Variables - Variables )
+		| ( Variables * Variables )
+		| PDIV_OB Variables , Variables )
+
+Bool: 		( Bool boolop Bool )
+		| ( Variable comp Variable )
+		| NOT_OB Bool )
+
+comp:		> | < | ==
+
+boolop:		AND | XOR | OR
+
+globalVariable:	getX__ 
+		| getY__
+		| getHeading__
+		| getGunHeading__
+		| getGunHeat__
+		| getRadarHeading__
+		| getBattleFieldWidth__	
+		| getBattleFieldWidth__
+		| getEnergy__
+		| 1
+		| 0
+		| stackVariable
+
+stackVariable: safePop_OB stackType )
+				| safePeek_OB stackType )
+				
+stackType: globalStack1 | globalStack2 | localStack1 | localStack2
+		
+
+mainLoopVariable: 
+		getHeading__
+
+onHitByBulletVariable:	e_DOTgetBearing__
+			| e_DOTgetHeading__
+			| pe_DOTgetBearing__
+			| pe_DOTgetHeading__
+
+onScannedRobotVariable:  e_DOTgetBearing__
+			| e_DOTgetHeading__
+			| e_DOTgetVelocity__
+			| e_DOTgetEnergy__
+			| e_DOTgetDistance__
+			| pe_DOTgetBearing__
+			| pe_DOTgetHeading__
+			| pe_DOTgetVelocity__
+			| pe_DOTgetEnergy__
+			| pe_DOTgetDistance__
+
+onHitRobotVariable:	e_DOTgetBearing__		
+			| e_DOTgetEnergy__
+			| pe_DOTgetBearing__		
+			| pe_DOTgetEnergy__
+			
+
+onHitWallVariable:	e_DOTgetBearing__
+					| pe_DOTgetBearing__
+
+SOMEFUNCTIONS: PDIVCODE N PUSHCODE N POPCODE N PEEKCODE 
+
+PDIVCODE:	public double PDIV_OB double top , double bottom ) { if ( bottom == 0 )  return 1 ; else return top DIVIDED bottom ;  }
+PUSHCODE:	public void safePush_OB stack thestack , double item ) { thestackDOTpush_OB new Double_OB item ) ; }
+POPCODE:	public double safePop_OB stack thestack ) { if ( thestackDOTempty__ ) return 0 else return thestackDOTpop__ ; }
+PEEKCODE:	public double safePeek_OB stack thestack ) { if ( thestackDOTemtpy__ ) return 0 else return thestackDOTpeek__ ; }
+		
+ONSTART:	ONSTART1 ONSTART2
+ONSTART1:	static stack localStack1 , localStack2 ; 
+ONSTART2:	N static bool history = false ; N if ( NOThistory ) pe = e ; N
+ONEXIT:		if ( history ) pe = e ;  else history = true ; N
+NOTUSED:	DEFUN *( )* | FUNC | PUSE | DPVAL | DFVAL | PARAMS | PARAM | FPARS | FUNCBODY | CVAL
+
+%%

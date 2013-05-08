@@ -1,0 +1,280 @@
+code:	import robocodeDOTSTAR ; N public class NAME extends Robot { N PDIVCODE N public void run__ { N mainSentences N while ( true_ ) { mainSentences } N } public void onScannedRobot_ScannedRobotEvent e_CB { N osrSentences } N public void onHitByBullet_HitByBulletEvent e_CB { N ohbbSentences } N public void onHitRobot_HitRobotEvent e_CB { N ohrSentences } N public void onHitWall_HitWallEvent e_CB { N ohwSentences } N }
+
+
+mainSentences:  mainSentence  mainSentences
+		| mainSentence 
+
+
+mainSentence:	if ( mBool ) { mainSentences } else { mainSentences }
+		| mainAction ;
+
+
+mainAction:	mturnAction 
+		| mmoveAction
+		| msetAction
+		| fireAction
+
+mturnAction:	turnRight_OB mVariables )
+	 	| turnLeft_OB mVariables )
+		| turnGunRight_OB mVariables )
+		| turnGunLeft_OB mVariables )
+		| turnRadarRight_OB mVariables )
+		| turnRadarLeft_OB mVariables )
+
+mmoveAction:	ahead_OB mVariables )
+		| back_OB mVariables )
+		| resume__
+		| stop__
+
+msetAction:	setAdjustGunForRobotTurn_OB mBool )
+		| setAdjustRadarForRobotTurn_OB mBool )
+		| setAdjustRadarForGunTurn_OB mBool )
+
+fireAction:	fire_1
+		| fire_2
+		| fire_3
+		| fire_4
+
+mVariables: 	twomVariables
+		| mVariable
+
+mVariable:	globalVariable
+		| mainLoopVariable
+
+twomVariables:	( mVariables + mVariables )
+		| ( mVariables - mVariables )
+		| ( mVariables * mVariables )
+		| PDIV_OB mVariables , mVariables )
+
+mBool: 		( mBool boolop mBool )
+		| ( mVariable comp mVariable )
+		| NOT_OB mBool )
+
+comp:		> | < | ==
+
+boolop:		AND | XOR | OR
+
+
+
+ohbbSentences: 	ohbbSentence  ohbbSentences
+		| ohbbSentence 
+
+ohbbSentence:	if ( ohbbBool ) { ohbbSentences } else { ohbbSentences }
+		| ohbbAction ;
+
+
+ohbbAction:	ohbbturnAction 
+		| ohbbmoveAction
+		| ohbbsetAction
+		| fireAction
+
+ohbbturnAction:	turnRight_OB ohbbVariables )
+	 	| turnLeft_OB ohbbVariables )
+		| turnGunRight_OB ohbbVariables )
+		| turnGunLeft_OB ohbbVariables )
+		| turnRadarRight_OB ohbbVariables )
+		| turnRadarLeft_OB ohbbVariables )
+
+ohbbmoveAction:	ahead_ ohbbVariables )
+		| back_ ohbbVariables )
+		| resume__
+		| stop__
+
+ohbbsetAction:	setAdjustGunForRobotTurn_OB ohbbBool )
+		| setAdjustRadarForRobotTurn_OB ohbbBool )
+		| setAdjustRadarForGunTurn_OB ohbbBool )
+
+
+twoohbbVariables:	( ohbbVariables + ohbbVariables )
+		| ( ohbbVariables - ohbbVariables )
+		| ( ohbbVariables * ohbbVariables )
+		| PDIV_ ohbbVariables , ohbbVariables )
+
+ohbbBool: 		( ohbbBool boolop ohbbBool )
+		| ( ohbbVariable comp ohbbVariable )
+		| NOT_ ohbbBool )
+
+
+ohbbVariables:	twoohbbVariables
+		| ohbbVariable
+
+ohbbVariable:	globalVariable
+		| onHitByBulletVariable
+
+
+osrSentences: 	osrSentence  osrSentences
+		| osrSentence 
+
+osrSentence:	if ( osrBool ) { osrSentences } else { osrSentences }
+		| osrAction ;
+
+
+osrAction:	osrturnAction 
+		| osrmoveAction
+		| osrsetAction
+		| fireAction
+
+osrturnAction:	turnRight_OB osrVariables )
+	 	| turnLeft_OB osrVariables )
+		| turnGunRight_OB osrVariables )
+		| turnGunLeft_OB osrVariables )
+		| turnRadarRight_OB osrVariables )
+		| turnRadarLeft_OB osrVariables )
+
+osrmoveAction:	ahead_OB osrVariables )
+		| back_OB osrVariables )
+		| resume__
+		| stop__
+
+osrsetAction:	setAdjustGunForRobotTurn_OB osrBool )
+		| setAdjustRadarForRobotTurn_OB osrBool )
+		| setAdjustRadarForGunTurn_OB osrBool )
+
+
+twoosrVariables:	( osrVariables + osrVariables )
+		| ( osrVariables - osrVariables )
+		| ( osrVariables * osrVariables )
+		| PDIV_OB osrVariables , osrVariables )
+
+osrBool: 		( osrBool boolop osrBool )
+		| ( osrVariable comp osrVariable )
+		| NOT_OB osrBool )
+
+
+osrVariables:   twoosrVariables
+		| osrVariable
+
+osrVariable:    globalVariable
+		| onScannedRobotVariable
+
+
+ohrSentences: 	ohrSentence  ohrSentences
+		| ohrSentence 
+
+ohrSentence:	if ( ohrBool ) { ohrSentences } else { ohrSentences }
+		| ohrAction ;
+
+
+ohrAction:	ohrturnAction 
+		| ohrmoveAction
+		| ohrsetAction
+		| fireAction
+
+ohrturnAction:	turnRight_OB ohrVariables )
+	 	| turnLeft_OB ohrVariables )
+		| turnGunRight_OB ohrVariables )
+		| turnGunLeft_OB ohrVariables )
+		| turnRadarRight_OB ohrVariables )
+		| turnRadarLeft_OB ohrVariables )
+
+ohrmoveAction:	ahead_OB ohrVariables )
+		| back_OB ohrVariables )
+		| resume__
+		| stop__
+
+ohrsetAction:	setAdjustGunForRobotTurn_OB ohrBool )
+		| setAdjustRadarForRobotTurn_OB ohrBool )
+		| setAdjustRadarForGunTurn_OB ohrBool )
+
+
+twoohrVariables:	( ohrVariables + ohrVariables )
+		| ( ohrVariables - ohrVariables )
+		| ( ohrVariables * ohrVariables )
+		| PDIV_OB ohrVariables , ohrVariables )
+
+ohrBool: 		( ohrBool boolop ohrBool )
+		| ( ohrVariable comp ohrVariable )
+		| NOT_OB ohrBool )
+
+
+ohrVariables:   twoohrVariables
+		| ohrVariable
+
+ohrVariable:	globalVariable
+		| onHitRobotVariable
+
+
+
+
+
+ohwSentences: 	ohwSentence  ohwSentences
+		| ohwSentence 
+
+ohwSentence:	if ( ohwBool ) { ohwSentences } else { ohwSentences }
+		| ohwAction ;
+
+
+ohwAction:	ohwturnAction 
+		| ohwmoveAction
+		| ohwsetAction
+		| fireAction
+
+ohwturnAction:	turnRight_OB ohwVariables )
+	 	| turnLeft_OB ohwVariables )
+		| turnGunRight_OB ohwVariables )
+		| turnGunLeft_OB ohwVariables )
+		| turnRadarRight_OB ohwVariables )
+		| turnRadarLeft_OB ohwVariables )
+
+ohwmoveAction:	ahead_OB ohwVariables )
+		| back_OB ohwVariables )
+		| resume__
+		| stop__
+
+ohwsetAction:	setAdjustGunForRobotTurn_OB ohwBool )
+		| setAdjustRadarForRobotTurn_OB ohwBool )
+		| setAdjustRadarForGunTurn_OB ohwBool )
+
+
+twoohwVariables:	( ohwVariables + ohwVariables )
+		| ( ohwVariables - ohwVariables )
+		| ( ohwVariables * ohwVariables )
+		| PDIV_OB ohwVariables , ohwVariables )
+
+ohwBool: 		( ohwBool boolop ohwBool )
+		| ( ohwVariable comp ohwVariable )
+		| NOT_OB ohwBool )
+
+
+
+
+ohwVariables:	twoohwVariables
+		| ohwVariable
+
+ohwVariable:	globalVariable
+		| onHitWallVariable
+
+globalVariable:	getX__ 
+		| getY__
+		| getHeading__
+		| getGunHeading__
+		| getGunHeat__
+		| getRadarHeading__
+		| getBattleFieldWidth__	
+		| getBattleFieldWidth__
+		| getEnergy__
+
+mainLoopVariable: 
+		getHeading__
+
+onHitByBulletVariable:	e_DOTgetBearing__
+			| e_DOTgetHeading__
+
+onScannedRobotVariable:  e_DOTgetBearing__
+			| e_DOTgetHeading__
+			| e_DOTgetVelocity__
+			| e_DOTgetEnergy__
+			| e_DOTgetDistance__
+
+onHitRobotVariable:	e_DOTgetBearing__		
+			| e_DOTgetEnergy__
+			
+
+onHitWallVariable:	e_DOTgetBearing__
+
+
+PDIVCODE:	public double PDIV_OB double top , double bottom ) { if ( bottom == 0 )  return 1 ; else return top DIVIDED bottom ;  }
+
+NOTUSED:	DEFUN *( )* | FUNC | PUSE | DPVAL | DFVAL | PARAMS | PARAM | FPARS | FUNCBODY | CVAL
+
+%%

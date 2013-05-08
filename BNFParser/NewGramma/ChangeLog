@@ -1,0 +1,38 @@
+----------------------------------------------------------------------
+FILE: gramma (BNF Parser)
+AUTHOR: Miguel Nicolau
+CURRENT VERSION: 0.63 (April 2001)
+----------------------------------------------------------------------
+
+Gramma v0.63
+------------
+
+- Removed all warnings from C-code within Gramma.l and Gramma.y;
+- Improved Makefile.
+
+
+Gramma v0.62
+------------
+
+- Got rid of a anoying debugging message.
+
+
+Gramma v0.61
+------------
+
+- Operators ++ and += do not work with pointed integers and have been replaced;
+- Added spaces to outputs in fprint_grammar_individual.
+
+
+Gramma v0.60
+------------
+
+- Corrected error when using the boolean 'or' ('||') operator as terminal;
+- All symbols other than ':', '%%' and '|' should now be accepted as terminals;
+- Terminals using '"' are now correctly treated by fprintf_grammar_individual.
+
+
+Gramma v0.50
+------------
+
+- First version.
