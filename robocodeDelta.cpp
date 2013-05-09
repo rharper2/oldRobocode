@@ -1237,7 +1237,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					curr_expr[*curr+4]=OCB; //{
 					curr_expr[*curr+5]=N; //N
 					curr_expr[*curr+6]=INSCANNEDLOOP; //INSCANNEDLOOP
-					curr_expr[*curr+7]=ONSTART; //ONSTART
+					curr_expr[*curr+7]=N; //ONSTART
 					curr_expr[*curr+8]=SENTENCES; //Sentences
 					curr_expr[*curr+9]=ONEXIT; //ONEXIT
 					curr_expr[*curr+10]=CCB; //}
@@ -1269,7 +1269,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					curr_expr[*curr+4]=OCB; //{
 					curr_expr[*curr+5]=N; //N
 					curr_expr[*curr+6]=INHITBYBULLETLOOP; //INHITBYBULLETLOOP
-					curr_expr[*curr+7]=ONSTART; //ONSTART
+					curr_expr[*curr+7]=N; //ONSTART
 					curr_expr[*curr+8]=SENTENCES; //Sentences
 					curr_expr[*curr+9]=ONEXIT; //ONEXIT
 					curr_expr[*curr+10]=CCB; //}
@@ -1301,7 +1301,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					curr_expr[*curr+4]=OCB; //{
 					curr_expr[*curr+5]=N; //N
 					curr_expr[*curr+6]=INHITROBOTLOOP; //INHITROBOTLOOP
-					curr_expr[*curr+7]=ONSTART; //ONSTART
+					curr_expr[*curr+7]=N; //ONSTART
 					curr_expr[*curr+8]=SENTENCES; //Sentences
 					curr_expr[*curr+9]=ONEXIT; //ONEXIT
 					curr_expr[*curr+10]=CCB; //}
@@ -1333,7 +1333,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					curr_expr[*curr+4]=OCB; //{
 					curr_expr[*curr+5]=N; //N
 					curr_expr[*curr+6]=INHITWALLLOOP; //INHITWALLLOOP
-					curr_expr[*curr+7]=ONSTART; //ONSTART
+					curr_expr[*curr+7]=N; //ONSTART
 					curr_expr[*curr+8]=SENTENCES; //Sentences
 					curr_expr[*curr+9]=ONEXIT; //ONEXIT
 					curr_expr[*curr+10]=CCB; //}
@@ -2530,7 +2530,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 			break;
 		}//of case stackVariable
 		case(STACKTYPE):{ /* stackType */
-			divisor = 4;
+			divisor = 2;
 			if (growing) {
 				nonTerminals.clear();
 				terminals.clear();
@@ -2556,62 +2556,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
 				}
-				case(2):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					switch (localVariableType) {
-						case 1: // MAINLOOPVARIABLE;
-							curr_expr[*curr+0]=MLLOCALSTACK1; //localStack1
-							break;
-						case 2:	// ONHITBYBULLETVARIABLE;
-							curr_expr[*curr+0]=OHBBLOCALSTACK1; //localStack1
-							break;
-						case 3:	// ONSCANNEDROBOTVARIABLE;
-							curr_expr[*curr+0]=OSRLOCALSTACK1; //localStack1
-							break;
-						case 4:	// ONHITROBOTVARIABLE;
-							curr_expr[*curr+0]=OHRLOCALSTACK1; //localStack1
-							break;
-						case 5:	// ONHITWALLVARIABLE;
-							curr_expr[*curr+0]=OHWLOCALSTACK1; //localStack1
-							break;
-						default:	cout << "In stacktype LocalVariable type was " << localVariableType << " \n";
-							exit(1);
-							break;
-					}
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
-				case(3):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					switch (localVariableType) {
-						case 1: // MAINLOOPVARIABLE;
-							curr_expr[*curr+0]=MLLOCALSTACK2; //localStack1
-							break;
-						case 2:	// ONHITBYBULLETVARIABLE;
-							curr_expr[*curr+0]=OHBBLOCALSTACK2; //localStack1
-							break;
-						case 3:	// ONSCANNEDROBOTVARIABLE;
-							curr_expr[*curr+0]=OSRLOCALSTACK2; //localStack1
-							break;
-						case 4:	// ONHITROBOTVARIABLE;
-							curr_expr[*curr+0]=OHRLOCALSTACK2; //localStack1
-							break;
-						case 5:	// ONHITWALLVARIABLE;
-							curr_expr[*curr+0]=OHWLOCALSTACK2; //localStack1
-							break;
-						default:	cout << "In stacktype LocalVariable type was " << localVariableType << " \n";
-							exit(1);
-							break;
-					}
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
+				
 			}//of switch
 			if (!terminating && ExtractingGrammarInfo)
 				codons[codonPos] = ( (codons[codonPos] & FCODONMASK) | ((expr_t - 1000) << CODON));
@@ -2652,7 +2597,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 			break;
 		}//of case mainLoopVariable
 		case(ONHITBYBULLETVARIABLE):{ /* onHitByBulletVariable */
-			divisor = 4;
+			divisor = 2;
 			if (growing) {
 				nonTerminals.clear();
 				terminals.clear();
@@ -2678,32 +2623,14 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
 				}
-				case(2):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=PE_DOTGETBEARING__; //pe.getBearing__
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
-				case(3):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=PE_DOTGETHEADING__; //pe.getHeading__
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
-			}//of switch
+            }//of switch
 			if (!terminating && ExtractingGrammarInfo)
 				codons[codonPos] = ( (codons[codonPos] & FCODONMASK) | ((expr_t - 1000) << CODON));
 			codonPos = codonPos + 1; // query if this should be incremented if terminating?
 			break;
 		}//of case onHitByBulletVariable
 		case(ONSCANNEDROBOTVARIABLE):{ /* onScannedRobotVariable */
-			divisor = 10;
+			divisor = 5;
 			if (growing) {
 				nonTerminals.clear();
 				terminals.clear();
@@ -2756,59 +2683,14 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
 				}
-				case(5):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=PE_DOTGETBEARING__; //pe.getBearing__
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
-				case(6):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=PE_DOTGETHEADING__; //pe.getHeading__
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
-				case(7):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=PE_DOTGETVELOCITY__; //pe.getVelocity__
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
-				case(8):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=PE_DOTGETENERGY__; //pe.getEnergy__
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
-				case(9):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=PE_DOTGETDISTANCE__; //pe.getDistance__
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
-			}//of switch
+            }//of switch
 			if (!terminating && ExtractingGrammarInfo)
 				codons[codonPos] = ( (codons[codonPos] & FCODONMASK) | ((expr_t - 1000) << CODON));
 			codonPos = codonPos + 1; // query if this should be incremented if terminating?
 			break;
 		}//of case onScannedRobotVariable
 		case(ONHITROBOTVARIABLE):{ /* onHitRobotVariable */
-			divisor = 4;
+			divisor = 2;
 			if (growing) {
 				nonTerminals.clear();
 				terminals.clear();
@@ -2834,24 +2716,6 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
 				}
-				case(2):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=PE_DOTGETBEARING__; //pe.getBearing__
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
-				case(3):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=PE_DOTGETENERGY__; //pe.getEnergy__
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
 			}//of switch
 			if (!terminating && ExtractingGrammarInfo)
 				codons[codonPos] = ( (codons[codonPos] & FCODONMASK) | ((expr_t - 1000) << CODON));
@@ -2859,7 +2723,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 			break;
 		}//of case onHitRobotVariable
 		case(ONHITWALLVARIABLE):{ /* onHitWallVariable */
-			divisor = 2;
+			divisor = 1;
 			if (growing) {
 				nonTerminals.clear();
 				terminals.clear();
@@ -2872,15 +2736,6 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 						curr_expr[i+1]=curr_expr[i];
 					*length = *length + 1;
 					curr_expr[*curr+0]=E_DOTGETBEARING__; //e.getBearing__
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
-				case(1):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=PE_DOTGETBEARING__; //pe.getBearing__
 					curr_expr[*curr+1]=POPTREE;
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
@@ -2916,262 +2771,6 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 			}//of switch
 			break;
 		}//of case SOMEFUNCTIONS
-		case(PDIVCODE):{ /* PDIVCODE */
-			divisor = 1;
-			if (growing) {
-				nonTerminals.clear();
-				terminals.clear();
-				changeCodonsForGrow(divisor);
-				currentCodon = (terminating?0:codons[codonPos]) & CODONMASK;
-			}
-			switch(currentCodon%divisor){
-				case(0):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+25]=curr_expr[i];
-					*length = *length + 25;
-					curr_expr[*curr+0]=PUBLIC; //public
-					curr_expr[*curr+1]=DOUBLE; //double
-					curr_expr[*curr+2]=PDIV_OB; //PDIV_OB
-					curr_expr[*curr+3]=DOUBLE; //double
-					curr_expr[*curr+4]=TOP; //top
-					curr_expr[*curr+5]=COMMA; //,
-					curr_expr[*curr+6]=DOUBLE; //double
-					curr_expr[*curr+7]=BOTTOM; //bottom
-					curr_expr[*curr+8]=CRB; //)
-					curr_expr[*curr+9]=OCB; //{
-					curr_expr[*curr+10]=IF; //if
-					curr_expr[*curr+11]=ORB; //(
-					curr_expr[*curr+12]=BOTTOM; //bottom
-					curr_expr[*curr+13]=EEQUAL; //==
-					curr_expr[*curr+14]=ZERO; //0
-					curr_expr[*curr+15]=CRB; //)
-					curr_expr[*curr+16]=RETURN; //return
-					curr_expr[*curr+17]=ONE; //1
-					curr_expr[*curr+18]=SEMICOLON; //;
-					curr_expr[*curr+19]=ELSE; //else
-					curr_expr[*curr+20]=RETURN; //return
-					curr_expr[*curr+21]=TOP; //top
-					curr_expr[*curr+22]=DIVIDED; //DIVIDED
-					curr_expr[*curr+23]=BOTTOM; //bottom
-					curr_expr[*curr+24]=SEMICOLON; //;
-					curr_expr[*curr+25]=CCB; //}
-					break;
-				}
-			}//of switch
-			break;
-		}//of case PDIVCODE
-		case(PUSHCODE):{ /* PUSHCODE */
-			divisor = 1;
-			if (growing) {
-				nonTerminals.clear();
-				terminals.clear();
-				changeCodonsForGrow(divisor);
-				currentCodon = (terminating?0:codons[codonPos]) & CODONMASK;
-			}
-			switch(currentCodon%divisor){
-				case(0):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+17]=curr_expr[i];
-					*length = *length + 17;
-					curr_expr[*curr+0]=PUBLIC; //public
-					curr_expr[*curr+1]=VOID; //void
-					curr_expr[*curr+2]=SAFEPUSH_OB; //safePush_OB
-					curr_expr[*curr+3]=STACK; //stack
-					curr_expr[*curr+4]=THESTACK; //thestack
-					curr_expr[*curr+5]=COMMA; //,
-					curr_expr[*curr+6]=DOUBLE; //double
-					curr_expr[*curr+7]=ITEM; //item
-					curr_expr[*curr+8]=CRB; //)
-					curr_expr[*curr+9]=OCB; //{
-					curr_expr[*curr+10]=THESTACKDOTPUSH_OB; //thestack.push_OB
-					curr_expr[*curr+11]=NEW; //new
-					curr_expr[*curr+12]=DOUBLE_OB; //Double_OB
-					curr_expr[*curr+13]=ITEM; //item
-					curr_expr[*curr+14]=CRB; //)
-					curr_expr[*curr+15]=CRB; //)
-					curr_expr[*curr+16]=SEMICOLON; //;
-					curr_expr[*curr+17]=CCB; //}
-					break;
-				}
-			}//of switch
-			break;
-		}//of case PUSHCODE
-		case(POPCODE):{ /* POPCODE */
-			divisor = 1;
-			if (growing) {
-				nonTerminals.clear();
-				terminals.clear();
-				changeCodonsForGrow(divisor);
-				currentCodon = (terminating?0:codons[codonPos]) & CODONMASK;
-			}
-			switch(currentCodon%divisor){
-				case(0):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+18]=curr_expr[i];
-					*length = *length + 18;
-					curr_expr[*curr+0]=PUBLIC; //public
-					curr_expr[*curr+1]=DOUBLE; //double
-					curr_expr[*curr+2]=SAFEPOP_OB; //safePop_OB
-					curr_expr[*curr+3]=STACK; //stack
-					curr_expr[*curr+4]=THESTACK; //thestack
-					curr_expr[*curr+5]=CRB; //)
-					curr_expr[*curr+6]=OCB; //{
-					curr_expr[*curr+7]=IF; //if
-					curr_expr[*curr+8]=ORB; //(
-					curr_expr[*curr+9]=THESTACKDOTEMPTY__; //thestack.empty__
-					curr_expr[*curr+10]=CRB; //)
-					curr_expr[*curr+11]=RETURN; //return
-					curr_expr[*curr+12]=ZERO; //0
-					curr_expr[*curr+13]=SEMICOLON;
-					curr_expr[*curr+14]=ELSE; //else
-					curr_expr[*curr+15]=RETURN; //return
-					curr_expr[*curr+16]=THESTACKDOTPOP__; //thestack.pop__
-					curr_expr[*curr+17]=SEMICOLON; //;
-					curr_expr[*curr+18]=CCB; //}
-					break;
-				}
-			}//of switch
-			break;
-		}//of case POPCODE
-		case(PEEKCODE):{ /* PEEKCODE */
-			divisor = 1;
-			if (growing) {
-				nonTerminals.clear();
-				terminals.clear();
-				changeCodonsForGrow(divisor);
-				currentCodon = (terminating?0:codons[codonPos]) & CODONMASK;
-			}
-			switch(currentCodon%divisor){
-				case(0):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+18]=curr_expr[i];
-					*length = *length + 18;
-					curr_expr[*curr+0]=PUBLIC; //public
-					curr_expr[*curr+1]=DOUBLE; //double
-					curr_expr[*curr+2]=SAFEPEEK_OB; //safePeek_OB
-					curr_expr[*curr+3]=STACK; //stack
-					curr_expr[*curr+4]=THESTACK; //thestack
-					curr_expr[*curr+5]=CRB; //)
-					curr_expr[*curr+6]=OCB; //{
-					curr_expr[*curr+7]=IF; //if
-					curr_expr[*curr+8]=ORB; //(
-					curr_expr[*curr+9]=THESTACKDOTEMTPY__; //thestack.emtpy__
-					curr_expr[*curr+10]=CRB; //)
-					curr_expr[*curr+11]=RETURN; //return
-					curr_expr[*curr+12]=ZERO; //0
-					curr_expr[*curr+13]=SEMICOLON;
-					curr_expr[*curr+14]=ELSE; //else
-					curr_expr[*curr+15]=RETURN; //return
-					curr_expr[*curr+16]=THESTACKDOTPEEK__; //thestack.peek__
-					curr_expr[*curr+17]=SEMICOLON; //;
-					curr_expr[*curr+18]=CCB; //}
-					break;
-				}
-			}//of switch
-			break;
-		}//of case PEEKCODE
-		case(ONSTART):{ /* ONSTART */
-			divisor = 1;
-			if (growing) {
-				nonTerminals.clear();
-				terminals.clear();
-				changeCodonsForGrow(divisor);
-				currentCodon = (terminating?0:codons[codonPos]) & CODONMASK;
-			}
-			switch(currentCodon%divisor){
-				case(0):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+18]=curr_expr[i];
-					*length = *length + 18;
-					//curr_expr[*curr+0]=STATIC; //static
-					//curr_expr[*curr+1]=STACK; //stack
-					//curr_expr[*curr+2]=LOCALSTACK1; //localStack1,
-					//curr_expr[*curr+3]=COMMA;
-					//curr_expr[*curr+4]=LOCALSTACK2; //localStack2
-					//curr_expr[*curr+5]=SEMICOLON; //;
-					//curr_expr[*curr+6]=N; //N
-					//curr_expr[*curr+0]=STATIC; //static
-					//curr_expr[*curr+1]=BOOLW; //bool
-					//curr_expr[*curr+2]=HISTORY; //history
-					//curr_expr[*curr+3]=EQUAL; //=
-					//curr_expr[*curr+4]=FALSE; //false
-					//curr_expr[*curr+5]=SEMICOLON; //;
-					//curr_expr[*curr+6]=N; //N
-					switch (localVariableType) {
-						case 2:	// ONHITBYBULLETVARIABLE;
-							curr_expr[*curr+0]=HITBYBULLETEVENT; //localStack1
-							break;
-						case 3:	// ONSCANNEDROBOTVARIABLE;
-							curr_expr[*curr+0]=SCANNEDROBOTEVENT; //localStack1
-							break;
-						case 4:	// ONHITROBOTVARIABLE;
-							curr_expr[*curr+0]=HITROBOTEVENT; //localStack1
-							break;
-						case 5:	// ONHITWALLVARIABLE;
-							curr_expr[*curr+0]=HITWALLEVENT; //localStack1
-							break;
-						default:	cout << "In onstart LocalVariable type was " << localVariableType << " \n";
-							exit(1);
-							break;
-					}
-					curr_expr[*curr+1]=PE;
-					curr_expr[*curr+2]=SEMICOLON;
-					curr_expr[*curr+3]=N;
-					
-					
-					curr_expr[*curr+4]=IF; //if
-					curr_expr[*curr+5]=ORB; //(
-					curr_expr[*curr+6]=EXCLAMATION;
-					switch (localVariableType) {
-						case 2:	// ONHITBYBULLETVARIABLE;
-							curr_expr[*curr+7]=HBBHISTORY; //localStack1
-							break;
-						case 3:	// ONSCANNEDROBOTVARIABLE;
-							curr_expr[*curr+7]=OSRHISTORY; //localStack1
-							break;
-						case 4:	// ONHITROBOTVARIABLE;
-							curr_expr[*curr+7]=HRHISTORY; //localStack1
-							break;
-						case 5:	// ONHITWALLVARIABLE;
-							curr_expr[*curr+7]=HITWALLHISTORY; //localStack1
-							break;
-						default:	cout << "In onstart LocalVariable type was " << localVariableType << " \n";
-							exit(1);
-							break;
-					}
-					curr_expr[*curr+8]=CRB; //)
-					curr_expr[*curr+9]=PE;
-					curr_expr[*curr+10]=EQUAL;
-					
-					curr_expr[*curr+11]=E; //pe
-					curr_expr[*curr+12]=SEMICOLON;
-					curr_expr[*curr+13]=ELSE;
-					curr_expr[*curr+14]=PE;
-					curr_expr[*curr+15]=EQUAL;
-					switch (localVariableType) {
-						case 2:	// ONHITBYBULLETVARIABLE;
-							curr_expr[*curr+16]=PHBBEVENT; //localStack1
-							break;
-						case 3:	// ONSCANNEDROBOTVARIABLE;
-							curr_expr[*curr+16]=PSREVENT; //localStack1
-							break;
-						case 4:	// ONHITROBOTVARIABLE;
-							curr_expr[*curr+16]=PHREVENT; //localStack1
-							break;
-						case 5:	// ONHITWALLVARIABLE;
-							curr_expr[*curr+16]=PHWEVENT; //localStack1
-							break;
-						default:	cout << "In onstart LocalVariable type was " << localVariableType << " \n";
-							exit(1);
-							break;
-					}
-					curr_expr[*curr+17]=SEMICOLON; //;
-					curr_expr[*curr+18]=N; //N
-					break;
-				}
-			}//of switch
-			break;
-		}//of case ONSTART
 		case(ONEXIT):{ /* ONEXIT */
 			divisor = 1;
 			if (growing) {
@@ -3183,75 +2782,12 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 			switch(currentCodon%divisor){
 				case(0):{
 					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+18]=curr_expr[i];
-					*length = *length + 18;
+						curr_expr[i+3]=curr_expr[i];
+					*length = *length + 3;
 					curr_expr[*curr+0]=N; // newline
-					switch (localVariableType) {
-						case 2:	// ONHITBYBULLETVARIABLE;
-							curr_expr[*curr+1]=PHBBEVENT; //localStack1
-							break;
-						case 3:	// ONSCANNEDROBOTVARIABLE;
-							curr_expr[*curr+1]=PSREVENT; //localStack1
-							break;
-						case 4:	// ONHITROBOTVARIABLE;
-							curr_expr[*curr+1]=PHREVENT; //localStack1
-							break;
-						case 5:	// ONHITWALLVARIABLE;
-							curr_expr[*curr+1]=PHWEVENT; //localStack1
-							break;
-						default:	cout << "In onstart LocalVariable type was " << localVariableType << " \n";
-							exit(1);
-							break;
-					}
-					curr_expr[*curr+2]=EQUAL; //=
-					curr_expr[*curr+3]=E; //e
-					curr_expr[*curr+4]=SEMICOLON; //;
-					curr_expr[*curr+5]=N;
-					curr_expr[*curr+6]=IF; //if
-					curr_expr[*curr+7]=ORB; //(
-					curr_expr[*curr+8]=EXCLAMATION;
-					switch (localVariableType) {
-						case 2:	// ONHITBYBULLETVARIABLE;
-							curr_expr[*curr+9]=HBBHISTORY; //localStack1
-							break;
-						case 3:	// ONSCANNEDROBOTVARIABLE;
-							curr_expr[*curr+9]=OSRHISTORY; //localStack1
-							break;
-						case 4:	// ONHITROBOTVARIABLE;
-							curr_expr[*curr+9]=HRHISTORY; //localStack1
-							break;
-						case 5:	// ONHITWALLVARIABLE;
-							curr_expr[*curr+9]=HITWALLHISTORY; //localStack1
-							break;
-						default:	cout << "In onstart LocalVariable type was " << localVariableType << " \n";
-							exit(1);
-							break;
-					}
-					curr_expr[*curr+10]=CRB; //)
-					switch (localVariableType) {
-						case 2:	// ONHITBYBULLETVARIABLE;
-							curr_expr[*curr+11]=HBBHISTORY; //localStack1
-							break;
-						case 3:	// ONSCANNEDROBOTVARIABLE;
-							curr_expr[*curr+11]=OSRHISTORY; //localStack1
-							break;
-						case 4:	// ONHITROBOTVARIABLE;
-							curr_expr[*curr+11]=HRHISTORY; //localStack1
-							break;
-						case 5:	// ONHITWALLVARIABLE;
-							curr_expr[*curr+11]=HITWALLHISTORY; //localStack1
-							break;
-						default:	cout << "In onstart LocalVariable type was " << localVariableType << " \n";
-							exit(1);
-							break;
-					}
-					curr_expr[*curr+12]=EQUAL; //=
-					curr_expr[*curr+13]=TRUE; //true
-					curr_expr[*curr+14]=SEMICOLON; //;
-					curr_expr[*curr+15]=N; //N
-					curr_expr[*curr+16]=EXECUTE;
-					curr_expr[*curr+17]=SEMICOLON;
-					curr_expr[*curr+18]=N;
+					curr_expr[*curr+1]=EXECUTE;
+					curr_expr[*curr+2]=SEMICOLON;
+					curr_expr[*curr+3]=N;
 					
 					break;
 				}
@@ -3579,10 +3115,7 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
 			case STATIC: {output_stream << " static ";break;}
 			case STACK: {output_stream << " Stack ";break;}
 				//		case GLOBALSTACK1,: {output_stream << " globalStack1, ";break;}
-			case DOVARIABLEDEFS: {output_stream << "  Stack<Double> globalStack1, globalStack2;\n " <<	
-				   "   Stack<Double> mlLocalStack1,mlLocalStack2;\n    Stack<Double> ohrLocalStack1,ohrLocalStack2;\n    Stack<Double> ohbbLocalStack1,ohbbLocalStack2;\n    Stack<Double> osrLocalStack1,osrLocalStack2;\n    Stack<Double> ohwLocalStack1,ohwLocalStack2;\n"
-				<< "    HitByBulletEvent phbEvent;\n    HitRobotEvent phrEvent;\n    HitWallEvent phwEvent;\n    ScannedRobotEvent psrEvent;\n"
-				<< "    boolean hbbHistory = false;\n    boolean hrHistory=false;\n    boolean srHistory = false;\n    boolean hwHistory = false;\n\n\n"
+			case DOVARIABLEDEFS: {output_stream << "  Stack<Double> globalStack1, globalStack2;\n\n\n"
 				<< "//********************************\n//Some useful helper functions\n//********************************\n"; break;}
 			case SOMECOMMENTS: { output_stream 
 				<< "\n//********************************\n//Start of the evolved code\n//********************************\n\n"; break;}
@@ -3731,8 +3264,16 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
 			case IN: { output_stream << " : ";break;}
 			case GETBATTLEFIELDHEIGHT__: { output_stream << " getBattleFieldHeight() "; break;}
 			case FOR: { output_stream << " for ";break;}
-			
-			default: {
+			case PDIVCODE: { output_stream << "\n\tpublic static double pdiv(Double x,Double y)\n\t{\n\t\t\ttry { return x/y; }\n\t\t\tcatch (Exception e) { return 1.0; }\n\t}\n"; break; }
+            case PUSHCODE: { output_stream << "// note might change this to assume has 10 in it?\n"
+                                            << "\tpublic  void  safePush(  Stack  thestack  ,  double  item  )\n"
+                                            << "\t{\n\t\t\tif (thestack.size() > 10) thestack.removeElementAt(0);\n\t\t\tthestack.push(new Double(item));\n\t}\n"; break; }
+            case POPCODE: { output_stream << "\tpublic  double  safePop(Stack thestack)\n"
+                                        << "\t{\n\t\t\ttry { return  ((Double) thestack.pop()).doubleValue()}\n\t\t\tcatch(Exception e) { return 0.0; }\n\t}\n"  ; break;}
+            case PEEKCODE: { output_stream << "\tpublic  double  safePeek(Stack thestack)\n"
+                                            << "\t{\n\t\t\ttry { ((Double) thestack.peek()).doubleValue() }\n\t\t\tcatch(Exception e) { return 0.0;}\n\t}\t"; break ;}
+                
+		default: {
 				if (curr_expr[i]>=400 && curr_expr[i]<500) {
 					output_stream << "P" << curr_expr[i]-400;
 				} else if (curr_expr[i]>=500 && curr_expr[i]<600) {

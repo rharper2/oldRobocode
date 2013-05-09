@@ -8,27 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		000F09241241F9EC00DAC023 /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000F09231241F9EC00DAC023 /* spatial.cpp */; };
-		004F50F8173A4F4200E9BF62 /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC0123F2ED20026C2F8 /* entity.cpp */; };
-		004F50F9173A4F4200E9BF62 /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC2123F2ED20026C2F8 /* critter.cpp */; };
-		004F50FA173A4F4200E9BF62 /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */; };
-		004F50FB173A4F4200E9BF62 /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC6123F2ED20026C2F8 /* myrandom.cpp */; };
-		004F50FC173A4F4200E9BF62 /* TournamentBreeder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */; };
-		004F50FD173A4F4200E9BF62 /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ECE123F2ED20026C2F8 /* DataCollector.cpp */; };
-		004F50FE173A4F4200E9BF62 /* popHandlerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */; };
-		004F50FF173A4F4200E9BF62 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED1123F2ED20026C2F8 /* functions.cpp */; };
-		004F5101173A4F4200E9BF62 /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000F09231241F9EC00DAC023 /* spatial.cpp */; };
-		004F5102173A4F4200E9BF62 /* robocodeBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */; };
 		004F5108173A4F4200E9BF62 /* Robocode.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Robocode.1 */; };
 		004F510F173A4FB300E9BF62 /* robocodeDelta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 004F510D173A4FB300E9BF62 /* robocodeDelta.cpp */; };
 		004F5112173A503900E9BF62 /* RobocodeDeltaMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 004F5110173A503900E9BF62 /* RobocodeDeltaMain.cpp */; };
-		0054000C1371298C0008E5AB /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC0123F2ED20026C2F8 /* entity.cpp */; };
-		0054000D1371298C0008E5AB /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC2123F2ED20026C2F8 /* critter.cpp */; };
-		0054000E1371298C0008E5AB /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */; };
-		0054000F1371298C0008E5AB /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC6123F2ED20026C2F8 /* myrandom.cpp */; };
-		005400101371298C0008E5AB /* TournamentBreeder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */; };
-		005400111371298C0008E5AB /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ECE123F2ED20026C2F8 /* DataCollector.cpp */; };
-		005400121371298C0008E5AB /* popHandlerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */; };
-		005400131371298C0008E5AB /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED1123F2ED20026C2F8 /* functions.cpp */; };
 		005400141371298C0008E5AB /* robocodeAlpha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EED123F2F4D0026C2F8 /* robocodeAlpha.cpp */; };
 		005400151371298C0008E5AB /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000F09231241F9EC00DAC023 /* spatial.cpp */; };
 		005400161371298C0008E5AB /* robocodeBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */; };
@@ -36,23 +18,7 @@
 		00540023137129B40008E5AB /* spatialRobocodeCreatureTheta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00540021137129B40008E5AB /* spatialRobocodeCreatureTheta.cpp */; };
 		0054002713725E5F0008E5AB /* RobocodeThetaMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0054002613725E5F0008E5AB /* RobocodeThetaMain.cpp */; };
 		0054003313725EE30008E5AB /* robocodeTheta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0054003113725EE30008E5AB /* robocodeTheta.cpp */; };
-		00542ED2123F2ED20026C2F8 /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC0123F2ED20026C2F8 /* entity.cpp */; };
-		00542ED3123F2ED20026C2F8 /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC2123F2ED20026C2F8 /* critter.cpp */; };
-		00542ED4123F2ED20026C2F8 /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */; };
-		00542ED5123F2ED20026C2F8 /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC6123F2ED20026C2F8 /* myrandom.cpp */; };
-		00542ED6123F2ED20026C2F8 /* TournamentBreeder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */; };
-		00542ED7123F2ED20026C2F8 /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ECE123F2ED20026C2F8 /* DataCollector.cpp */; };
-		00542ED8123F2ED20026C2F8 /* popHandlerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */; };
-		00542ED9123F2ED20026C2F8 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED1123F2ED20026C2F8 /* functions.cpp */; };
 		0080AE5E1263ACEC00631E8B /* robocodeBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */; };
-		0080AE7412648B7200631E8B /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC0123F2ED20026C2F8 /* entity.cpp */; };
-		0080AE7512648B7200631E8B /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC2123F2ED20026C2F8 /* critter.cpp */; };
-		0080AE7612648B7200631E8B /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */; };
-		0080AE7712648B7200631E8B /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC6123F2ED20026C2F8 /* myrandom.cpp */; };
-		0080AE7812648B7200631E8B /* TournamentBreeder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */; };
-		0080AE7912648B7200631E8B /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ECE123F2ED20026C2F8 /* DataCollector.cpp */; };
-		0080AE7A12648B7200631E8B /* popHandlerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */; };
-		0080AE7B12648B7200631E8B /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED1123F2ED20026C2F8 /* functions.cpp */; };
 		0080AE7C12648B7200631E8B /* robocodeAlpha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EED123F2F4D0026C2F8 /* robocodeAlpha.cpp */; };
 		0080AE7E12648B7200631E8B /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000F09231241F9EC00DAC023 /* spatial.cpp */; };
 		0080AE7F12648B7200631E8B /* robocodeBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */; };
@@ -61,14 +27,22 @@
 		0080AE9F12648CCE00631E8B /* RobocodeBetaMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE9A12648BA000631E8B /* RobocodeBetaMain.cpp */; };
 		0080AF31126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AF2F126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp */; };
 		0080AF33126D068C00631E8B /* spatialRobocodeCreatureBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AF2F126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp */; };
-		00DA2AAC12863B77003F9E66 /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC0123F2ED20026C2F8 /* entity.cpp */; };
-		00DA2AAD12863B77003F9E66 /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC2123F2ED20026C2F8 /* critter.cpp */; };
-		00DA2AAE12863B77003F9E66 /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */; };
-		00DA2AAF12863B77003F9E66 /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC6123F2ED20026C2F8 /* myrandom.cpp */; };
-		00DA2AB012863B77003F9E66 /* TournamentBreeder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */; };
-		00DA2AB112863B77003F9E66 /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ECE123F2ED20026C2F8 /* DataCollector.cpp */; };
-		00DA2AB212863B77003F9E66 /* popHandlerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */; };
-		00DA2AB312863B77003F9E66 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00542ED1123F2ED20026C2F8 /* functions.cpp */; };
+		0098DFF1173B41E600FF8C02 /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD5173B41E600FF8C02 /* critter.cpp */; };
+		0098DFF2173B41E600FF8C02 /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD7173B41E600FF8C02 /* DataCollector.cpp */; };
+		0098DFF3173B41E600FF8C02 /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD9173B41E600FF8C02 /* entity.cpp */; };
+		0098DFF4173B41E600FF8C02 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFDB173B41E600FF8C02 /* functions.cpp */; };
+		0098DFF7173B41E600FF8C02 /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFE3173B41E600FF8C02 /* myrandom.cpp */; };
+		0098DFF8173B41E600FF8C02 /* popHandlerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFE6173B41E600FF8C02 /* popHandlerBase.cpp */; };
+		0098DFFA173B41E600FF8C02 /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFEA173B41E600FF8C02 /* ptc2Grow.cpp */; };
+		0098DFFB173B41E600FF8C02 /* singlePopHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFEC173B41E600FF8C02 /* singlePopHandler.cpp */; };
+		0098DFFD173B41E600FF8C02 /* TournamentBreeder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFEF173B41E600FF8C02 /* TournamentBreeder.cpp */; };
+		0098DFFE173B41FE00FF8C02 /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD5173B41E600FF8C02 /* critter.cpp */; };
+		0098DFFF173B420200FF8C02 /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD7173B41E600FF8C02 /* DataCollector.cpp */; };
+		0098E000173B420500FF8C02 /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD9173B41E600FF8C02 /* entity.cpp */; };
+		0098E001173B420A00FF8C02 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFDB173B41E600FF8C02 /* functions.cpp */; };
+		0098E002173B421900FF8C02 /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFE3173B41E600FF8C02 /* myrandom.cpp */; };
+		0098E003173B423600FF8C02 /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFEA173B41E600FF8C02 /* ptc2Grow.cpp */; };
+		0098E004173B424800FF8C02 /* TournamentBreeder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFEF173B41E600FF8C02 /* TournamentBreeder.cpp */; };
 		00DA2AB612863B77003F9E66 /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000F09231241F9EC00DAC023 /* spatial.cpp */; };
 		00DA2AB712863B77003F9E66 /* robocodeBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */; };
 		00DA2ABC12863B77003F9E66 /* Robocode.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Robocode.1 */; };
@@ -143,26 +117,6 @@
 		0054002613725E5F0008E5AB /* RobocodeThetaMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobocodeThetaMain.cpp; sourceTree = "<group>"; };
 		0054003113725EE30008E5AB /* robocodeTheta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = robocodeTheta.cpp; sourceTree = "<group>"; };
 		0054003213725EE30008E5AB /* robocodeTheta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = robocodeTheta.h; sourceTree = "<group>"; };
-		00542EBE123F2ED20026C2F8 /* grammarBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = grammarBase.h; path = ../../../CurrentProjects/CurrentGE/Base/grammarBase.h; sourceTree = SOURCE_ROOT; };
-		00542EBF123F2ED20026C2F8 /* entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = entity.h; path = ../../../CurrentProjects/CurrentGE/Base/entity.h; sourceTree = SOURCE_ROOT; };
-		00542EC0123F2ED20026C2F8 /* entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = entity.cpp; path = ../../../CurrentProjects/CurrentGE/Base/entity.cpp; sourceTree = SOURCE_ROOT; };
-		00542EC1123F2ED20026C2F8 /* critter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = critter.h; path = ../../../CurrentProjects/CurrentGE/Base/critter.h; sourceTree = SOURCE_ROOT; };
-		00542EC2123F2ED20026C2F8 /* critter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = critter.cpp; path = ../../../CurrentProjects/CurrentGE/Base/critter.cpp; sourceTree = SOURCE_ROOT; };
-		00542EC3123F2ED20026C2F8 /* ptc2Grow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ptc2Grow.h; path = ../../../CurrentProjects/CurrentGE/Base/ptc2Grow.h; sourceTree = SOURCE_ROOT; };
-		00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ptc2Grow.cpp; path = ../../../CurrentProjects/CurrentGE/Base/ptc2Grow.cpp; sourceTree = SOURCE_ROOT; };
-		00542EC5123F2ED20026C2F8 /* params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = params.h; path = ../../../CurrentProjects/CurrentGE/Base/params.h; sourceTree = SOURCE_ROOT; };
-		00542EC6123F2ED20026C2F8 /* myrandom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = myrandom.cpp; path = ../../../CurrentProjects/CurrentGE/Base/myrandom.cpp; sourceTree = SOURCE_ROOT; };
-		00542EC7123F2ED20026C2F8 /* popHandlerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = popHandlerBase.h; path = ../../../CurrentProjects/CurrentGE/Base/popHandlerBase.h; sourceTree = SOURCE_ROOT; };
-		00542EC8123F2ED20026C2F8 /* interpreterBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = interpreterBase.h; path = ../../../CurrentProjects/CurrentGE/Base/interpreterBase.h; sourceTree = SOURCE_ROOT; };
-		00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TournamentBreeder.cpp; path = ../../../CurrentProjects/CurrentGE/Base/TournamentBreeder.cpp; sourceTree = SOURCE_ROOT; };
-		00542ECA123F2ED20026C2F8 /* TournamentBreeder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TournamentBreeder.h; path = ../../../CurrentProjects/CurrentGE/Base/TournamentBreeder.h; sourceTree = SOURCE_ROOT; };
-		00542ECB123F2ED20026C2F8 /* BreederBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreederBase.h; path = ../../../CurrentProjects/CurrentGE/Base/BreederBase.h; sourceTree = SOURCE_ROOT; };
-		00542ECC123F2ED20026C2F8 /* functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = functions.h; path = ../../../CurrentProjects/CurrentGE/Base/functions.h; sourceTree = SOURCE_ROOT; };
-		00542ECD123F2ED20026C2F8 /* myrandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myrandom.h; path = ../../../CurrentProjects/CurrentGE/Base/myrandom.h; sourceTree = SOURCE_ROOT; };
-		00542ECE123F2ED20026C2F8 /* DataCollector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DataCollector.cpp; path = ../../../CurrentProjects/CurrentGE/Base/DataCollector.cpp; sourceTree = SOURCE_ROOT; };
-		00542ECF123F2ED20026C2F8 /* DataCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCollector.h; path = ../../../CurrentProjects/CurrentGE/Base/DataCollector.h; sourceTree = SOURCE_ROOT; };
-		00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = popHandlerBase.cpp; path = ../../../CurrentProjects/CurrentGE/Base/popHandlerBase.cpp; sourceTree = SOURCE_ROOT; };
-		00542ED1123F2ED20026C2F8 /* functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = functions.cpp; path = ../../../CurrentProjects/CurrentGE/Base/functions.cpp; sourceTree = SOURCE_ROOT; };
 		00542EED123F2F4D0026C2F8 /* robocodeAlpha.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = robocodeAlpha.cpp; sourceTree = "<group>"; };
 		00542EEE123F2F4D0026C2F8 /* robocodeAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = robocodeAlpha.h; sourceTree = "<group>"; };
 		0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = robocodeBeta.cpp; sourceTree = "<group>"; };
@@ -171,6 +125,28 @@
 		0080AE9A12648BA000631E8B /* RobocodeBetaMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobocodeBetaMain.cpp; sourceTree = "<group>"; };
 		0080AF2F126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatialRobocodeCreatureBeta.cpp; sourceTree = "<group>"; };
 		0080AF30126C3BCC00631E8B /* spatialRobocodeCreatureBeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spatialRobocodeCreatureBeta.h; sourceTree = "<group>"; };
+		0098DFD4173B41E600FF8C02 /* BreederBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BreederBase.h; sourceTree = "<group>"; };
+		0098DFD5173B41E600FF8C02 /* critter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = critter.cpp; sourceTree = "<group>"; };
+		0098DFD6173B41E600FF8C02 /* critter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = critter.h; sourceTree = "<group>"; };
+		0098DFD7173B41E600FF8C02 /* DataCollector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataCollector.cpp; sourceTree = "<group>"; };
+		0098DFD8173B41E600FF8C02 /* DataCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCollector.h; sourceTree = "<group>"; };
+		0098DFD9173B41E600FF8C02 /* entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entity.cpp; sourceTree = "<group>"; };
+		0098DFDA173B41E600FF8C02 /* entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entity.h; sourceTree = "<group>"; };
+		0098DFDB173B41E600FF8C02 /* functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = functions.cpp; sourceTree = "<group>"; };
+		0098DFDC173B41E600FF8C02 /* functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = functions.h; sourceTree = "<group>"; };
+		0098DFDD173B41E600FF8C02 /* grammarBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grammarBase.h; sourceTree = "<group>"; };
+		0098DFDE173B41E600FF8C02 /* interpreterBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interpreterBase.h; sourceTree = "<group>"; };
+		0098DFE3173B41E600FF8C02 /* myrandom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = myrandom.cpp; sourceTree = "<group>"; };
+		0098DFE4173B41E600FF8C02 /* myrandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myrandom.h; sourceTree = "<group>"; };
+		0098DFE5173B41E600FF8C02 /* params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = params.h; sourceTree = "<group>"; };
+		0098DFE6173B41E600FF8C02 /* popHandlerBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = popHandlerBase.cpp; sourceTree = "<group>"; };
+		0098DFE7173B41E600FF8C02 /* popHandlerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popHandlerBase.h; sourceTree = "<group>"; };
+		0098DFEA173B41E600FF8C02 /* ptc2Grow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ptc2Grow.cpp; sourceTree = "<group>"; };
+		0098DFEB173B41E600FF8C02 /* ptc2Grow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ptc2Grow.h; sourceTree = "<group>"; };
+		0098DFEC173B41E600FF8C02 /* singlePopHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = singlePopHandler.cpp; sourceTree = "<group>"; };
+		0098DFED173B41E600FF8C02 /* singlePopHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = singlePopHandler.h; sourceTree = "<group>"; };
+		0098DFEF173B41E600FF8C02 /* TournamentBreeder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TournamentBreeder.cpp; sourceTree = "<group>"; };
+		0098DFF0173B41E600FF8C02 /* TournamentBreeder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TournamentBreeder.h; sourceTree = "<group>"; };
 		00DA2AC012863B77003F9E66 /* Robocode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Robocode; sourceTree = BUILT_PRODUCTS_DIR; };
 		00DA2AD412863BBC003F9E66 /* RobocodeMvPMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobocodeMvPMain.cpp; sourceTree = "<group>"; };
 		00DA2ADC12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatialRobocodeCreatureMvP.cpp; sourceTree = "<group>"; };
@@ -219,31 +195,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00542EDA123F2EE00026C2F8 /* Base */ = {
+		0098DFD3173B41E600FF8C02 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				00542EBE123F2ED20026C2F8 /* grammarBase.h */,
-				00542EBF123F2ED20026C2F8 /* entity.h */,
-				00542EC0123F2ED20026C2F8 /* entity.cpp */,
-				00542EC1123F2ED20026C2F8 /* critter.h */,
-				00542EC2123F2ED20026C2F8 /* critter.cpp */,
-				00542EC3123F2ED20026C2F8 /* ptc2Grow.h */,
-				00542EC4123F2ED20026C2F8 /* ptc2Grow.cpp */,
-				00542EC5123F2ED20026C2F8 /* params.h */,
-				00542EC6123F2ED20026C2F8 /* myrandom.cpp */,
-				00542EC7123F2ED20026C2F8 /* popHandlerBase.h */,
-				00542EC8123F2ED20026C2F8 /* interpreterBase.h */,
-				00542EC9123F2ED20026C2F8 /* TournamentBreeder.cpp */,
-				00542ECA123F2ED20026C2F8 /* TournamentBreeder.h */,
-				00542ECB123F2ED20026C2F8 /* BreederBase.h */,
-				00542ECC123F2ED20026C2F8 /* functions.h */,
-				00542ECD123F2ED20026C2F8 /* myrandom.h */,
-				00542ECE123F2ED20026C2F8 /* DataCollector.cpp */,
-				00542ECF123F2ED20026C2F8 /* DataCollector.h */,
-				00542ED0123F2ED20026C2F8 /* popHandlerBase.cpp */,
-				00542ED1123F2ED20026C2F8 /* functions.cpp */,
+				0098DFD4173B41E600FF8C02 /* BreederBase.h */,
+				0098DFD5173B41E600FF8C02 /* critter.cpp */,
+				0098DFD6173B41E600FF8C02 /* critter.h */,
+				0098DFD7173B41E600FF8C02 /* DataCollector.cpp */,
+				0098DFD8173B41E600FF8C02 /* DataCollector.h */,
+				0098DFD9173B41E600FF8C02 /* entity.cpp */,
+				0098DFDA173B41E600FF8C02 /* entity.h */,
+				0098DFDB173B41E600FF8C02 /* functions.cpp */,
+				0098DFDC173B41E600FF8C02 /* functions.h */,
+				0098DFDD173B41E600FF8C02 /* grammarBase.h */,
+				0098DFDE173B41E600FF8C02 /* interpreterBase.h */,
+				0098DFE3173B41E600FF8C02 /* myrandom.cpp */,
+				0098DFE4173B41E600FF8C02 /* myrandom.h */,
+				0098DFE5173B41E600FF8C02 /* params.h */,
+				0098DFE6173B41E600FF8C02 /* popHandlerBase.cpp */,
+				0098DFE7173B41E600FF8C02 /* popHandlerBase.h */,
+				0098DFEA173B41E600FF8C02 /* ptc2Grow.cpp */,
+				0098DFEB173B41E600FF8C02 /* ptc2Grow.h */,
+				0098DFEC173B41E600FF8C02 /* singlePopHandler.cpp */,
+				0098DFED173B41E600FF8C02 /* singlePopHandler.h */,
+				0098DFEF173B41E600FF8C02 /* TournamentBreeder.cpp */,
+				0098DFF0173B41E600FF8C02 /* TournamentBreeder.h */,
 			);
-			name = Base;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		08FB7794FE84155DC02AAC07 /* Robocode */ = {
@@ -259,6 +237,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				0098DFD3173B41E600FF8C02 /* Base */,
 				004F510D173A4FB300E9BF62 /* robocodeDelta.cpp */,
 				004F510E173A4FB300E9BF62 /* robocodeDelta.h */,
 				0054003113725EE30008E5AB /* robocodeTheta.cpp */,
@@ -275,7 +254,6 @@
 				000F09231241F9EC00DAC023 /* spatial.cpp */,
 				00542EED123F2F4D0026C2F8 /* robocodeAlpha.cpp */,
 				00542EEE123F2F4D0026C2F8 /* robocodeAlpha.h */,
-				00542EDA123F2EE00026C2F8 /* Base */,
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
 				0054002613725E5F0008E5AB /* RobocodeThetaMain.cpp */,
 				004F5110173A503900E9BF62 /* RobocodeDeltaMain.cpp */,
@@ -431,18 +409,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				004F50F8173A4F4200E9BF62 /* entity.cpp in Sources */,
-				004F50F9173A4F4200E9BF62 /* critter.cpp in Sources */,
-				004F50FA173A4F4200E9BF62 /* ptc2Grow.cpp in Sources */,
-				004F50FB173A4F4200E9BF62 /* myrandom.cpp in Sources */,
-				004F50FC173A4F4200E9BF62 /* TournamentBreeder.cpp in Sources */,
-				004F50FD173A4F4200E9BF62 /* DataCollector.cpp in Sources */,
-				004F50FE173A4F4200E9BF62 /* popHandlerBase.cpp in Sources */,
-				004F50FF173A4F4200E9BF62 /* functions.cpp in Sources */,
-				004F5101173A4F4200E9BF62 /* spatial.cpp in Sources */,
-				004F5102173A4F4200E9BF62 /* robocodeBeta.cpp in Sources */,
 				004F510F173A4FB300E9BF62 /* robocodeDelta.cpp in Sources */,
 				004F5112173A503900E9BF62 /* RobocodeDeltaMain.cpp in Sources */,
+				0098DFFE173B41FE00FF8C02 /* critter.cpp in Sources */,
+				0098DFFF173B420200FF8C02 /* DataCollector.cpp in Sources */,
+				0098E000173B420500FF8C02 /* entity.cpp in Sources */,
+				0098E001173B420A00FF8C02 /* functions.cpp in Sources */,
+				0098E002173B421900FF8C02 /* myrandom.cpp in Sources */,
+				0098E003173B423600FF8C02 /* ptc2Grow.cpp in Sources */,
+				0098E004173B424800FF8C02 /* TournamentBreeder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,14 +425,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0054000C1371298C0008E5AB /* entity.cpp in Sources */,
-				0054000D1371298C0008E5AB /* critter.cpp in Sources */,
-				0054000E1371298C0008E5AB /* ptc2Grow.cpp in Sources */,
-				0054000F1371298C0008E5AB /* myrandom.cpp in Sources */,
-				005400101371298C0008E5AB /* TournamentBreeder.cpp in Sources */,
-				005400111371298C0008E5AB /* DataCollector.cpp in Sources */,
-				005400121371298C0008E5AB /* popHandlerBase.cpp in Sources */,
-				005400131371298C0008E5AB /* functions.cpp in Sources */,
 				005400141371298C0008E5AB /* robocodeAlpha.cpp in Sources */,
 				005400151371298C0008E5AB /* spatial.cpp in Sources */,
 				005400161371298C0008E5AB /* robocodeBeta.cpp in Sources */,
@@ -471,14 +438,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0080AE7412648B7200631E8B /* entity.cpp in Sources */,
-				0080AE7512648B7200631E8B /* critter.cpp in Sources */,
-				0080AE7612648B7200631E8B /* ptc2Grow.cpp in Sources */,
-				0080AE7712648B7200631E8B /* myrandom.cpp in Sources */,
-				0080AE7812648B7200631E8B /* TournamentBreeder.cpp in Sources */,
-				0080AE7912648B7200631E8B /* DataCollector.cpp in Sources */,
-				0080AE7A12648B7200631E8B /* popHandlerBase.cpp in Sources */,
-				0080AE7B12648B7200631E8B /* functions.cpp in Sources */,
 				0080AE7C12648B7200631E8B /* robocodeAlpha.cpp in Sources */,
 				0080AE7E12648B7200631E8B /* spatial.cpp in Sources */,
 				0080AE7F12648B7200631E8B /* robocodeBeta.cpp in Sources */,
@@ -491,14 +450,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00DA2AAC12863B77003F9E66 /* entity.cpp in Sources */,
-				00DA2AAD12863B77003F9E66 /* critter.cpp in Sources */,
-				00DA2AAE12863B77003F9E66 /* ptc2Grow.cpp in Sources */,
-				00DA2AAF12863B77003F9E66 /* myrandom.cpp in Sources */,
-				00DA2AB012863B77003F9E66 /* TournamentBreeder.cpp in Sources */,
-				00DA2AB112863B77003F9E66 /* DataCollector.cpp in Sources */,
-				00DA2AB212863B77003F9E66 /* popHandlerBase.cpp in Sources */,
-				00DA2AB312863B77003F9E66 /* functions.cpp in Sources */,
 				00DA2AB612863B77003F9E66 /* spatial.cpp in Sources */,
 				00DA2AB712863B77003F9E66 /* robocodeBeta.cpp in Sources */,
 				00DA2AD512863BBC003F9E66 /* RobocodeMvPMain.cpp in Sources */,
@@ -510,18 +461,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00542ED2123F2ED20026C2F8 /* entity.cpp in Sources */,
-				00542ED3123F2ED20026C2F8 /* critter.cpp in Sources */,
-				00542ED4123F2ED20026C2F8 /* ptc2Grow.cpp in Sources */,
-				00542ED5123F2ED20026C2F8 /* myrandom.cpp in Sources */,
-				00542ED6123F2ED20026C2F8 /* TournamentBreeder.cpp in Sources */,
-				00542ED7123F2ED20026C2F8 /* DataCollector.cpp in Sources */,
-				00542ED8123F2ED20026C2F8 /* popHandlerBase.cpp in Sources */,
-				00542ED9123F2ED20026C2F8 /* functions.cpp in Sources */,
 				000F09241241F9EC00DAC023 /* spatial.cpp in Sources */,
 				0080AE5E1263ACEC00631E8B /* robocodeBeta.cpp in Sources */,
 				0080AE9F12648CCE00631E8B /* RobocodeBetaMain.cpp in Sources */,
 				0080AF33126D068C00631E8B /* spatialRobocodeCreatureBeta.cpp in Sources */,
+				0098DFF1173B41E600FF8C02 /* critter.cpp in Sources */,
+				0098DFF2173B41E600FF8C02 /* DataCollector.cpp in Sources */,
+				0098DFF3173B41E600FF8C02 /* entity.cpp in Sources */,
+				0098DFF4173B41E600FF8C02 /* functions.cpp in Sources */,
+				0098DFF7173B41E600FF8C02 /* myrandom.cpp in Sources */,
+				0098DFF8173B41E600FF8C02 /* popHandlerBase.cpp in Sources */,
+				0098DFFA173B41E600FF8C02 /* ptc2Grow.cpp in Sources */,
+				0098DFFB173B41E600FF8C02 /* singlePopHandler.cpp in Sources */,
+				0098DFFD173B41E600FF8C02 /* TournamentBreeder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,7 +620,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 			};
 			name = Debug;
 		};
@@ -680,7 +632,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 			};
 			name = Release;
 		};

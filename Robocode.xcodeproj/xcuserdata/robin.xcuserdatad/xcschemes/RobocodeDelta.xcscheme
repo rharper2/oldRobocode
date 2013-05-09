@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "004F50F6173A4F4200E9BF62"
-               BuildableName = "Robocode"
+               BuildableName = "RobocodeTheta copy"
                BlueprintName = "RobocodeDelta"
                ReferencedContainer = "container:Robocode.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "004F50F6173A4F4200E9BF62"
-            BuildableName = "Robocode"
+            BuildableName = "RobocodeTheta copy"
             BlueprintName = "RobocodeDelta"
             ReferencedContainer = "container:Robocode.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "004F50F6173A4F4200E9BF62"
-            BuildableName = "Robocode"
+            BuildableName = "RobocodeTheta copy"
             BlueprintName = "RobocodeDelta"
             ReferencedContainer = "container:Robocode.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "004F50F6173A4F4200E9BF62"
-            BuildableName = "Robocode"
+            BuildableName = "RobocodeTheta copy"
             BlueprintName = "RobocodeDelta"
             ReferencedContainer = "container:Robocode.xcodeproj">
          </BuildableReference>
