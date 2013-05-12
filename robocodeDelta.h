@@ -322,6 +322,7 @@ namespace robocodeDelta_namespace {
 		PUSHCODE = 195,
 		POPCODE = 196,
 		PEEKCODE = 197,
+        INITIALISE = 198,
 		
 		__DOFUNC = 5001,
 		__DOPUSE = 5002};

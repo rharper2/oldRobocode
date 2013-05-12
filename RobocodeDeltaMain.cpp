@@ -30,7 +30,7 @@ int main (int argc, char * const argv[]) {
     // the initial test then is just to initialise one (or a number) and print them out to see.
     crPtr toMake;
     toMake.reset(new cr_data);
-    toMake->makeptc2(10);
+    toMake->makeptc2(5);
     cout << toMake->display();
     
     

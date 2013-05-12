@@ -1193,7 +1193,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					curr_expr[*curr+1]=VOID; //void
 					curr_expr[*curr+2]=RUN__; //run__
 					curr_expr[*curr+3]=OCB; //{
-					curr_expr[*curr+4]=N; //N
+					curr_expr[*curr+4]=INITIALISE; //N
 					curr_expr[*curr+5]=INMAINLOOP; //INMAINLOOP
 					curr_expr[*curr+6]=N; //INMAINLOOP
 					curr_expr[*curr+7]=SENTENCES; //Sentences
@@ -2282,12 +2282,14 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 				}
 				case(10):{
 					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+3]=curr_expr[i];
-					*length = *length + 3;
+						curr_expr[i+5]=curr_expr[i];
+					*length = *length + 5;
 					curr_expr[*curr+0]=SQRT; //Maths.XXX(
-					curr_expr[*curr+1]=VARIABLES; //Variables
-					curr_expr[*curr+2]=CRB; //+
-					curr_expr[*curr+3]=POPTREED;
+                    curr_expr[*curr+1]=ABS;
+					curr_expr[*curr+2]=VARIABLES; //Variables
+					curr_expr[*curr+3]=CRB; //+
+					curr_expr[*curr+4]=CRB; //+
+					curr_expr[*curr+5]=POPTREED;
 					if (growing) depth++;
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
@@ -3174,18 +3176,11 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
 			case SAFEPEEK_OB: {output_stream << " safePeek( ";break;}
 			case GLOBALSTACK1: {output_stream << " globalStack1 ";break;}
 			case GLOBALSTACK2: {output_stream << " globalStack2 ";break;}
-				//case LOCALSTACK1: {output_stream << " localStack1 ";break;}
-			//case LOCALSTACK2: {output_stream << " localStack2 ";break;}
-			case E_DOTGETBEARING__: {output_stream << " e.getBearing() ";break;}
+				case E_DOTGETBEARING__: {output_stream << " e.getBearing() ";break;}
 			case E_DOTGETHEADING__: {output_stream << " e.getHeading() ";break;}
-			case PE_DOTGETBEARING__: {output_stream << " pe.getBearing() ";break;}
-			case PE_DOTGETHEADING__: {output_stream << " pe.getHeading() ";break;}
 			case E_DOTGETVELOCITY__: {output_stream << " e.getVelocity() ";break;}
 			case E_DOTGETENERGY__: {output_stream << " e.getEnergy() ";break;}
 			case E_DOTGETDISTANCE__: {output_stream << " e.getDistance() ";break;}
-			case PE_DOTGETVELOCITY__: {output_stream << " pe.getVelocity() ";break;}
-			case PE_DOTGETENERGY__: {output_stream << " pe.getEnergy() ";break;}
-			case PE_DOTGETDISTANCE__: {output_stream << " pe.getDistance() ";break;}
 			case DOUBLE: {output_stream << " double ";break;}
 			case TOP: {output_stream << " top ";break;}
 			case BOTTOM: {output_stream << " bottom ";break;}
@@ -3200,11 +3195,10 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
 			case THESTACKDOTPOP__: {output_stream << " ( (Double) thestack.pop()).doubleValue() ";break;}
 			case THESTACKDOTEMTPY__: {output_stream << " thestack.empty() ";break;}
 			case THESTACKDOTPEEK__: {output_stream << " ( (Double) thestack.peek()).doubleValue() ";break;}
-				//		case LOCALSTACK1,: {output_stream << " localStack1, ";break;}
-			case BOOLW: {output_stream << " bool ";break;}
-			case HISTORY: {output_stream << " history ";break;}
+			
+            
+            case BOOLW: {output_stream << " bool ";break;}
 			case FALSE: {output_stream << " false ";break;}
-			case NOTHISTORY: {output_stream << " !history ";break;}
 			case E: {output_stream << " e ";break;}
 			case TRUE: {output_stream << " true ";break;}
 			case _DOFUNC: {output_stream << " FUNC ";break;}
@@ -3223,28 +3217,10 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
 			case __DOFUNC: {output_stream << " __DOFUNC ";break;}
 			case __DOPUSE: {output_stream << " __DOPUSE ";break;}
 			case EXECUTE: { output_stream << " execute() ";break;}
-			case MLLOCALSTACK1: { output_stream << " mlLocalStack1 ";break;}
-			case MLLOCALSTACK2: { output_stream << " mlLocalStack2 ";break;}
-			case OHBBLOCALSTACK1: { output_stream << " ohbbLocalStack1 ";break;}
-			case OHBBLOCALSTACK2: { output_stream << " ohbbLocalStack2 ";break;}
-			case OHRLOCALSTACK1: { output_stream << " ohrLocalStack1 ";break;}
-			case OHRLOCALSTACK2: { output_stream << " ohrLocalStack2 ";break;}
-			case OHWLOCALSTACK1: { output_stream << " ohwLocalStack1 ";break;}
-			case OHWLOCALSTACK2: { output_stream << " ohwLocalStack2 ";break;}
-			case OSRLOCALSTACK1: { output_stream << " osrLocalStack1 ";break;}
-			case OSRLOCALSTACK2: { output_stream << " osrLocalStack2 ";break;}
 			
 			case EXCLAMATION: { output_stream << " !";break;}
-			case HBBHISTORY: { output_stream << " hbbHistory ";break;}
-			case OSRHISTORY: { output_stream << " srHistory ";break;}
-			case HRHISTORY: { output_stream << " hrHistory ";break;}
-			case HITWALLHISTORY: { output_stream << " hwHistory ";break;}
-			case PHBBEVENT: { output_stream << " phbEvent ";break;}
-			case PSREVENT: { output_stream << " psrEvent ";break;}
-			case PHREVENT: { output_stream << " phrEvent ";break;}
-			case PHWEVENT: { output_stream << " phwEvent ";break;}
-				
-			case ABS: { output_stream << " Math.abs( ";break;}
+			
+            case ABS: { output_stream << " Math.abs( ";break;}
 			case ACOS: { output_stream << " Math.acos( ";break;}
 			case ASIN: { output_stream << " Math.asin( ";break;}
 			case ATAN: { output_stream << " Math.atan( ";break;}
@@ -3272,6 +3248,7 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
                                         << "\t{\n\t\t\ttry { return  ((Double) thestack.pop()).doubleValue()}\n\t\t\tcatch(Exception e) { return 0.0; }\n\t}\n"  ; break;}
             case PEEKCODE: { output_stream << "\tpublic  double  safePeek(Stack thestack)\n"
                                             << "\t{\n\t\t\ttry { ((Double) thestack.peek()).doubleValue() }\n\t\t\tcatch(Exception e) { return 0.0;}\n\t}\t"; break ;}
+            case INITIALISE: { output_stream << "\n\n\tglobalStack1 = new Stack<Double>;\n\tglobalStack2 = new Stack<Double>;\n"; break; }
                 
 		default: {
 				if (curr_expr[i]>=400 && curr_expr[i]<500) {
