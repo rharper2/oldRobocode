@@ -180,7 +180,7 @@ robocodeDelta* robocodeDelta::Instance() {
 	}
 	return _instance;
 }
-//#define DEBUGPTC2
+// #define DEBUGPTC2
 
 bool robocodeDelta::doACreate(int *exp,int *length,int maxExp,long codon_list[],
 							 int max_codons,int &cUsed,vector<function> *funcVec,int maxD,int minD,bool mG) {
@@ -196,6 +196,9 @@ bool robocodeDelta::doACreate(int *exp,int *length,int maxExp,long codon_list[],
 
 bool robocodeDelta::ptc2Grow(int *exp, int *length, int maxExp, long codon_list[],
 							int max_codons, int &cUsed, vector<function> *funcVec,int maxD,int req_expansions) {
+#ifdef DEBUGPTC2
+    cout << "PTC2Grow called\n";
+#endif
 	expression = exp;
 	expressionLength = length;
 	
@@ -425,7 +428,9 @@ void robocodeDelta::ptc2GrowOne(bool allowExpand) {
 		else toUse->next = tomake;
 		tomake->value = toExpand[i];
 		tomake->depth = depth+1;
-		
+#ifdef DEBUGPTC2
+        cout << "Depth: " << tomake->depth << endl;
+#endif
 		// I am using my knowledge that non-terminals have a value > 1000
 		// should be careful here, using a hard coded number.
 		
@@ -825,6 +830,7 @@ bool robocodeDelta::dealtWithPop(int expr[],int *curr,int *length) {
 }
 
 void robocodeDelta::changeCodonsForGrow(int divisors) {
+
 	static int maxCodonSize = (int) pow(2.0,CODON);
 	int newCodon;
 	if (!growing) return;
@@ -884,6 +890,9 @@ void robocodeDelta::changeCodonsForGrow(int divisors) {
 	}
 	
 	if (depth>maxDepth) { // terminate if we can.
+#ifdef DEBUGPTC2
+        cout << "Too big, terminals is " << terminals.size() << endl;
+#endif
 		if (term > 0) { // so we have termination choices
 			int choice = terminals[randomint(term)];
 			int base = (maxCodonSize / divisors );
@@ -1129,6 +1138,9 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 	
 	
 	int expr_t = curr_expr[*curr];
+#ifdef DEBUGPTC2
+    cout << "Expanding " << curr_expr[*curr] << " Using  " << currentCodon << endl;
+#endif
 	switch(curr_expr[*curr])
 	{
 		case(CODE):{ /* code */
@@ -1669,7 +1681,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 				nonTerminals.push_back(2);
 				terminals.push_back(3);
 				nonTerminals.push_back(3);
-				//terminals.push_back(4);
+				//nonTerminals.push_back(4);
 				changeCodonsForGrow(divisor);
 				currentCodon = (terminating?0:codons[codonPos]) & CODONMASK;
 			}
@@ -1712,19 +1724,17 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 				}
 				case(3):{
 					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+5]=curr_expr[i];
-					*length = *length + 5;
+						curr_expr[i+3]=curr_expr[i];
+					*length = *length + 3;
 					curr_expr[*curr+0]=SAFEPUSH_OB; //safePush_OB
-					curr_expr[*curr+1]=STACKTYPE; //stackType
-					curr_expr[*curr+2]=COMMA; //,
-					curr_expr[*curr+3]=VARIABLES; //Variables
-					curr_expr[*curr+4]=CRB; //)
-					curr_expr[*curr+5]=POPTREED;
+					curr_expr[*curr+1]=VARIABLES; //Variables
+					curr_expr[*curr+2]=CRB; //)
+					curr_expr[*curr+3]=POPTREED;
 					if (growing) depth++;
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
 				}
-				case(4):{ // not yet implemented.
+				case(4):{ // currently disabled 
 					for(int i=*length-1;i>*curr;i--)
 						curr_expr[i+3]=curr_expr[i];
 					*length = *length + 3;
@@ -1756,7 +1766,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					*length = *length + 5;
 					curr_expr[*curr+0]=FIRE_OB; //fire_OB
 					curr_expr[*curr+1]=VARIABLES; //Variable
-					curr_expr[*curr+2]=DIV; //%
+					curr_expr[*curr+2]=MOD; //%
 					curr_expr[*curr+3]=FIVE; //5
 					curr_expr[*curr+4]=CRB; //)
 					curr_expr[*curr+5]=POPTREE;
@@ -1769,7 +1779,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					*length = *length + 5;
 					curr_expr[*curr+0]=SETFIRE_OB; //setfire_OB
 					curr_expr[*curr+1]=VARIABLES; //Variable
-					curr_expr[*curr+2]=DIV; //%
+					curr_expr[*curr+2]=MOD; //%
 					curr_expr[*curr+3]=FIVE; //5
 					curr_expr[*curr+4]=CRB; //)
 					curr_expr[*curr+5]=POPTREE;
@@ -1790,6 +1800,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 				//terminals.push_back(0);
 				nonTerminals.push_back(0);
 				nonTerminals.push_back(1);
+                terminals.push_back(1); // added some terminals into modifiedvariable e.g. size and rand.
 				terminals.push_back(2);
 				changeCodonsForGrow(divisor);
 				currentCodon = (terminating?0:codons[codonPos]) & CODONMASK;
@@ -1892,7 +1903,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 			break;
 		}//of case contextVariable
 		case(TWOVARIABLES):{ /* twoVariables */
-			divisor = 4;
+			divisor = 5;
 			if (growing) {
 				nonTerminals.clear();
 				terminals.clear();
@@ -1900,6 +1911,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 				nonTerminals.push_back(1);
 				nonTerminals.push_back(2);
 				nonTerminals.push_back(3);
+                nonTerminals.push_back(4);
 				changeCodonsForGrow(divisor);
 				currentCodon = (terminating?0:codons[codonPos]) & CODONMASK;
 			}
@@ -1950,9 +1962,23 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					for(int i=*length-1;i>*curr;i--)
 						curr_expr[i+5]=curr_expr[i];
 					*length = *length + 5;
-					curr_expr[*curr+0]=PDIV_OB; //PDIV_OB
+					curr_expr[*curr+0]=ORB; //PDIV_OB
 					curr_expr[*curr+1]=VARIABLES; //Variables
-					curr_expr[*curr+2]=COMMA; //,
+					curr_expr[*curr+2]=DIV; //,
+					curr_expr[*curr+3]=VARIABLES; //Variables
+					curr_expr[*curr+4]=CRB; //)
+					curr_expr[*curr+5]=POPTREED;
+					if (growing) depth++;
+					if (ExtractingGrammarInfo) stack.push_back(codonPos);
+					break;
+				}
+				case(4):{
+					for(int i=*length-1;i>*curr;i--)
+						curr_expr[i+5]=curr_expr[i];
+					*length = *length + 5;
+					curr_expr[*curr+0]=ORB; //PDIV_OB
+					curr_expr[*curr+1]=VARIABLES; //Variables
+					curr_expr[*curr+2]=MOD; //,
 					curr_expr[*curr+3]=VARIABLES; //Variables
 					curr_expr[*curr+4]=CRB; //)
 					curr_expr[*curr+5]=POPTREED;
@@ -2126,10 +2152,27 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 		}//of case boolop
 		case (MODIFIEDVARIABLE): {
 			
-			divisor = 15;
+			divisor = 17;
 			if (growing) {
 				nonTerminals.clear();
 				terminals.clear();
+                nonTerminals.push_back(0);
+                nonTerminals.push_back(1);
+                nonTerminals.push_back(2);
+                nonTerminals.push_back(3);
+                nonTerminals.push_back(4);
+                nonTerminals.push_back(5);
+                nonTerminals.push_back(6);
+                nonTerminals.push_back(7);
+                nonTerminals.push_back(8);
+                nonTerminals.push_back(9);
+                nonTerminals.push_back(10);
+                nonTerminals.push_back(11);
+                nonTerminals.push_back(12);
+                nonTerminals.push_back(13);
+                nonTerminals.push_back(14);
+                terminals.push_back(15);
+                terminals.push_back(16);
 				changeCodonsForGrow(divisor);
 				currentCodon = (terminating?0:codons[codonPos]) & CODONMASK;
 			}
@@ -2343,6 +2386,25 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
 				}
+                case (15): {
+                    for(int i=*length-1;i>*curr;i--)
+						curr_expr[i+1]=curr_expr[i];
+					*length = *length + 1;
+					curr_expr[*curr+0]=SIZE; //Maths.XXX(
+					curr_expr[*curr+1]=POPTREE;
+					if (ExtractingGrammarInfo) stack.push_back(codonPos);
+					break;
+                }
+                case (16): {
+                    for(int i=*length-1;i>*curr;i--)
+						curr_expr[i+1]=curr_expr[i];
+					*length = *length + 1;
+					curr_expr[*curr+0]=RAND; //Maths.random(
+					curr_expr[*curr+1]=POPTREE;
+					if (ExtractingGrammarInfo) stack.push_back(codonPos);
+					break;
+                }
+                    
 					
 			}//of switch
 			if (!terminating && ExtractingGrammarInfo)
@@ -2483,7 +2545,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					for(int i=*length-1;i>*curr;i--)
 						curr_expr[i+1]=curr_expr[i];
 					*length = *length + 1;
-					curr_expr[*curr+0]=STACKVARIABLE; //stackVariable
+					curr_expr[*curr+0]=RAND; //stackVariable
 					curr_expr[*curr+1]=POPTREE;
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
@@ -2505,23 +2567,21 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 			switch(currentCodon%divisor){
 				case(0):{
 					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+3]=curr_expr[i];
-					*length = *length + 3;
+						curr_expr[i+2]=curr_expr[i];
+					*length = *length + 2;
 					curr_expr[*curr+0]=SAFEPOP_OB; //safePop_OB
-					curr_expr[*curr+1]=STACKTYPE; //stackType
-					curr_expr[*curr+2]=CRB; //)
-					curr_expr[*curr+3]=POPTREE;
+					curr_expr[*curr+1]=CRB; //)
+					curr_expr[*curr+2]=POPTREE;
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
 				}
 				case(1):{
 					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+3]=curr_expr[i];
-					*length = *length + 3;
+						curr_expr[i+2]=curr_expr[i];
+					*length = *length + 2;
 					curr_expr[*curr+0]=SAFEPEEK_OB; //safePeek_OB
-					curr_expr[*curr+1]=STACKTYPE; //stackType
-					curr_expr[*curr+2]=CRB; //)
-					curr_expr[*curr+3]=POPTREE;
+					curr_expr[*curr+1]=CRB; //)
+					curr_expr[*curr+2]=POPTREE;
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
 				}
@@ -2532,7 +2592,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 			break;
 		}//of case stackVariable
 		case(STACKTYPE):{ /* stackType */
-			divisor = 2;
+			divisor = 1;
 			if (growing) {
 				nonTerminals.clear();
 				terminals.clear();
@@ -2545,15 +2605,6 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 						curr_expr[i+1]=curr_expr[i];
 					*length = *length + 1;
 					curr_expr[*curr+0]=GLOBALSTACK1; //globalStack1
-					curr_expr[*curr+1]=POPTREE;
-					if (ExtractingGrammarInfo) stack.push_back(codonPos);
-					break;
-				}
-				case(1):{
-					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=GLOBALSTACK2; //globalStack2
 					curr_expr[*curr+1]=POPTREE;
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
@@ -2759,15 +2810,13 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 			switch(currentCodon%divisor){
 				case(0):{
 					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+6]=curr_expr[i];
-					*length = *length + 6;
-					curr_expr[*curr+0]=PDIVCODE; //PDIVCODE
+						curr_expr[i+4]=curr_expr[i];
+					*length = *length + 4;
+					curr_expr[*curr+0]=PUSHCODE; //PUSHCODE
 					curr_expr[*curr+1]=N; //N
-					curr_expr[*curr+2]=PUSHCODE; //PUSHCODE
+					curr_expr[*curr+2]=POPCODE; //POPCODE
 					curr_expr[*curr+3]=N; //N
-					curr_expr[*curr+4]=POPCODE; //POPCODE
-					curr_expr[*curr+5]=N; //N
-					curr_expr[*curr+6]=PEEKCODE; //PEEKCODE
+					curr_expr[*curr+4]=PEEKCODE; //PEEKCODE
 					break;
 				}
 			}//of switch
@@ -3084,7 +3133,8 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
 			case PLUS: {output_stream << " + ";break;}
 			case MINUS: {output_stream << " - ";break;}
 			case MULT: {output_stream << " * ";break;}
-			case DIV: {output_stream << " % ";break;}
+			case MOD: {output_stream << " % ";break;}
+            case DIV: {output_stream << " / ";break;}
 			case SEMICOLON: {output_stream << " ; ";break;}
 			case COLON: {output_stream << " : ";break;}
 			case GREATER: {output_stream << " > ";break;}
@@ -3117,7 +3167,7 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
 			case STATIC: {output_stream << " static ";break;}
 			case STACK: {output_stream << " Stack ";break;}
 				//		case GLOBALSTACK1,: {output_stream << " globalStack1, ";break;}
-			case DOVARIABLEDEFS: {output_stream << "  Stack<Double> globalStack1, globalStack2;\n\n\n"
+			case DOVARIABLEDEFS: {output_stream << "  Stack<Double> globalStack1;\n\n\n"
 				<< "//********************************\n//Some useful helper functions\n//********************************\n"; break;}
 			case SOMECOMMENTS: { output_stream 
 				<< "\n//********************************\n//Start of the evolved code\n//********************************\n\n"; break;}
@@ -3175,8 +3225,7 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
 			case SAFEPOP_OB: {output_stream << " safePop( ";break;}
 			case SAFEPEEK_OB: {output_stream << " safePeek( ";break;}
 			case GLOBALSTACK1: {output_stream << " globalStack1 ";break;}
-			case GLOBALSTACK2: {output_stream << " globalStack2 ";break;}
-				case E_DOTGETBEARING__: {output_stream << " e.getBearing() ";break;}
+            case E_DOTGETBEARING__: {output_stream << " e.getBearing() ";break;}
 			case E_DOTGETHEADING__: {output_stream << " e.getHeading() ";break;}
 			case E_DOTGETVELOCITY__: {output_stream << " e.getVelocity() ";break;}
 			case E_DOTGETENERGY__: {output_stream << " e.getEnergy() ";break;}
@@ -3232,6 +3281,8 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
 			case ROUND: { output_stream << " Math.round( ";break;}
 			case SQRT: { output_stream << " Math.sqrt( ";break;}
 			case POW: { output_stream << " Math.pow( ";break;}
+            case RAND: { output_stream << " Math.random()";break;}
+            case SIZE: { output_stream << " globalStack1.size() "; break; }
 			case ISNEAR: { output_stream << " Utils.isNear( ";break;}
 			case NORMALABSOLUTEANGLE: { output_stream << " Utils.normalAbsoluteAngle( ";break;}
 			case NORMALNEARABSOLUTEANGLE: { output_stream << " Utils.normalNearAbsoluteAngle( ";break;}
@@ -3240,15 +3291,14 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
 			case IN: { output_stream << " : ";break;}
 			case GETBATTLEFIELDHEIGHT__: { output_stream << " getBattleFieldHeight() "; break;}
 			case FOR: { output_stream << " for ";break;}
-			case PDIVCODE: { output_stream << "\n\tpublic static double pdiv(Double x,Double y)\n\t{\n\t\t\ttry { return x/y; }\n\t\t\tcatch (Exception e) { return 1.0; }\n\t}\n"; break; }
-            case PUSHCODE: { output_stream << "// note might change this to assume has 10 in it?\n"
-                                            << "\tpublic  void  safePush(  Stack  thestack  ,  double  item  )\n"
-                                            << "\t{\n\t\t\tif (thestack.size() > 10) thestack.removeElementAt(0);\n\t\t\tthestack.push(new Double(item));\n\t}\n"; break; }
-            case POPCODE: { output_stream << "\tpublic  double  safePop(Stack thestack)\n"
-                                        << "\t{\n\t\t\ttry { return  ((Double) thestack.pop()).doubleValue()}\n\t\t\tcatch(Exception e) { return 0.0; }\n\t}\n"  ; break;}
-            case PEEKCODE: { output_stream << "\tpublic  double  safePeek(Stack thestack)\n"
-                                            << "\t{\n\t\t\ttry { ((Double) thestack.peek()).doubleValue() }\n\t\t\tcatch(Exception e) { return 0.0;}\n\t}\t"; break ;}
-            case INITIALISE: { output_stream << "\n\n\tglobalStack1 = new Stack<Double>;\n\tglobalStack2 = new Stack<Double>;\n"; break; }
+			case PUSHCODE: { output_stream << "// note might change this to assume has 10 in it?\n"
+                                            << "\tpublic   void  safePush(  double  item  )\n"
+                                            << "\t{\n\t\t\tif (globalStack1.size() > 10) globalStack1.removeElementAt(0);\n\t\t\tglobalStack1.push(new Double(item));\n\t}\n"; break; }
+            case POPCODE: { output_stream << "\tpublic  double  safePop()\n"
+                                        << "\t{\n\t\t\ttry { return  ((Double) globalStack1.pop()).doubleValue();}\n\t\t\tcatch(Exception e) { return 0.0; }\n\t}\n"  ; break;}
+            case PEEKCODE: { output_stream << "\tpublic    double safePeek()\n"
+                                            << "\t{\n\t\t\ttry { return ((Double) globalStack1.peek()).doubleValue(); }\n\t\t\tcatch(Exception e) { return 0.0;}\n\t}\t"; break ;}
+            case INITIALISE: { output_stream << "\n\n\tglobalStack1 = new Stack<Double>();\n"; break; }
                 
 		default: {
 				if (curr_expr[i]>=400 && curr_expr[i]<500) {

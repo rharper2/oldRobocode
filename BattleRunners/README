@@ -1,0 +1,18 @@
+This contains the code for the servers that conduct the actual battle.
+
+These ones assume we are on a local machine (can probably map network drives) and that the robots are found in the usual robots/ directory - they will be by generations.
+
+They use port 9000, basically register with the server fetch the names of the two contestants and deliver the scores. Sweet and simple. There is a bit of system output so you can see how its going.
+
+more them into the robocode directory and compile with 
+javac -classpath libs/robocode.jar:./ RobocodeRunner.java
+
+and run
+
+java -classpath libs/robocode.jar:./ RobocodeRunner
+
+You may have to add more to your classpath etc, but I don't.
+
+:)
+
+

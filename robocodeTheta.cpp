@@ -170,7 +170,7 @@ robocodeTheta* robocodeTheta::Instance() {
 	}
 	return _instance;
 }
-#define DEBUGPTC2
+// #define DEBUGPTC2
 
 bool robocodeTheta::doACreate(int *exp,int *length,int maxExp,long codon_list[],
 							 int max_codons,int &cUsed,vector<function> *funcVec,int maxD,int minD,bool mG) {
