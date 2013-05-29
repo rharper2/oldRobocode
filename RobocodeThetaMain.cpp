@@ -162,6 +162,7 @@ void doit() {
 	
 	//aWorld.reset(new spatialWorld<spatialRobocodeCreature,spatialRobocodeParasite>(SizeofX,SizeofY));
 	aWorld.reset(spatialWorld<spatialRobocodeCreature,spatialRobocodeParasite>::makeWorldFromLoadFile(SizeofX,SizeofY,5,fileToUse));
+    aWorld->update();
 	reportSome(aWorld.get());
 	changeDirectory();
 	initialiseServerStuff(9000);

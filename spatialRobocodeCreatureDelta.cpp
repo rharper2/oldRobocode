@@ -261,6 +261,8 @@ double spatialRobocodeCreatureDelta::getScore() {
 		int battlesWeNeed = battleFront.size();
 		int battlesSoFar = 0;
 		cout << "About to schedule " << battlesWeNeed << " matches.\n";
+        struct timeval timeout;
+        
 		while (! (battleFront.empty() && sockfdToCritter.empty())) { // so as long as there are battles or we await outcomes
 			if (battleFront.size()/100 < nearestHundred) {
 				nearestHundred--;
@@ -294,11 +296,47 @@ double spatialRobocodeCreatureDelta::getScore() {
 			}
 			testfds=readfds;
 			// so wait for something to happen (maybe should timeout this
-			result = select(FD_SETSIZE,&testfds,(fd_set *) 0,(fd_set *) 0,(struct timeval *) 0); 
+            timeout.tv_sec =100;
+            timeout.tv_usec = 0;
+            result = select(FD_SETSIZE,&testfds,(fd_set *) 0,(fd_set *) 0,&timeout); 
 			if (result < 1) {
 				perror("Error in spatialRobocodeCreater, select returned less than 1 whilst I was trying to do all my battle stuff.");
 				//				exit(1);
 			}
+            if (result == 0) {
+                cout << "TIMEOUT!";
+                // so we are going to disconnect any that still have battles.
+                if (!sockfdToCritter.empty()) {
+                    found = sockfdToCritter.begin();
+                    while (found != sockfdToCritter.end()) {
+                        int fd = found->first;
+                        battleLinePtr battle = found->second;
+                        cout << "There was still a battle we were waiting for from " << fd << " so terminating with prejudice\n";
+                        close(fd);
+                        battleFront.push_back(battle);
+                        list<int>::iterator at = find(currentFds.begin(),currentFds.end(),fd);
+                        if (at!=currentFds.end()) {at = currentFds.erase(at); }
+                        else {
+                            cout << "Odd, couldn't find (to remove) " << fd << " from the list of fds.\n";
+                        }
+                        found++;
+                    }
+                    sockfdToCritter.clear();
+                } else {
+                    cout << "But we don't have any battles in the map\n";
+                    if (battleFront.empty()) {
+                        cout << "And the battle front is empty\n";
+                    } else cout << "Battle front is NOT empty\n";
+                    if (currentFds.empty()) {
+                        cout << "The current Fds is empty - well how about that.\n";
+                    }
+                    else {
+                        cout << "We still have people willing to do work for us, odd.\n";
+                    }
+                }
+                continue;
+                
+            }
 			list<int>::iterator at = currentFds.begin();
 			while (at!= currentFds.end()) {  // loop through the fds looking for one that has been set.
 				if (FD_ISSET((*at),&testfds)) { 
