@@ -18,7 +18,7 @@
 
 #include "critter.h"
 #include <fstream>
-
+#define MAXROBOTNUMBER 10
 
 class spatialRobocodeParasiteDelta;
 class battleLine;
@@ -32,15 +32,20 @@ class spatialRobocodeCreatureDelta {
 	double storedLayeredScore;
 	int competitions;
 	bool failedTest;
-
+    bool participates;
+    int myLocation;
 public:
 
 	
 	int geneticAge;
 	long thisCreatureDeltaNumber;
+    int humanRobot;
 	bool isInvalid; // only true if we *know* its invalid
     spatialRobocodeCreatureDelta();
     spatialRobocodeCreatureDelta(bool create);
+    virtual bool isParticipating();
+    virtual void inLayerWithLocation(int layer,int x);
+    
     virtual ~spatialRobocodeCreatureDelta() { critter.reset();  } 
     virtual void doCrossover(spatialRobocodeCreatureDelta &p2);
     virtual void doMutation();
@@ -114,6 +119,8 @@ public:
 };
 
 class spatialRobocodeParasiteDelta {
+    int humanrobot;
+    bool participates;
 	static long ParasiteDeltaIdentifierCount;
     crPtr ParasiteDelta;
 	double storedScore;
@@ -125,6 +132,8 @@ public:
 	long thisParasiteDeltaNumber;
 	bool isInvalid; // only true if we *know* its invalid
 	const char *getName();
+    virtual bool isParticipating();
+    virtual void inLayerWithLocation(int layer,int x);
     spatialRobocodeParasiteDelta();
     spatialRobocodeParasiteDelta(bool create);
     virtual ~spatialRobocodeParasiteDelta();

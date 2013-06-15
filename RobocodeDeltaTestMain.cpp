@@ -43,7 +43,7 @@ void initialiseServerStuff(short); // defined in spatialRobocodeCreatureDelta.
 void changeDirectory() {
 	// clean up so robocode doesnt take ages loading all the old robots.
 	if (currentGen != 0) {
-		system("tar -czf robotsThetaAdvanced.tgz *.java *.class");
+		system("tar -czf robotsDTMAdvanced.tgz *.java *.class");
 		system("rm *.class *.java");
 	}
     
@@ -124,19 +124,19 @@ void reportSome(rawWorldPointer currentWorld);
 
 int SizeofX = 20;
 int SizeofY = 20;
-int GensToDo = 800;
-int ReportY = 10;   
+int GensToDo = 10;
+int ReportY = 5;
 int ReportX = 5;
 void doit() {
     
     // This is the file the population is saved at, (in each second generation folder)
-	const char *fileToUse = "TestRoboCodeDelta";
+	const char *fileToUse = "TestRoboCodeDeltaTM";
     
 	
 	robocodeDelta *grammar = robocodeDelta::Instance();
 	cr_data::setGrammar(grammar);
 	
-	   
+	
 	
 	// We also need to provided to iterators "at" and "end" to allow the
 	// the locations in a world to be iterated.
@@ -151,7 +151,7 @@ void doit() {
 	// since we "save" robots when they are created (as well as before each battle)
 	// we need to set up the CurrentWorkingDirectory to the right one before
 	// we create the spacial world.
-	int startGen = 135;
+	int startGen = 0;
 	currentGen = startGen;
 	
 	// As an aside: the reason we save robots in the creation of them (as well as before each calcScore
@@ -166,17 +166,17 @@ void doit() {
 	// the battles will take hours for each generation.
 	
 	
-	layerLives.push_back(40);
-	//layerLives.push_back(70);
-	layerLives.push_back(130);
+	layerLives.push_back(2);
+	layerLives.push_back(5);
+	//layerLives.push_back(130);
 	//layerLives.push_back(258);
 	layerLives.push_back(-1);
 	
 	myWorldPtr aWorld;
 	
-	//aWorld.reset(new spatialWorld<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta>(SizeofX,SizeofY));
+	aWorld.reset(new spatialWorld<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta>(SizeofX,SizeofY));
 	changeDirectory();
-    aWorld.reset(spatialWorld<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta>::makeWorldFromLoadFile(SizeofX,SizeofY,3,fileToUse));
+    //aWorld.reset(spatialWorld<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta>::makeWorldFromLoadFile(SizeofX,SizeofY,3,fileToUse));
 	reportSome(aWorld.get());
 	changeDirectory();
 	initialiseServerStuff(9000);
@@ -184,12 +184,12 @@ void doit() {
 	for (currentGen=startGen;currentGen<GensToDo;currentGen++) {
 		changeDirectory();
 		saveEm(aWorld.get());
-		cout << "Calc\n";  
+		//cout << "Calc\n";
 		aWorld->calcScore();
-		cout << "Update\n";
-		reportSome(aWorld.get());
+		//cout << "Update\n";
+		//reportSome(aWorld.get());
 		aWorld->update();
-		if (currentGen%2) aWorld->savePop(fileToUse);
+		//if (currentGen%2) aWorld->savePop(fileToUse);
 	}
 	
 	

@@ -25,10 +25,10 @@
 
 
 #define TARFILE "robotsThetaAdvanced.tgz"
-#define OUTPUTFILE "TopThetaMvMWinners.txt"
+#define OUTPUTFILE "TopDeltaWinners.txt"
 
-#define STARTGEN 72
-#define ENDGEN 371
+#define STARTGEN 135
+#define ENDGEN 137
 
 
 using namespace std;

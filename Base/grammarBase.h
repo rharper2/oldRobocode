@@ -19,18 +19,18 @@ using namespace std;
 class grammarBase{
 public:
 //        virtual static grammarBase* Instance() =0;// Can't have "virtual" statics so comment left for template purposes.
-          virtual bool parse(int *exp,int *length,int maxExp,long codons_list[],int max_codons,int &used,vector<function> *funcVec)=0;
+          virtual bool parse(int *exp,int *length,int maxExp,long codons_list[],int max_codons,int &used,vector<GEfunction> *funcVec)=0;
 		  // if doACreate is not implemented, just parses normally
-          virtual bool doACreate(int *exp,int *length,int maxExp,long codons_list[],int max_codons,int &used,vector<function> *funcVec,int,int,bool) 
+          virtual bool doACreate(int *exp,int *length,int maxExp,long codons_list[],int max_codons,int &used,vector<GEfunction> *funcVec,int,int,bool) 
             { return parse(exp,length,maxExp,codons_list,max_codons,used,funcVec); }
 		  // if ptc2Grow is not implemented, just parses normally
           virtual bool ptc2Grow(int *exp, int *length, int maxExp, long codon_list[],
-							int max_codons, int &cUsed, vector<function> *funcVec,int maxD,int req_expansions)
+							int max_codons, int &cUsed, vector<GEfunction> *funcVec,int maxD,int req_expansions)
             { return parse(exp,length,maxExp,codon_list,max_codons,cUsed,funcVec); }
           virtual void print_grammar_individual(ostream& output_stream,int expr[],int length)=0;
           virtual void print_a_grammar(ostream& output_stream,int g) { };
           virtual ~grammarBase() {};
-          virtual  void AllowFunctions(bool) {}; //empty as opposed to pure virtual so they dont have to be overriden
+          virtual  void AllowGEfunctions(bool) {}; //empty as opposed to pure virtual so they dont have to be overriden
           virtual void AllowWrap(bool,int) {};
           virtual void AllowTooBigGracefulTermination(bool) {};
           virtual void AllowRunOutGracefulTermination(bool) {};
@@ -38,7 +38,7 @@ public:
           virtual const string getInvalidReason() { return "No reason"; }
           virtual int getWraps() { return -1; }
           
-          // stub functions if the crossover operator needs to query about
+          // stub GEfunctions if the crossover operator needs to query about
           // the type of "thing" it is looking at
           // note its not necessarily the case isTerminal = not (isNonTerminal).
           virtual bool isTerminal(long *codons) {

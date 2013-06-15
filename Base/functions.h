@@ -10,12 +10,12 @@
 #define FUNCTION
 #include "params.h"
 
-class function {
+class GEfunction {
 public:
 	int expression[LENGTH_OF_EXPRESSION];
 	int expLength;
 	int fno; // the function number
-	function();
+	GEfunction();
 	int params;
 };
 	

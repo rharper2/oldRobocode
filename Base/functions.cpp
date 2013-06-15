@@ -9,4 +9,4 @@
 
 #include "functions.h"
 
-function::function() { }
+GEfunction::GEfunction() { }

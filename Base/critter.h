@@ -208,7 +208,7 @@ public:
           int getFuncNos() const { // Assuming we are using Dynamically Defined functions, returns the number in the phenotype.
                     if (theEntity) return theEntity->getFuncNos(); else return -3; }
           
-          vector<function> *getFunctions() { return theEntity->getFunctions();}
+          vector<GEfunction> *getFunctions() { return theEntity->getFunctions();}
           int *getExpression() { return theEntity->getExpression(); }
 		  int getExpressionLength() { return theEntity->getExpressionLength(); }
           int getCrossMethod() { return crossMethod; } // With self-selecting crossover we store a crossover preference here

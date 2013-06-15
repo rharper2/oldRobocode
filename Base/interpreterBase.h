@@ -21,15 +21,15 @@ using namespace std;
 class interpreterBase {
 public:
 
-          virtual double getScore(int *ex,vector<function> *fV) { return 0; }
-          virtual double getScore(int *ex,vector<function> *fV,int &) { return getScore(ex,fV); }
-          virtual double getAltScore(int *ex,vector<function> *fV) { return getScore(ex,fV);}
-          virtual void displayMaps(ostream &,int,int*,vector<function> *fV) =0;
+          virtual double getScore(int *ex,vector<GEfunction> *fV) { return 0; }
+          virtual double getScore(int *ex,vector<GEfunction> *fV,int &) { return getScore(ex,fV); }
+          virtual double getAltScore(int *ex,vector<GEfunction> *fV) { return getScore(ex,fV);}
+          virtual void displayMaps(ostream &,int,int*,vector<GEfunction> *fV) =0;
           virtual ~interpreterBase() {}
           virtual bool newGen() { return false;}
           virtual void newGenStarted() { }
        //   virtual void setTestCase(int) { }
-		  virtual bool validate(int *ex,vector<function> *fV) { return true; } 
+		  virtual bool validate(int *ex,vector<GEfunction> *fV) { return true; }
 		  // typically the interpreter doesnt need to validate the grammatical expression
 		  // but if, for example, you are building networks you might only clasify the
 		  // critter as correct (and capable of evaluation) IF it connects an input and
