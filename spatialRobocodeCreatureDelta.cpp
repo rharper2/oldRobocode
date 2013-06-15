@@ -313,6 +313,7 @@ double spatialRobocodeCreatureDelta::getScore() {
                         battleLinePtr battle = found->second;
                         cout << "There was still a battle we were waiting for from " << fd << " so terminating with prejudice\n";
                         close(fd);
+                        FD_CLR(fd,&readfds);
                         battleFront.push_back(battle);
                         list<int>::iterator at = find(currentFds.begin(),currentFds.end(),fd);
                         if (at!=currentFds.end()) {at = currentFds.erase(at); }
@@ -425,7 +426,7 @@ double spatialRobocodeCreatureDelta::getScore() {
 						} // end of a client which has data (rather than closed
 					} // end of presumably its a client
 				} // end of if FD_ISSET
-				at++;
+				if (at != currentFds.end()) at++;
 			} // end of looping through the currentfds while.
 		} 
 		cout << "All the battles done, we believed we had to carry out " << battlesWeNeed << " battles and we got " << battlesSoFar << " results.\n";
