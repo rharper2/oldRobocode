@@ -14,6 +14,15 @@ using namespace std;
 #include "spatial.h"
 #include "spatialRobocodeCreatureMvP.h"
 
+/*
+ Note This is an older file, I have kept it in as a way to show how to evolve the robots against human robots
+ *I think the way I am about to propose doing it in the Delta series is better*
+ but this kept it simple with the parasites just being a selection of human robots, tougher ones at higher levels
+ It uses the Beta grammar (which is more fully fledged in some ways than the Delta grammar, but from memory has a few flaws
+ I probably need to tidy up the grammars totally, but apart from this fix up I am intending to move completely to StackGP based
+ robots (still evolved through GE SCALP) and so am unlikley to do much more work on this
+ */
+
 // Some typedefs to save myself typing and debugging the inevitable spelling msitakes.
 typedef spatialWorld<spatialRobocodeCreatureMvP,spatialRobocodeMvPParasite> theWorld;
 typedef boost::shared_ptr< theWorld > myWorldPtr; // a boost pointer to myWorld;
@@ -111,28 +120,6 @@ int GensToDo = 2000;
 int ReportY = 6;
 int ReportX = 6;
 
-rawWorldPointer loadThePop(int layers,const char *baseFileName) {
-	char fileName[200];
-	rawWorldPointer aLayer,lastLayer;
-	lastLayer = NULL;
-	for (int i=0;i<layers;i++) {
-		// need to create the worlds in sequence
-		// bottom layer first
-		// read in the populations
-		// then set expanding to true on the most senior
-		// and return a pointer to it.
-		if (i==0) aLayer = new spatialWorld<spatialRobocodeCreatureMvP,spatialRobocodeMvPParasite>(SizeofX,SizeofY,layerLives[0]);
-		else {
-			lastLayer = aLayer;
-			aLayer = new spatialWorld<spatialRobocodeCreatureMvP,spatialRobocodeMvPParasite>(lastLayer,layerLives[i]);
-		}
-		sprintf(fileName,"%s.layer%d.pop",baseFileName,i);
-		aLayer->loadPop(fileName,i); // pass the layer level
-	}
-	aLayer->isItAnExpandingSpatialWorld = true; // for an expanding world the last (current top) layer has this set to true;
-	return aLayer;
-}
-
 
 //**********************************************************
 // LETS DO IT!
@@ -198,9 +185,7 @@ void doit() {
 	if (noload) {
 		aWorld.reset(new spatialWorld<spatialRobocodeCreatureMvP,spatialRobocodeMvPParasite>(SizeofX,SizeofY));
 	} else {
-		aWorld.reset(loadThePop(4,"TestPVMRoboCodeVariableParasites"));
-		//reportSome(aWorld.get());
-		//exit(0);
+		 aWorld.reset(spatialWorld<spatialRobocodeCreatureMvP,spatialRobocodeMvPParasite>::makeWorldFromLoadFile(SizeofX,SizeofY,3,fileToUse));
 	}
 	
 	// okay world created/loaded, lets get started.

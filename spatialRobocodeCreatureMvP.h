@@ -37,7 +37,10 @@ class spatialRobocodeCreatureMvP {
 	bool failedTest;
 
 public:
-
+    // added these to stay compatibile with the new spatial
+    virtual bool isParticipating() {return false;};
+    virtual void inLayerWithLocation(int layer,int x) {};
+    
 	
 	int geneticAge;
 	long thisCreatureNumber;
@@ -125,6 +128,10 @@ class spatialRobocodeMvPParasite {
 	bool failedTest;
 	
 public:
+    // added these to stay compatibile with the new spatial
+    virtual bool isParticipating() {return false;};
+    virtual void inLayerWithLocation(int layer,int x) {};
+    
 	static const char *parasiteName[];
 	int geneticAge;
 	long thisParasiteNumber;
@@ -168,6 +175,10 @@ public:
 
 class parasiteData {
 public:
+    // added these to stay compatibile with the new spatial
+    virtual bool isParticipating() {return false;};
+    virtual void inLayerWithLocation(int layer,int x) {};
+
 	double scoreSoFar;
 	double pScoreSoFar;
 	double cPercentSoFar;

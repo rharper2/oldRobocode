@@ -7,19 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0027F6ED1760C4F3001D4F56 /* robocodeDelta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 004F510D173A4FB300E9BF62 /* robocodeDelta.cpp */; };
-		0027F6EF1760C4F3001D4F56 /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD5173B41E600FF8C02 /* critter.cpp */; };
-		0027F6F01760C4F3001D4F56 /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD7173B41E600FF8C02 /* DataCollector.cpp */; };
-		0027F6F11760C4F3001D4F56 /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD9173B41E600FF8C02 /* entity.cpp */; };
-		0027F6F21760C4F3001D4F56 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFDB173B41E600FF8C02 /* functions.cpp */; };
-		0027F6F31760C4F3001D4F56 /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFE3173B41E600FF8C02 /* myrandom.cpp */; };
-		0027F6F41760C4F3001D4F56 /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFEA173B41E600FF8C02 /* ptc2Grow.cpp */; };
-		0027F6F51760C4F3001D4F56 /* TournamentBreeder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFEF173B41E600FF8C02 /* TournamentBreeder.cpp */; };
-		0027F6F61760C4F3001D4F56 /* spatialRobocodeCreatureDelta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00ADF28E17448CB2004FCE54 /* spatialRobocodeCreatureDelta.cpp */; };
-		0027F6F71760C4F3001D4F56 /* robocodeTheta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0054003113725EE30008E5AB /* robocodeTheta.cpp */; };
-		0027F6F81760C4F3001D4F56 /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00ADF2941748C667004FCE54 /* spatial.cpp */; };
-		0027F6FB1760C4F3001D4F56 /* Robocode.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Robocode.1 */; };
-		0027F7021760C53E001D4F56 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		00DA2AB712863B77003F9E66 /* robocodeBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */; };
 		00DA2ABC12863B77003F9E66 /* Robocode.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Robocode.1 */; };
 		00DA2AD512863BBC003F9E66 /* RobocodeMvPMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00DA2AD412863BBC003F9E66 /* RobocodeMvPMain.cpp */; };
@@ -33,41 +20,17 @@
 		00F5E2731777CF5200E8A810 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFDB173B41E600FF8C02 /* functions.cpp */; };
 		00F5E2751777CF6000E8A810 /* ptc2Grow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFEA173B41E600FF8C02 /* ptc2Grow.cpp */; };
 		00F5E2761777CF7700E8A810 /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD9173B41E600FF8C02 /* entity.cpp */; };
-		00FCD2F11744CCCB00AB6E47 /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00FCD2EF1744CCCB00AB6E47 /* spatial.cpp */; };
+		00F5E2771777D35600E8A810 /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00FCD2EF1744CCCB00AB6E47 /* spatial.cpp */; };
+		00F5E2781777D35A00E8A810 /* critter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD5173B41E600FF8C02 /* critter.cpp */; };
+		00F5E2791777D35C00E8A810 /* DataCollector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD7173B41E600FF8C02 /* DataCollector.cpp */; };
+		00F5E27A1777D35F00E8A810 /* entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFD9173B41E600FF8C02 /* entity.cpp */; };
+		00F5E27B1777D36200E8A810 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFDB173B41E600FF8C02 /* functions.cpp */; };
+		00F5E27C1777D36600E8A810 /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFE3173B41E600FF8C02 /* myrandom.cpp */; };
 		00FCD2F21744CCCB00AB6E47 /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00FCD2EF1744CCCB00AB6E47 /* spatial.cpp */; };
-		8DD76F6A0486A84900D96B5E /* Robocode.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Robocode.1 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		0027F6FA1760C4F3001D4F56 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-				0027F6FB1760C4F3001D4F56 /* Robocode.1 in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		004F5107173A4F4200E9BF62 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-		0054001A1371298C0008E5AB /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-		0080AE8112648B7200631E8B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 8;
 			dstPath = /usr/share/man/man1/;
@@ -86,37 +49,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
-		8DD76F690486A84900D96B5E /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-				8DD76F6A0486A84900D96B5E /* Robocode.1 in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		004F510C173A4F4200E9BF62 /* RobocodeTheta copy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "RobocodeTheta copy"; sourceTree = BUILT_PRODUCTS_DIR; };
+		004F510C173A4F4200E9BF62 /* RobocodeDelta */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RobocodeDelta; sourceTree = BUILT_PRODUCTS_DIR; };
 		004F510D173A4FB300E9BF62 /* robocodeDelta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = robocodeDelta.cpp; sourceTree = "<group>"; };
 		004F510E173A4FB300E9BF62 /* robocodeDelta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = robocodeDelta.h; sourceTree = "<group>"; };
 		004F5110173A503900E9BF62 /* RobocodeDeltaMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobocodeDeltaMain.cpp; sourceTree = "<group>"; };
-		0054001F1371298C0008E5AB /* Robocode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Robocode; sourceTree = BUILT_PRODUCTS_DIR; };
-		00540021137129B40008E5AB /* spatialRobocodeCreatureTheta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatialRobocodeCreatureTheta.cpp; sourceTree = "<group>"; };
-		00540022137129B40008E5AB /* spatialRobocodeCreatureTheta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spatialRobocodeCreatureTheta.h; sourceTree = "<group>"; };
-		0054002613725E5F0008E5AB /* RobocodeThetaMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobocodeThetaMain.cpp; sourceTree = "<group>"; };
 		0054003113725EE30008E5AB /* robocodeTheta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = robocodeTheta.cpp; sourceTree = "<group>"; };
 		0054003213725EE30008E5AB /* robocodeTheta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = robocodeTheta.h; sourceTree = "<group>"; };
-		00542EED123F2F4D0026C2F8 /* robocodeAlpha.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = robocodeAlpha.cpp; sourceTree = "<group>"; };
-		00542EEE123F2F4D0026C2F8 /* robocodeAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = robocodeAlpha.h; sourceTree = "<group>"; };
 		0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = robocodeBeta.cpp; sourceTree = "<group>"; };
 		0080AE5D1263ACEC00631E8B /* robocodeBeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = robocodeBeta.h; sourceTree = "<group>"; };
-		0080AE8612648B7200631E8B /* Robocode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Robocode; sourceTree = BUILT_PRODUCTS_DIR; };
-		0080AE9A12648BA000631E8B /* RobocodeBetaMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobocodeBetaMain.cpp; sourceTree = "<group>"; };
-		0080AF2F126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatialRobocodeCreatureBeta.cpp; sourceTree = "<group>"; };
-		0080AF30126C3BCC00631E8B /* spatialRobocodeCreatureBeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spatialRobocodeCreatureBeta.h; sourceTree = "<group>"; };
 		0098DFD4173B41E600FF8C02 /* BreederBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BreederBase.h; sourceTree = "<group>"; };
 		0098DFD5173B41E600FF8C02 /* critter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = critter.cpp; sourceTree = "<group>"; };
 		0098DFD6173B41E600FF8C02 /* critter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = critter.h; sourceTree = "<group>"; };
@@ -141,26 +84,17 @@
 		0098DFF0173B41E600FF8C02 /* TournamentBreeder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TournamentBreeder.h; sourceTree = "<group>"; };
 		00ADF28E17448CB2004FCE54 /* spatialRobocodeCreatureDelta.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatialRobocodeCreatureDelta.cpp; sourceTree = "<group>"; };
 		00ADF28F17448CB2004FCE54 /* spatialRobocodeCreatureDelta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spatialRobocodeCreatureDelta.h; sourceTree = "<group>"; };
-		00ADF2941748C667004FCE54 /* spatial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = spatial.cpp; path = Spatial/spatial.cpp; sourceTree = "<group>"; };
-		00DA2AC012863B77003F9E66 /* Robocode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Robocode; sourceTree = BUILT_PRODUCTS_DIR; };
+		00DA2AC012863B77003F9E66 /* RobocodeMvP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RobocodeMvP; sourceTree = BUILT_PRODUCTS_DIR; };
 		00DA2AD412863BBC003F9E66 /* RobocodeMvPMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobocodeMvPMain.cpp; sourceTree = "<group>"; };
 		00DA2ADC12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatialRobocodeCreatureMvP.cpp; sourceTree = "<group>"; };
 		00DA2ADD12863BFA003F9E66 /* spatialRobocodeCreatureMvP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spatialRobocodeCreatureMvP.h; sourceTree = "<group>"; };
 		00FCD2EF1744CCCB00AB6E47 /* spatial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = spatial.cpp; path = Spatial/spatial.cpp; sourceTree = "<group>"; };
 		00FCD2F01744CCCB00AB6E47 /* spatial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spatial.h; path = Spatial/spatial.h; sourceTree = "<group>"; };
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		8DD76F6C0486A84900D96B5E /* Robocode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Robocode; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* Robocode.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Robocode.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0027F6F91760C4F3001D4F56 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		004F5106173A4F4200E9BF62 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -168,28 +102,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		005400191371298C0008E5AB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0080AE8012648B7200631E8B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		00DA2ABA12863B77003F9E66 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8DD76F660486A84900D96B5E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -250,21 +163,13 @@
 				004F510E173A4FB300E9BF62 /* robocodeDelta.h */,
 				0054003113725EE30008E5AB /* robocodeTheta.cpp */,
 				0054003213725EE30008E5AB /* robocodeTheta.h */,
-				00540021137129B40008E5AB /* spatialRobocodeCreatureTheta.cpp */,
-				00540022137129B40008E5AB /* spatialRobocodeCreatureTheta.h */,
-				0080AF2F126C3BCC00631E8B /* spatialRobocodeCreatureBeta.cpp */,
-				0080AF30126C3BCC00631E8B /* spatialRobocodeCreatureBeta.h */,
 				00DA2ADC12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp */,
 				00DA2ADD12863BFA003F9E66 /* spatialRobocodeCreatureMvP.h */,
 				0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */,
 				0080AE5D1263ACEC00631E8B /* robocodeBeta.h */,
-				00542EED123F2F4D0026C2F8 /* robocodeAlpha.cpp */,
-				00542EEE123F2F4D0026C2F8 /* robocodeAlpha.h */,
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
-				0054002613725E5F0008E5AB /* RobocodeThetaMain.cpp */,
 				004F5110173A503900E9BF62 /* RobocodeDeltaMain.cpp */,
 				00DA2AD412863BBC003F9E66 /* RobocodeMvPMain.cpp */,
-				0080AE9A12648BA000631E8B /* RobocodeBetaMain.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -272,11 +177,8 @@
 		1AB674ADFE9D54B511CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DD76F6C0486A84900D96B5E /* Robocode */,
-				0080AE8612648B7200631E8B /* Robocode */,
-				00DA2AC012863B77003F9E66 /* Robocode */,
-				0054001F1371298C0008E5AB /* Robocode */,
-				004F510C173A4F4200E9BF62 /* RobocodeTheta copy */,
+				00DA2AC012863B77003F9E66 /* RobocodeMvP */,
+				004F510C173A4F4200E9BF62 /* RobocodeDelta */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -292,23 +194,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0027F6EB1760C4F3001D4F56 /* RobocodeDelta copy */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0027F6FC1760C4F3001D4F56 /* Build configuration list for PBXNativeTarget "RobocodeDelta copy" */;
-			buildPhases = (
-				0027F6EC1760C4F3001D4F56 /* Sources */,
-				0027F6F91760C4F3001D4F56 /* Frameworks */,
-				0027F6FA1760C4F3001D4F56 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "RobocodeDelta copy";
-			productInstallPath = "$(HOME)/bin";
-			productName = Robocode;
-			productType = "com.apple.product-type.tool";
-		};
 		004F50F6173A4F4200E9BF62 /* RobocodeDelta */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 004F5109173A4F4200E9BF62 /* Build configuration list for PBXNativeTarget "RobocodeDelta" */;
@@ -324,43 +209,7 @@
 			name = RobocodeDelta;
 			productInstallPath = "$(HOME)/bin";
 			productName = Robocode;
-			productReference = 004F510C173A4F4200E9BF62 /* RobocodeTheta copy */;
-			productType = "com.apple.product-type.tool";
-		};
-		0054000A1371298C0008E5AB /* RobocodeTheta */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0054001C1371298C0008E5AB /* Build configuration list for PBXNativeTarget "RobocodeTheta" */;
-			buildPhases = (
-				0054000B1371298C0008E5AB /* Sources */,
-				005400191371298C0008E5AB /* Frameworks */,
-				0054001A1371298C0008E5AB /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = RobocodeTheta;
-			productInstallPath = "$(HOME)/bin";
-			productName = Robocode;
-			productReference = 0054001F1371298C0008E5AB /* Robocode */;
-			productType = "com.apple.product-type.tool";
-		};
-		0080AE7112648B7200631E8B /* RobocodeBeta */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0080AE8312648B7200631E8B /* Build configuration list for PBXNativeTarget "RobocodeBeta" */;
-			buildPhases = (
-				0080AE7212648B7200631E8B /* Sources */,
-				0080AE8012648B7200631E8B /* Frameworks */,
-				0080AE8112648B7200631E8B /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = RobocodeBeta;
-			productInstallPath = "$(HOME)/bin";
-			productName = Robocode;
-			productReference = 0080AE8612648B7200631E8B /* Robocode */;
+			productReference = 004F510C173A4F4200E9BF62 /* RobocodeDelta */;
 			productType = "com.apple.product-type.tool";
 		};
 		00DA2AA912863B77003F9E66 /* RobocodeMvP */ = {
@@ -378,25 +227,7 @@
 			name = RobocodeMvP;
 			productInstallPath = "$(HOME)/bin";
 			productName = Robocode;
-			productReference = 00DA2AC012863B77003F9E66 /* Robocode */;
-			productType = "com.apple.product-type.tool";
-		};
-		8DD76F620486A84900D96B5E /* Robocode */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "Robocode" */;
-			buildPhases = (
-				8DD76F640486A84900D96B5E /* Sources */,
-				8DD76F660486A84900D96B5E /* Frameworks */,
-				8DD76F690486A84900D96B5E /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Robocode;
-			productInstallPath = "$(HOME)/bin";
-			productName = Robocode;
-			productReference = 8DD76F6C0486A84900D96B5E /* Robocode */;
+			productReference = 00DA2AC012863B77003F9E66 /* RobocodeMvP */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -421,36 +252,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DD76F620486A84900D96B5E /* Robocode */,
-				0080AE7112648B7200631E8B /* RobocodeBeta */,
 				00DA2AA912863B77003F9E66 /* RobocodeMvP */,
-				0054000A1371298C0008E5AB /* RobocodeTheta */,
 				004F50F6173A4F4200E9BF62 /* RobocodeDelta */,
-				0027F6EB1760C4F3001D4F56 /* RobocodeDelta copy */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0027F6EC1760C4F3001D4F56 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0027F6ED1760C4F3001D4F56 /* robocodeDelta.cpp in Sources */,
-				0027F6EF1760C4F3001D4F56 /* critter.cpp in Sources */,
-				0027F6F01760C4F3001D4F56 /* DataCollector.cpp in Sources */,
-				0027F6F11760C4F3001D4F56 /* entity.cpp in Sources */,
-				0027F6F21760C4F3001D4F56 /* functions.cpp in Sources */,
-				0027F6F31760C4F3001D4F56 /* myrandom.cpp in Sources */,
-				0027F6F41760C4F3001D4F56 /* ptc2Grow.cpp in Sources */,
-				0027F6F51760C4F3001D4F56 /* TournamentBreeder.cpp in Sources */,
-				0027F6F61760C4F3001D4F56 /* spatialRobocodeCreatureDelta.cpp in Sources */,
-				0027F6F71760C4F3001D4F56 /* robocodeTheta.cpp in Sources */,
-				0027F6F81760C4F3001D4F56 /* spatial.cpp in Sources */,
-				0027F7021760C53E001D4F56 /* (null) in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		004F50F7173A4F4200E9BF62 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -468,20 +276,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0054000B1371298C0008E5AB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0080AE7212648B7200631E8B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		00DA2AAA12863B77003F9E66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -489,51 +283,18 @@
 				00DA2AB712863B77003F9E66 /* robocodeBeta.cpp in Sources */,
 				00DA2AD512863BBC003F9E66 /* RobocodeMvPMain.cpp in Sources */,
 				00DA2ADE12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8DD76F640486A84900D96B5E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				00FCD2F11744CCCB00AB6E47 /* spatial.cpp in Sources */,
+				00F5E2771777D35600E8A810 /* spatial.cpp in Sources */,
+				00F5E2781777D35A00E8A810 /* critter.cpp in Sources */,
+				00F5E2791777D35C00E8A810 /* DataCollector.cpp in Sources */,
+				00F5E27A1777D35F00E8A810 /* entity.cpp in Sources */,
+				00F5E27B1777D36200E8A810 /* functions.cpp in Sources */,
+				00F5E27C1777D36600E8A810 /* myrandom.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0027F6FD1760C4F3001D4F56 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "compiler-default";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = /usr/local/include;
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = "RobocodeDelta copy";
-			};
-			name = Debug;
-		};
-		0027F6FE1760C4F3001D4F56 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "compiler-default";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = "RobocodeDelta copy";
-			};
-			name = Release;
-		};
 		004F510A173A4F4200E9BF62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -546,7 +307,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = "RobocodeTheta copy";
+				PRODUCT_NAME = RobocodeDelta;
 			};
 			name = Debug;
 		};
@@ -559,57 +320,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = "RobocodeTheta copy";
-			};
-			name = Release;
-		};
-		0054001D1371298C0008E5AB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = /usr/local/include;
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = Robocode;
-			};
-			name = Debug;
-		};
-		0054001E1371298C0008E5AB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = Robocode;
-			};
-			name = Release;
-		};
-		0080AE8412648B7200631E8B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = /usr/local/include;
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = Robocode;
-			};
-			name = Debug;
-		};
-		0080AE8512648B7200631E8B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = Robocode;
+				PRODUCT_NAME = RobocodeDelta;
 			};
 			name = Release;
 		};
@@ -623,7 +334,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = Robocode;
+				PRODUCT_NAME = RobocodeMvP;
 			};
 			name = Debug;
 		};
@@ -634,32 +345,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = Robocode;
-			};
-			name = Release;
-		};
-		1DEB923208733DC60010E9CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = /usr/local/include;
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = Robocode;
-			};
-			name = Debug;
-		};
-		1DEB923308733DC60010E9CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = Robocode;
+				PRODUCT_NAME = RobocodeMvP;
 			};
 			name = Release;
 		};
@@ -692,15 +378,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0027F6FC1760C4F3001D4F56 /* Build configuration list for PBXNativeTarget "RobocodeDelta copy" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0027F6FD1760C4F3001D4F56 /* Debug */,
-				0027F6FE1760C4F3001D4F56 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		004F5109173A4F4200E9BF62 /* Build configuration list for PBXNativeTarget "RobocodeDelta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -710,38 +387,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0054001C1371298C0008E5AB /* Build configuration list for PBXNativeTarget "RobocodeTheta" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0054001D1371298C0008E5AB /* Debug */,
-				0054001E1371298C0008E5AB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0080AE8312648B7200631E8B /* Build configuration list for PBXNativeTarget "RobocodeBeta" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0080AE8412648B7200631E8B /* Debug */,
-				0080AE8512648B7200631E8B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		00DA2ABD12863B77003F9E66 /* Build configuration list for PBXNativeTarget "RobocodeMvP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00DA2ABE12863B77003F9E66 /* Debug */,
 				00DA2ABF12863B77003F9E66 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "Robocode" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1DEB923208733DC60010E9CD /* Debug */,
-				1DEB923308733DC60010E9CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
