@@ -151,7 +151,7 @@ void doit() {
 	// since we "save" robots when they are created (as well as before each battle)
 	// we need to set up the CurrentWorkingDirectory to the right one before
 	// we create the spacial world.
-	int startGen = 135;
+	int startGen = 137;
 	currentGen = startGen;
 	
 	// As an aside: the reason we save robots in the creation of them (as well as before each calcScore

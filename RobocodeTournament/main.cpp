@@ -27,8 +27,8 @@
 #define TARFILE "robotsThetaAdvanced.tgz"
 #define OUTPUTFILE "TopDeltaWinners.txt"
 
-#define STARTGEN 135
-#define ENDGEN 137
+#define STARTGEN 166
+#define ENDGEN 174
 
 
 using namespace std;
@@ -355,12 +355,13 @@ int main (int argc, char * const argv[]) {
 	generation = 0;
     needToCheck.clear();
 	initialiseServerStuff();
-	for (generation =STARTGEN;generation < ENDGEN;generation++) { 
+	for (generation =STARTGEN;generation < ENDGEN;generation++) {
+        cout << "For generation " << generation << endl;
 		changeDir();
 		doATournament();
 		cleanUp();
 	}
-    if (!needToCheck.size()) {
+    if (needToCheck.size()>0) {
         cout << "We need to check the following generations, something odd happened...  ";
         for (int i=0;i<needToCheck.size();i++) {
             cout << needToCheck[i] << ", ";

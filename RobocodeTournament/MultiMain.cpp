@@ -24,7 +24,9 @@
 #include <vector>
 #include <boost/shared_ptr.hpp>
 #include <string.h>
+#include <algorithm>
 
+#define NUMBEROFGOES 20
 
 using namespace std;
 
@@ -39,6 +41,7 @@ public:
 };
 
 vector<string> battlers,winners;
+vector<string> starters;
 typedef boost::shared_ptr<battle> battlePtr;
 
 list<battlePtr> battleFront; // a list of battles to be fought.
@@ -78,7 +81,7 @@ void changeDir();
 void readInWinners() {
 	changeDir();
 	ifstream in;
-	in.open("TopPVMWinners.txt");
+	in.open("TopDeltaWinners.txt");
 	if (!in) {
 		cout << "Error in reading TopCoEvolvedWinners.txt file.\n";
 		exit(1);
@@ -89,7 +92,7 @@ void readInWinners() {
 		in >> read;
 		if (!in.eof()) {
 			cout << "Just read a winner as " << read << endl;
-			sprintf(name,"tar -xzvf robotsMvPAdvanced.tgz %s.class",read.c_str());
+			sprintf(name,"tar -xzvf robotsThetaAdvanced.tgz %s.class",read.c_str());
 			system(name);
 			sprintf(name,"Gen%d.%s",generation,read.c_str());
 			cout << "It has become " << name << endl;
@@ -317,7 +320,6 @@ void doBattles() {
 	cout << "Size of battlers " << battlers.size() << " size of winners " << winners.size();
 }
 
-#define NUMBEROFGOES 5
 string savedWinners[NUMBEROFGOES][20];
 int theRound = 0;
 
@@ -336,16 +338,15 @@ int theRound = 0;
 bool stillToSave = true;
 
 void doTheTournament() {
-	for (generation = 391; generation < 442; generation++) {
-		readInWinners();
-	}
+	battlers = starters;
+    random_shuffle(battlers.begin(),battlers.end());
 	stillToSave = true; 
 	while (battlers.size() > 1) {
 		winners.clear();
 		setUpBattleFront();
 		doBattles();
 		battlers = winners;
-		if (winners.size() < 20) {
+		if (winners.size() < 17) {
 			cout << "***************** DOWN TO THE FINAL " << winners.size() << "*****************\nThe contenders are:\n";
 			verbose = true;
 			for (int i=0;i<winners.size();i++) {
@@ -354,20 +355,16 @@ void doTheTournament() {
 			}
 			cout << "*********************** The Battle commences **************************\n";
 		}
-		if (stillToSave && (winners.size() <= 20)) {
+		if (stillToSave && (winners.size() < 17)) {
 			stillToSave = false;
-			cout << "Storing the top 10 from this go.\n";
+			cout << "Storing the top " << winners.size() << " from this go.\n";
 			for (int i=0;i<winners.size();i++) {
 				savedWinners[theRound][i] = winners[i];
 			}
 		}
 		
 	}
-	
-	//cout << "We ended with " << winners.size() << " winners " << " they were: \n";
-	
-	//saveResults();
-	
+    cout << "THE FINAL WINNER OF ROUND " << theRound << " was " << winners[0] << endl;
 }
 
 
@@ -377,25 +374,31 @@ void cleanUp() { // assumes in current directory
 }
 
 
+int startGeneration;
+int lastGeneration;
 
 int main (int argc, char * const argv[]) {
 	myrandomize();
-    // insert code here...
-	generation = 3;
+    startGeneration = 126;
+    lastGeneration = 166;
 	verbose = false;
 	initialiseServerStuff();
+    for (generation = startGeneration; generation < lastGeneration; generation++) {
+		readInWinners();
+	}
+    starters = battlers;
 	for (theRound = 0;theRound < NUMBEROFGOES;theRound++) {
 		doTheTournament();
-		for (generation = 245;generation > 0;generation--) {
-			changeDir();
-			cleanUp();
-		}
 	}
+    for (generation = startGeneration;generation < lastGeneration ;generation++) {
+        changeDir();
+        cleanUp();
+    }
 	char dirname[200];
-	sprintf(dirname,"~/",generation);
+	sprintf(dirname,"~/");
 	chdir(dirname);
 	ofstream savefile;
-	savefile.open("top10winnerspvmrounds");
+	savefile.open("top18winnersrounds.csv");
 		for (theRound=0;theRound < NUMBEROFGOES;theRound++) {
 			cout << "Round" << theRound << ",\n";
 			verbose = false;
