@@ -21,6 +21,8 @@
 #include <vector>
 #include <string.h>
 
+extern vector<int> layerLives;
+
 void streamout(ostream &pout,crPtr &item,int age) {
 	int len;
 	pout << age << " ";
@@ -48,7 +50,7 @@ map<int,battleLinePtr>::iterator found;
 
 fd_set readfds,testfds;
 struct sockaddr_in client_address;
-struct sockaddr_in server_address;
+struct sockaddr_in server_address;    
 socklen_t server_len,client_len;
 int server_sockfd, client_sockfd;
 
@@ -87,12 +89,30 @@ void makeName(long id,bool CreatureDelta) {
 }
 
 const char *spatialRobocodeCreatureDelta::getName() {
-	makeName(thisCreatureDeltaNumber,true);
-	return javaCName;
+    if (!participates) {
+        switch(humanRobot) {
+            case 0: return "supersample.SuperBoxBot";
+            case 1: return "supersample.SuperCorners";
+            case 2: return "supersample.SuperCrazy";
+            case 3: return "supersample.SuperMercutio";
+            case 4: return "supersample.SuperRamFire";
+            case 5: return "supersample.SuperSpinBot";
+            case 6: return "supersample.SuperTracker";
+            case 7: return "supersample.SuperTrackFire";
+            case 8: return "supersample.SuperWalls";
+            case 9: return "sample.Walls";
+            default: return "sample.Walls";
+        }
+    }
+	else {
+        makeName(thisCreatureDeltaNumber,true);
+        return javaCName;
+    }
 }
 
 // Need to test ptc2 with this grammar.
 spatialRobocodeCreatureDelta::spatialRobocodeCreatureDelta() {
+    participates = true;
 	geneticAge = 0;
 	int maxTree;
 	bool done = false;
@@ -125,6 +145,7 @@ spatialRobocodeCreatureDelta::spatialRobocodeCreatureDelta() {
 }
 
 spatialRobocodeCreatureDelta::spatialRobocodeCreatureDelta(bool make) {
+    participates= true;
 	thisCreatureDeltaNumber = CreatureDeltaIdentifierCount++;
 	compsWon = 0;
 	geneticAge =0;
@@ -161,6 +182,7 @@ spatialRobocodeCreatureDelta::spatialRobocodeCreatureDelta(bool make) {
 }
 
 void spatialRobocodeCreatureDelta::doCrossover(spatialRobocodeCreatureDelta &p2) {
+    if (!participates) return;
 	crPtr c1, c2;
 	bool done = false;
 	int count = 0;
@@ -200,8 +222,12 @@ void spatialRobocodeCreatureDelta::doCrossover(spatialRobocodeCreatureDelta &p2)
 }
 
 void spatialRobocodeCreatureDelta::doMutation() {
-	critter->smartSureMutate(10000);
-	// what to do if its invalid etc hmm oh well nothing for just now;
+    if (!participates) {
+        humanRobot = randomint(MAXROBOTNUMBER);
+    } else {
+        critter->smartSureMutate(10000);
+	}
+    // what to do if its invalid etc hmm oh well nothing for just now;
 }
 
 void spatialRobocodeCreatureDelta::clearScore() {
@@ -241,6 +267,30 @@ void spatialRobocodeCreatureDelta::addToScore(double toAdd) {
 	competitions++;
 }
 
+// Terrible quick hack, that will have to be rethought if we thread this - buffers collide.
+char outputB[200];
+char outputC[200];
+
+const char *getGenName(int currentGen,spatialRobocodeCreatureDelta *creatureDelta,int loc,int loc2) {
+    if (creatureDelta->isParticipating()){
+    sprintf(outputB,"Gen%d.%s",currentGen,creatureDelta->getName());
+    } else {
+        cout << "Creature loc " << loc << " battling " << loc2 << " is not a participant.\n";
+        sprintf(outputB,"%s",creatureDelta->getName());
+    }
+    return outputB;
+}
+
+const char *getGenName(int currentGen,spatialRobocodeParasiteDelta *parasiteDelta,int loc2) {
+    if (parasiteDelta->isParticipating()){
+        sprintf(outputC,"Gen%d.%s",currentGen,parasiteDelta->getName());
+    } else {
+        cout << "Parasite battling " << loc2 << " is not a participant\n";
+        sprintf(outputC,"%s",parasiteDelta->getName());
+    }
+    return outputC;
+}
+
 void spatialRobocodeCreatureDelta::addToLayeredScore(double toAdd) {
 	storedLayeredScore += toAdd;
 	competitions++;
@@ -274,7 +324,8 @@ double spatialRobocodeCreatureDelta::getScore() {
 					readyForWork.pop_front();
 					battleLinePtr battleToFarm = battleFront.front();
 					battleFront.pop_front();
-					sprintf(outputBuffer,"Gen%d.%s*,Gen%d.%s*\n",currentGen,battleToFarm->CreatureDelta->getName(),currentGen,battleToFarm->ParasiteDelta->getName());
+                    // quick hack
+                    sprintf(outputBuffer,"%s*,%s*\n",getGenName(currentGen,battleToFarm->CreatureDelta,myLocation,battleToFarm->location),getGenName(currentGen,battleToFarm->ParasiteDelta,battleToFarm->location));
 					//cout << "Sending instructions as follows: " << outputBuffer;
 					int cr;
 					if ( (cr = write(sdf,outputBuffer,strlen(outputBuffer))) != strlen(outputBuffer)) {
@@ -445,6 +496,7 @@ void spatialRobocodeCreatureDelta::setCreature(boost::shared_ptr<spatialRobocode
 }
 
 void spatialRobocodeCreatureDelta::makeCopyOfCreature(boost::shared_ptr<spatialRobocodeCreatureDelta> /*crPtr*/ tocopy) {
+    if (!participates) humanRobot = tocopy->humanRobot;
 	cr_data *newCopy;
 	newCopy = new cr_data(*(tocopy->getCreature())); // dereference the crPtr to refer to the cr_data
 	thisCreatureDeltaNumber = CreatureDeltaIdentifierCount++;
@@ -531,10 +583,38 @@ void spatialRobocodeCreatureDelta::display(const char *fname,int no,int para) {
 	cout << "Err you haven't written display spatialRobocodeCreatureDelta yet!\n";
 }
 
+bool spatialRobocodeCreatureDelta::isParticipating() {
+    return participates;
+}
+
+
+void spatialRobocodeCreatureDelta::inLayerWithLocation(int layer,int x) {
+    myLocation = x;
+    if (layer == layerLives.size()-1) {
+        if (x>=100 && x<105) participates = false;
+        if (x>=120 && x<125) participates = false;
+        if (x>=140 && x<145) participates = false;
+        if (x>=160 && x<165) participates = false;
+        if (x>=180 && x<185) participates = false;
+            
+        if (x>=300 && x<305) participates = false;
+        if (x>=320 && x<325) participates = false;
+        if (x>=340 && x<345) participates = false;
+        if (x>=360 && x<365) participates = false;
+        if (x>=380 && x<385) participates = false;
+            // need some code to change some of the locations to not participating and human robots.
+    }
+    if (!participates) cout << "Set location " << x << " in layer to not participate (creature)\n";
+
+}
+
+
+
 /************************************************************************
  spatialRobocodeParasiteDelta and spatialRobocodeParasiteDelta(bool)
  *************************************************************************/
 spatialRobocodeParasiteDelta::spatialRobocodeParasiteDelta() {
+    participates=true;
 	geneticAge = 0;
 	int maxTree;
 	bool done = false;
@@ -568,11 +648,30 @@ spatialRobocodeParasiteDelta::spatialRobocodeParasiteDelta() {
 
 
 const char *spatialRobocodeParasiteDelta::getName() {
+    if (!participates) {
+        switch(humanrobot) {
+            case 0: return "supersample.SuperBoxBot";
+            case 1: return "supersample.SuperCorners";
+            case 2: return "supersample.SuperCrazy";
+            case 3: return "supersample.SuperMercutio";
+            case 4: return "supersample.SuperRamFire";
+            case 5: return "supersample.SuperSpinBot";
+            case 6: return "supersample.SuperTracker";
+            case 7: return "supersample.SuperTrackFire";
+            case 8: return "supersample.SuperWalls";
+            case 9: return "sample.Walls";
+            default: return "sample.Walls";
+        }
+    }
+	else {
+ 
 	makeName(thisParasiteDeltaNumber,false);
 	return javaPName;
 }
+}
 
 spatialRobocodeParasiteDelta::spatialRobocodeParasiteDelta(bool make) {
+    participates=true;
 	thisParasiteDeltaNumber = ParasiteDeltaIdentifierCount++;
 	geneticAge =0;
 	if (make) {
@@ -611,6 +710,7 @@ spatialRobocodeParasiteDelta::~spatialRobocodeParasiteDelta() {
 }
 
 void spatialRobocodeParasiteDelta::doCrossover(spatialRobocodeParasiteDelta &p2) {
+    if (!participates) return;
 	crPtr c1, c2;
 	bool done = false;
 	int count = 0;
@@ -647,10 +747,11 @@ void spatialRobocodeParasiteDelta::doCrossover(spatialRobocodeParasiteDelta &p2)
 		}
 	} while (!done);
 	return; 
-}
+}   
 
 void spatialRobocodeParasiteDelta::doMutation(int i) {
-	ParasiteDelta->smartSureMutate(10000);
+    if (!participates) humanrobot = randomint(MAXROBOTNUMBER);
+	else ParasiteDelta->smartSureMutate(10000);
 }
 
 bool spatialRobocodeParasiteDelta::isReallyValid() {
@@ -776,4 +877,31 @@ void spatialRobocodeParasiteDelta::loadParasite(ifstream &fin,int i) {
 	//	cout << "Loaded a ParasiteDelta!\n";
 	
 }
+
+
+bool spatialRobocodeParasiteDelta::isParticipating() {
+    return participates;
+}
+
+
+void spatialRobocodeParasiteDelta::inLayerWithLocation(int layer,int x) {
+    if (layer == layerLives.size()-1) {
+        if (x>=110 && x<115) participates = false;
+        if (x>=130 && x<135) participates = false;
+        if (x>=150 && x<155) participates = false;
+        if (x>=170 && x<175) participates = false;
+        if (x>=190 && x<195) participates = false;
+        
+        if (x>=310 && x<315) participates = false;
+        if (x>=330 && x<335) participates = false;
+        if (x>=350 && x<355) participates = false;
+        if (x>=370 && x<375) participates = false;
+        if (x>=390 && x<395) participates = false;
+        if (!participates) humanrobot= randomint(MAXROBOTNUMBER);
+        // need some code to change some of the locations to not participating and human robots.
+    }
+    if (!participates) cout << "Set location " << x << " in layer to not participate (parasite)\n";
+
+}
+
 

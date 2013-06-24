@@ -72,7 +72,7 @@ public:
           long *getCodons() { return codonIntegers; }
           int getUsefulCodonLength() { return usedLength; }
 		  int getNumberOfCodons() { return numberOfCodons; }
-          vector<function> *getFunctions() { return &functionVector; }
+          vector<GEfunction> *getFunctions() { return &functionVector; }
           
           string display(grammarBase *g);
           
@@ -111,7 +111,7 @@ private:
           int numberOfCodons;
           int usedLength;
 
-          vector<function> functionVector;
+          vector<GEfunction> functionVector;
           int expression[MAX_LENGTH_OF_EXPRESSION]; // parsed grammatical expression
           int expressionLength;
 

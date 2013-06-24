@@ -103,7 +103,7 @@ void changeDir(int);
 void readInBattlers(int gen) {
 	changeDir(gen);
 	char name[80];
-	system("tar -xvzf robotsMvPAdvanced.tgz *.class");
+	system("tar -xvzf robotsThetaAdvanced.tgz '*.class'");
 	DIR *dp;
 	string inputString;
 	int pos;
@@ -127,28 +127,45 @@ void readInBattlers(int gen) {
 }
 
 void readInWinners() {
-	changeDir();
-	ifstream in;
-	in.open("TopPVMWinners.txt");
+    for (int toread = 150;toread < 174;toread++) {
+        
+    changeDir(toread);
+    ifstream in;
+	in.open("TopDeltawinners.txt");
 	if (!in) {
 		cout << "Error in reading Top10Winners file.\n";
 		exit(1);
 	}
 	char name[80];
+    char command[80];
 	while (!in.eof()) {
 		string read;
 		in >> read;
 		if (!in.eof()) {
 			cout << "Just read a winner as " << read << endl;
-			sprintf(name,"tar -xzvf robotsMvPAdvanced.tgz %s.class",read.c_str());
-			system(name);
-			sprintf(name,"Gen%d.%s",generation,read.c_str());
+			sprintf(name,"%s",read.c_str());
 			cout << "It has become " << name << endl;
+           /* string named = name;
+            int pos = named.find(".");
+            string directory = named.substr(3,pos);
+            int gen;
+            gen = atoi(directory.c_str());
+            cout << "The gen is " << gen << endl;
+            changeDir(gen);
+           */
+            int gen = toread;
+            //string justname = named.substr(pos+1);
+            string justname = name;
+            cout << "justname is " << justname << endl;
+            sprintf(command,"tar -xzvf robotsThetaAdvanced.tgz %s.class",justname.c_str());
+            system(command);
+            sprintf(name,"Gen%d.%s",gen,justname.c_str());
 			battlers.push_back(name);
 		}
 	}
 	in.close();
 	cout << "At the end of that, we have " << battlers.size() << " battlers. \n";
+    }
 }
 
 void setUpBattleFront() {
@@ -177,24 +194,22 @@ void setUpBattleFront() {
 		battleFront.push_back(nbp);
 		nbp.reset(new battle(*at,"gg.Peryton1_1*",8,result));
 		battleFront.push_back(nbp);
-		nbp.reset(new battle(*at,"zyx.mega.YersiniaPestis 1.3.7*",9,result));
-		battleFront.push_back(nbp);
-		nbp.reset(new battle(*at,"squigsoft.SquigBot2_8*",10,result));
-		battleFront.push_back(nbp);
-		nbp.reset(new battle(*at,"dummy.micro.Sparrow 2.5*",11,result));
-		battleFront.push_back(nbp);
-		nbp.reset(new battle(*at,"davidalves.net.DuelistMini*",12,result));
-		battleFront.push_back(nbp);
-		nbp.reset(new battle(*at,"apv.NanoLauLectrikTheCannibal*",13,result));
-		battleFront.push_back(nbp);
-		nbp.reset(new battle(*at,"abc.Tron 2.02*",14,result));
-		battleFront.push_back(nbp);
-		nbp.reset(new battle(*at,"apv.Aspid 1.6.5*",15,result));
-		battleFront.push_back(nbp);
-		nbp.reset(new battle(*at,"cx.mini.Cigaret*",16,result));
-		battleFront.push_back(nbp);
-
-
+		nbp.reset(new battle(*at,"supersample.SuperBoxBot*",9,result));
+        battleFront.push_back(nbp);
+		nbp.reset(new battle(*at,"supersample.SuperCorners*",11,result));
+        battleFront.push_back(nbp);
+		nbp.reset(new battle(*at,"supersample.SuperCrazy*",12,result));
+        battleFront.push_back(nbp);
+		nbp.reset(new battle(*at,"supersample.SuperMercutio*",13,result));
+        battleFront.push_back(nbp);
+		nbp.reset(new battle(*at,"supersample.SuperRamFire*",14,result));
+        battleFront.push_back(nbp);
+		nbp.reset(new battle(*at,"supersample.SuperSpinBot*",15,result));
+        battleFront.push_back(nbp);
+		nbp.reset(new battle(*at,"supersample.SuperTrackFire*",16,result));
+        battleFront.push_back(nbp);
+		nbp.reset(new battle(*at,"supersample.SuperWalls*",10,result));
+        battleFront.push_back(nbp);
 		at++;
 		//cout << "Set up a battle between " << nbp->c1 << " and " << nbp->c2 << endl;
 	}
@@ -348,7 +363,7 @@ void doBattles() {
 void saveResults(const char *filename) {
 	ofstream of(filename);
 	cout << "Saving results of " << resultVector.size() << " battlers " << endl;
-	of << "Name, Crazy, RamFire, Spin Bot, Tracker, TrackFire, VelociRobot, Walls, GuessFactor, Pertyton, YersinaPestis, SquigBot, Sparrow, Duelist, Cannibal, Tron, Aspid, Cigaret \n";
+	of << "Name, Crazy, RamFire, Spin Bot, Tracker, TrackFire, VelociRobot, Walls, GuessFactor, Pertyton, SBB, SCrazy, SMercuito, SRamFire, SSping, SuperTF, SuperWalls, Cigaret \n";
 	for (int i=0;i<resultVector.size();i++) {
 		of << resultVector[i]->name;
 		for (int j=0;j<NUMBEROFSAMPLES;j++) 
@@ -361,19 +376,13 @@ void cleanUp() { // assumes in current directory
 	system("rm *.class");
 }
 void doTheTournament() {
-	for (generation =441;generation > 370;generation--) {
-		cout << "DOING generation: " << generation << endl;
-		readInWinners();
-	}
+	readInWinners();
 	
 	setUpBattleFront();
 	doBattles();
 	chdir("~");
-	saveResults("PvMGenTournament.csv");
-	for (generation =441;generation > 370;generation--) {
-		changeDir(generation);
-		cleanUp();
-	}
+	saveResults("PvMGenTournament2.csv");
+	
 	
 }
 
@@ -395,30 +404,12 @@ int main (int argc, char * const argv[]) {
 	verbose = false;
 	initialiseServerStuff();
 	//doTheTournament();
-	//for (int i=245;i>190;i--) {
+	//for (int i=165;i>130;i--) {
 	//	doAGenTournament(i);
-	//	cleanUp();
+		cleanUp();
 	//}
-	doAGenTournament(440);
-	cleanUp();
-	doAGenTournament(410);
-	cleanUp();
-	doAGenTournament(380);
-	cleanUp();
-    doAGenTournament(350);
-	cleanUp();
-    doAGenTournament(320);
-	cleanUp();
-    doAGenTournament(290);
-	cleanUp();
-    doAGenTournament(260);
-	cleanUp();
-    doAGenTournament(230);
-	cleanUp();
-    doAGenTournament(200);
-	cleanUp();
-    doAGenTournament(170);
-	cleanUp();
+   //doAGenTournament(154);
+	doTheTournament();
     std::cout << "Goodbye, World!\n";
     return 0;
 }

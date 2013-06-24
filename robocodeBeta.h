@@ -36,14 +36,14 @@ using namespace std;
 class robocodeBeta: public grammarBase {
 public:
 	static robocodeBeta* Instance();
-	bool parse(int *exp,int *length,int maxExp,long codons_list[],int max_codons,int &used,vector<function> *funcVec);
+	bool parse(int *exp,int *length,int maxExp,long codons_list[],int max_codons,int &used,vector<GEfunction> *funcVec);
 	void print_grammar_individual(ostream& output_stream,int expr[],int length) { print_grammar_individual(output_stream,expr,length,"NAME","0"); }
 	void print_grammar_individual(ostream& output_stream,int expr[],int length, char *name , char *gen);
 	void AllowFunctions(bool);
-	bool doACreate(int *exp,int *length,int maxExp,long codons_list[],int max_codons,int &used,vector<function> *funcVec,int maxD = 6,
+	bool doACreate(int *exp,int *length,int maxExp,long codons_list[],int max_codons,int &used,vector<GEfunction> *funcVec,int maxD = 6,
 				   int minD = 2, bool maxG = false);
 	bool ptc2Grow(int *exp, int *length, int maxExp, long codon_list[],
-				  int max_codons, int &cUsed, vector<function> *funcVec,int maxD,int req_expansions);
+				  int max_codons, int &cUsed, vector<GEfunction> *funcVec,int maxD,int req_expansions);
 	bool haveGrammarInfo() { return ExtractingGrammarInfo; }
 	const string getInvalidReason() { return invalidReason; }
 protected:
@@ -59,7 +59,7 @@ private:
 	int *expression,*expressionLength,functionNos;
 	long *codons;
 	int maxCodons,maxExpression,expressionPos,codonPos,noOfParams;
-	vector<function> *funcVector;
+	vector<GEfunction> *funcVector;
 	void apply_one_grammar(int expr[], int *curr, int *length); 
 	bool dealtWithPop(int expr[],int *curr,int *length);
 	bool invalid,AllowDefun,AllowParams;

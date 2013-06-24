@@ -326,7 +326,7 @@ robocodeAlpha* robocodeAlpha::Instance() {
 
 
 bool robocodeAlpha::doACreate(int *exp,int *length,int maxExp,long codon_list[],
-                            int max_codons,int &cUsed,vector<function> *funcVec,int maxD,int minD,bool mG) {
+                            int max_codons,int &cUsed,vector<GEfunction> *funcVec,int maxD,int minD,bool mG) {
             maxGrow = mG;
             maxDepth = maxD;
             minDepth = minD;
@@ -338,7 +338,7 @@ bool robocodeAlpha::doACreate(int *exp,int *length,int maxExp,long codon_list[],
 }
 
 bool robocodeAlpha::ptc2Grow(int *exp, int *length, int maxExp, long codon_list[],
-							int max_codons, int &cUsed, vector<function> *funcVec,int maxD,int req_expansions) {
+							int max_codons, int &cUsed, vector<GEfunction> *funcVec,int maxD,int req_expansions) {
             expression = exp;
             expressionLength = length;
 
@@ -646,7 +646,7 @@ void robocodeAlpha::AllowFunctions(bool al) {
 }
 
 bool robocodeAlpha::parse(int *exp,int *length,
-                      int maxExp,long codon_list[],int max_codons,int &cUsed,vector<function> *funcVec)
+                      int maxExp,long codon_list[],int max_codons,int &cUsed,vector<GEfunction> *funcVec)
 {
 // This is realy the raison d'être of the gramar class
 // it takes a list of codons and returns the parsed expression
@@ -1012,7 +1012,7 @@ void robocodeAlpha::read_func() {
 		  // funciton has.
 
           int funcPos=0;
-          funcVector->push_back(function());
+          funcVector->push_back(GEfunction());
           (*funcVector)[functionNos].expression[0]=PARAMS;  
           AllowDefun = false; // we don't allow function definitions when working out how many params
 		  AllowParams = false; // whilst we working out how many paramaters.
