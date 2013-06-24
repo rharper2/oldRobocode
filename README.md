@@ -1,4 +1,6 @@
 #Evolving Robocode Robots using grammatcal evolution
+
+
 This is a collection of files that can be used to evolve Robocode tanks using GE
 Just now I am ressurecting this just to try and quickly evolve a nanobot.
 
@@ -30,7 +32,7 @@ I didn't have time to use this for the GECCO entry but its now possible to remov
 
 Anyway the idea behind it is as follows:
 
-Normally: For each cell you select which critter is going to occupy it next generation by ranking them according to score and selecting the first one, 50%, second one, 25% etc. The algorithm used for this is to generate a random number. If the first bit is 1 we will select the "best" otherwise if the second bit is 1 we select the second... etc. We then take the "neighbours and previous" vector of the cell (which points to all the surrounding cells (and this one)) and sort for the "nth best item) - where n is the one we are choosing. 50% of the time, its just getting the best critter.
+Normally: For each cell you select which critter is going to occupy it next generation by ranking them according to score and selecting the first one, 50%, second one, 25% etc. The algorithm used for this is to generate a random number. If the first bit is 1 we will select the "best" otherwise if the second bit is 1 we select the second... etc. We then take the "neighbours and previous" vector of the cell (which points to all the surrounding cells (and this one)) and sort for the nth best item) - where n is the one we are choosing. 50% of the time, its just getting the best critter.
 
 So the change here is that we prune the neighbours and previous (each round) to remove any critter that returns false to the query (isParticipating()). This would indicate that its not participating in the genetic breeding. This allows us to put in that cell a different type of creature (here a human robot) that will be used to score the parasites competing against it, but won't get mixed up in the breeding.
 
@@ -42,8 +44,8 @@ That it can use to decide whether or not to set the isParticipating() flag to fa
 
 You can run it just by running the RobocodeDelta target in xcode, it will set up the first layer and wait for you to add some client "battle managers"
 
-Effectively what it does (this is the spatialCreatureDelta class) is create a layer of robots (critters and parasites), schecdules all the matches. Then it waits for helper clients to contact it,
-it passes to them teh names of the battles it wants run and waits for the results. After all the battles are done these results are used to determine which critters and parasites are kept, which are bread from and
+Effectively what it does (this is the spatialCreatureDelta class) is create a layer of robots (critters and parasites), schedules all the matches. Then it waits for helper clients to contact it,
+it passes to them teh names of the battles it wants run and waits for the results. After all the battles are done these results are used to determine which critters and parasites are kept, which are bred from and
 which are mutated. Again I have a paper on SCALP (Spatial Co-Evolution on Age Layered Planes), but I will probably add more code describing it later.
 
 You can find the appropriate java program helpers in the BattleRunners directory.
@@ -61,3 +63,6 @@ To do - going to alter the world so some human created robots appear on the top 
 
 I will get it working better and then change the instructions (soon! <- famous last...)
 
+#Final update notes
+
+I have updated the spatial.h file so that it now requires C++11 (although it is still compatible with the older stdlib). Moving to C++11 caused a few problems with the boost shared_ptrs for some unknown reason. This was solved by changing the vectors in location to standard pointers (which actually makes more sense) but it does mean that if you start to manually delete locations (and I can't think why you would) that you need to take care to make sure the vectors of pointers in adjacent locations are updated).
