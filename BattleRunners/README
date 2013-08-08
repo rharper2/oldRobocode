@@ -15,4 +15,6 @@ You may have to add more to your classpath etc, but I don't.
 
 :)
 
+Also now in this directory is a tar of the (non standard) human competitors used by spatialRobocodeCreatureDelta. This should be untarred (but leave the jar files) in the robots subdirectory of your robocode directory.
+
 
