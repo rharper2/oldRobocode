@@ -18,7 +18,7 @@
 
 #include "critter.h"
 #include <fstream>
-#define MAXROBOTNUMBER 10
+#define MAXROBOTNUMBER 20
 
 class spatialRobocodeParasiteDelta;
 class battleLine;
@@ -34,6 +34,7 @@ class spatialRobocodeCreatureDelta {
 	bool failedTest;
     bool participates;
     int myLocation;
+    bool topLevel;
 public:
 
 	
@@ -127,6 +128,7 @@ class spatialRobocodeParasiteDelta {
 	double storedLayeredScore;
 	int competitions;
 	bool failedTest;
+    bool topLevel;
 public:
 	int geneticAge;
 	long thisParasiteDeltaNumber;

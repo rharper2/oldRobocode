@@ -1,5 +1,8 @@
 #Evolving Robocode Robots using grammatcal evolution
 
+> 8 August 2013 - some bug fixes to the new isParticipating stuff in spatial.h - it turns out the remove-copy-if algorithm didn't quite work how I thought
+  as it didn't reduce the vector size so null pointer errors could occur.
+
 
 This is a collection of files that can be used to evolve Robocode tanks using GE
 Just now I am ressurecting this just to try and quickly evolve a nanobot.
@@ -19,9 +22,9 @@ With the reduced (Delta) grammar I have reduced the number of stacks available t
 it will be interesting to see if any of the robots take advantage of this as (maybe) a short term memory. I have ditched all the saving of 
 previous event variables - if the robot wants to save anything it has to be in the global stack.
 Otherwise there is the same framework, access to the local variables (being the event passed into the event holders) etc 
-and some access to the maths. A
-t the time of writing I think I have forgotten to get the radian robocode functions which
-is silly as I think the Math trig classes the robot can use in its program are all in radians, CHECK!
+and some access to the maths. 
+
+I have now corrected the grammar to use the correct radian version of the functions.
 
 So just now its up an running more or less as described in my earlier paper on evolving robocode. The Delta Main sets up 
 a layered spatial evolution world and runs as long as you want. The best robots are likely found on the top layer. Ill update this later to show how to examine them better and maybe how to select the "best" ones.
@@ -39,6 +42,8 @@ So the change here is that we prune the neighbours and previous (each round) to 
 Finally how do we decide which cells to fill. Well every time a layer is created, each creature and parasite gets a call to  virtual void inLayerWithLocation(int layer,int x);
 
 That it can use to decide whether or not to set the isParticipating() flag to false etc. Examples of this is containted in spatialRobocodeCreatureDelta. Just now they are rather hard coded basic, I am sure I will play with this a bit more.
+
+The system here has a number of the robots taken from the roborumble competition referenced in the spaticalRobocodeCreatureDelta class - they will, of course, have to be in the robots directory, so the evolving robots can fight against them. Ill try and remember to include a tar of the robots in files here, they will have to be untarred into the robots directory.
 
 #Running the system
 

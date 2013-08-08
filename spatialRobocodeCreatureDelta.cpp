@@ -90,19 +90,55 @@ void makeName(long id,bool CreatureDelta) {
 
 const char *spatialRobocodeCreatureDelta::getName() {
     if (!participates) {
-        switch(humanRobot) {
-            case 0: return "supersample.SuperBoxBot";
-            case 1: return "supersample.SuperCorners";
-            case 2: return "supersample.SuperCrazy";
-            case 3: return "supersample.SuperMercutio";
-            case 4: return "supersample.SuperRamFire";
-            case 5: return "supersample.SuperSpinBot";
-            case 6: return "supersample.SuperTracker";
-            case 7: return "supersample.SuperTrackFire";
-            case 8: return "supersample.SuperWalls";
-            case 9: return "sample.Walls";
-            default: return "sample.Walls";
+        if (topLevel) {
+            switch(humanRobot) {
+                case 0: return "jk.sheldor.nano.Yatagan";
+                case 1: return "mld.LittleBlackBook";
+                case 2: return "mld.Moebius";
+                case 3: return "mld.jdc.nano.LittleBlackBook";
+                case 4: return "nat.nano.OcnirpSNG";
+                case 5: return "nz.jdc.nano.AralR";
+                case 6: return "nz.jdc.nano.AralT";
+                case 7: return "nz.jdc.nano.NeophytePRAL";
+                case 8: return "nz.jdc.nano.NeophytePattern";
+                case 9: return "nz.jdc.nano.NeophyteSRAL";
+                case 10: return "nz.jdc.nano.PatternAdept";
+                case 11: return "nz.jdc.nano.PralDeGuerre";
+                case 12: return "oog.nano.Caligula";
+                case 13: return "oog.nano.Fuatisha";
+                case 14: return "robar.nano.BlackWidow";
+                case 15: return "robar.nano.Pugio";
+                case 16: return "sheldor.nano.Sabreur";
+                case 17: return "simonton.nano.WeekendObsession_S";
+                case 18: return "fromHell.C22H30N2O2S";
+                default:    return "wompi.Kowari";
+            }
+        } else {
+            switch(humanRobot) {
+                case 0: return "supersample.SuperBoxBot";
+                case 1: return "supersample.SuperCorners";
+                case 2: return "supersample.SuperCrazy";
+                case 3: return "supersample.SuperMercutio";
+                case 4: return "supersample.SuperRamFire";
+                case 5: return "supersample.SuperSpinBot";
+                case 6: return "supersample.SuperTracker";
+                case 7: return "supersample.SuperTrackFire";
+                case 8: return "supersample.SuperWalls";
+                case 9: return "sample.Walls";
+                case 10: return "blir.nano.Cabbage";
+                case 11: return "sgp.nano.FurryLeech";
+                case 12: return "pez.nano.LittleEvilBrother";
+                case 13: return "NG.LegatusLegionis";
+                case 14: return "projectx.ProjectNano";
+                case 15: return "bots.UberBot";
+                case 16: return "dggp.haiku.gpBot";
+                case 17: return "zyx.nano.RedBull";
+                case 18: return "zyx.nano.Ant";
+                case 19: return "stelo.MirrorNano";
+                default: return "sample.Walls";
+            }
         }
+        
     }
 	else {
         makeName(thisCreatureDeltaNumber,true);
@@ -275,7 +311,6 @@ const char *getGenName(int currentGen,spatialRobocodeCreatureDelta *creatureDelt
     if (creatureDelta->isParticipating()){
     sprintf(outputB,"Gen%d.%s",currentGen,creatureDelta->getName());
     } else {
-        cout << "Creature loc " << loc << " battling " << loc2 << " is not a participant.\n";
         sprintf(outputB,"%s",creatureDelta->getName());
     }
     return outputB;
@@ -285,7 +320,6 @@ const char *getGenName(int currentGen,spatialRobocodeParasiteDelta *parasiteDelt
     if (parasiteDelta->isParticipating()){
         sprintf(outputC,"Gen%d.%s",currentGen,parasiteDelta->getName());
     } else {
-        cout << "Parasite battling " << loc2 << " is not a participant\n";
         sprintf(outputC,"%s",parasiteDelta->getName());
     }
     return outputC;
@@ -311,8 +345,6 @@ double spatialRobocodeCreatureDelta::getScore() {
 		int battlesWeNeed = battleFront.size();
 		int battlesSoFar = 0;
 		cout << "About to schedule " << battlesWeNeed << " matches.\n";
-        struct timeval timeout;
-        
 		while (! (battleFront.empty() && sockfdToCritter.empty())) { // so as long as there are battles or we await outcomes
 			if (battleFront.size()/100 < nearestHundred) {
 				nearestHundred--;
@@ -347,48 +379,11 @@ double spatialRobocodeCreatureDelta::getScore() {
 			}
 			testfds=readfds;
 			// so wait for something to happen (maybe should timeout this
-            timeout.tv_sec =100;
-            timeout.tv_usec = 0;
-            result = select(FD_SETSIZE,&testfds,(fd_set *) 0,(fd_set *) 0,&timeout); 
+			result = select(FD_SETSIZE,&testfds,(fd_set *) 0,(fd_set *) 0,(struct timeval *) 0); 
 			if (result < 1) {
 				perror("Error in spatialRobocodeCreater, select returned less than 1 whilst I was trying to do all my battle stuff.");
 				//				exit(1);
 			}
-            if (result == 0) {
-                cout << "TIMEOUT!";
-                // so we are going to disconnect any that still have battles.
-                if (!sockfdToCritter.empty()) {
-                    found = sockfdToCritter.begin();
-                    while (found != sockfdToCritter.end()) {
-                        int fd = found->first;
-                        battleLinePtr battle = found->second;
-                        cout << "There was still a battle we were waiting for from " << fd << " so terminating with prejudice\n";
-                        close(fd);
-                        FD_CLR(fd,&readfds);
-                        battleFront.push_back(battle);
-                        list<int>::iterator at = find(currentFds.begin(),currentFds.end(),fd);
-                        if (at!=currentFds.end()) {at = currentFds.erase(at); }
-                        else {
-                            cout << "Odd, couldn't find (to remove) " << fd << " from the list of fds.\n";
-                        }
-                        found++;
-                    }
-                    sockfdToCritter.clear();
-                } else {
-                    cout << "But we don't have any battles in the map\n";
-                    if (battleFront.empty()) {
-                        cout << "And the battle front is empty\n";
-                    } else cout << "Battle front is NOT empty\n";
-                    if (currentFds.empty()) {
-                        cout << "The current Fds is empty - well how about that.\n";
-                    }
-                    else {
-                        cout << "We still have people willing to do work for us, odd.\n";
-                    }
-                }
-                continue;
-                
-            }
 			list<int>::iterator at = currentFds.begin();
 			while (at!= currentFds.end()) {  // loop through the fds looking for one that has been set.
 				if (FD_ISSET((*at),&testfds)) { 
@@ -477,7 +472,7 @@ double spatialRobocodeCreatureDelta::getScore() {
 						} // end of a client which has data (rather than closed
 					} // end of presumably its a client
 				} // end of if FD_ISSET
-				if (at != currentFds.end()) at++;
+				at++;
 			} // end of looping through the currentfds while.
 		} 
 		cout << "All the battles done, we believed we had to carry out " << battlesWeNeed << " battles and we got " << battlesSoFar << " results.\n";
@@ -590,7 +585,8 @@ bool spatialRobocodeCreatureDelta::isParticipating() {
 
 void spatialRobocodeCreatureDelta::inLayerWithLocation(int layer,int x) {
     myLocation = x;
-    if (layer == layerLives.size()-1) {
+    topLevel = false;
+    if (layer == layerLives.size()-2) {
         if (x>=100 && x<105) participates = false;
         if (x>=120 && x<125) participates = false;
         if (x>=140 && x<145) participates = false;
@@ -602,9 +598,26 @@ void spatialRobocodeCreatureDelta::inLayerWithLocation(int layer,int x) {
         if (x>=340 && x<345) participates = false;
         if (x>=360 && x<365) participates = false;
         if (x>=380 && x<385) participates = false;
+        humanRobot=randomint(MAXROBOTNUMBER);
             // need some code to change some of the locations to not participating and human robots.
-    }
-    if (!participates) cout << "Set location " << x << " in layer to not participate (creature)\n";
+    } else {
+        if (layer == layerLives.size()-1) {
+            topLevel = true;
+            if (x>=90 && x<95) participates = false;
+            if (x>=110 && x<115) participates = false;
+            if (x>=130 && x<135) participates = false;
+            if (x>=150 && x<155) participates = false;
+            if (x>=170 && x<175) participates = false;
+            
+            if (x>=290 && x<295) participates = false;
+            if (x>=310 && x<315) participates = false;
+            if (x>=330 && x<335) participates = false;
+            if (x>=350 && x<355) participates = false;
+            if (x>=370 && x<375) participates = false;
+            humanRobot=randomint(MAXROBOTNUMBER);
+        }
+    } 
+    if (!participates) cout << "Set location " << x << " in layer " << layer << " to not participate (creature), assigned robot " << humanRobot << " which is " << getName() << "\n";
 
 }
 
@@ -649,25 +662,109 @@ spatialRobocodeParasiteDelta::spatialRobocodeParasiteDelta() {
 
 const char *spatialRobocodeParasiteDelta::getName() {
     if (!participates) {
-        switch(humanrobot) {
-            case 0: return "supersample.SuperBoxBot";
-            case 1: return "supersample.SuperCorners";
-            case 2: return "supersample.SuperCrazy";
-            case 3: return "supersample.SuperMercutio";
-            case 4: return "supersample.SuperRamFire";
-            case 5: return "supersample.SuperSpinBot";
-            case 6: return "supersample.SuperTracker";
-            case 7: return "supersample.SuperTrackFire";
-            case 8: return "supersample.SuperWalls";
-            case 9: return "sample.Walls";
-            default: return "sample.Walls";
+        if (topLevel) {
+            switch(humanrobot) {
+                case 0: return "jk.sheldor.nano.Yatagan";
+                case 1: return "mld.LittleBlackBook";
+                case 2: return "mld.Moebius";
+                case 3: return "mld.jdc.nano.LittleBlackBook";
+                case 4: return "nat.nano.OcnirpSNG";
+                case 5: return "nz.jdc.nano.AralR";
+                case 6: return "nz.jdc.nano.AralT";
+                case 7: return "nz.jdc.nano.NeophytePRAL";
+                case 8: return "nz.jdc.nano.NeophytePattern";
+                case 9: return "nz.jdc.nano.NeophyteSRAL";
+                case 10: return "nz.jdc.nano.PatternAdept";
+                case 11: return "nz.jdc.nano.PralDeGuerre";
+                case 12: return "oog.nano.Caligula";
+                case 13: return "oog.nano.Fuatisha";
+                case 14: return "robar.nano.BlackWidow";
+                case 15: return "robar.nano.Pugio";
+                case 16: return "sheldor.nano.Sabreur";
+                case 17: return "simonton.nano.WeekendObsession_S";
+                case 18: return "fromHell.C22H30N2O2S";
+                default:    return "wompi.Kowari";
+            }
+        } else {
+            switch(humanrobot) {
+                case 0: return "supersample.SuperBoxBot";
+                case 1: return "supersample.SuperCorners";
+                case 2: return "supersample.SuperCrazy";
+                case 3: return "supersample.SuperMercutio";
+                case 4: return "supersample.SuperRamFire";
+                case 5: return "supersample.SuperSpinBot";
+                case 6: return "supersample.SuperTracker";
+                case 7: return "supersample.SuperTrackFire";
+                case 8: return "supersample.SuperWalls";
+                case 9: return "sample.Walls";
+                case 10: return "blir.nano.Cabbage";
+                case 11: return "sgp.nano.FurryLeech";
+                case 12: return "pez.nano.LittleEvilBrother";
+                case 13: return "NG.LegatusLegionis";
+                case 14: return "projectx.ProjectNano";
+                case 15: return "bots.UberBot";
+                case 16: return "dggp.haiku.gpBot";
+                case 17: return "zyx.nano.RedBull";
+                case 18: return "zyx.nano.Ant";
+                case 19: return "stelo.MirrorNano";
+                default: return "sample.Walls";
+            }
         }
+/*
+            switch(humanrobot) {
+                case 0: return "jk.sheldor.nano.Yatagan_1.2.3";
+                case 1: return "mld.LittleBlackBook_1.69e";
+                case 2: return "mld.Moebius_2.9.3";
+                case 3: return "mld.jdc.nano.LittleBlackBook_1.0";
+                case 4: return "nat.nano.OcnirpSNG_1.0b";
+                case 5: return "nz.jdc.nano.AralR_1.1";
+                case 6: return "nz.jdc.nano.AralT_1.1";
+                case 7: return "nz.jdc.nano.NeophytePRAL_1.4";
+                case 8: return "nz.jdc.nano.NeophytePattern_1.1";
+                case 9: return "nz.jdc.nano.NeophyteSRAL_1.3";
+                case 10: return "nz.jdc.nano.PatternAdept_1.0";
+                case 11: return "nz.jdc.nano.PralDeGuerre_1.2";
+                case 12: return "oog.nano.Caligula_1.15";
+                case 13: return "oog.nano.Fuatisha_1.1";
+                case 14: return "robar.nano.BlackWidow_1.3";
+                case 15: return "robar.nano.Pugio_1.49";
+                case 16: return "sheldor.nano.Sabreur_1.1.2";
+                case 17: return "simonton.nano.WeekendObsession_S_1.7";
+                case 18: return "fromHell.C22H30N2O2S_2.2";
+                default:    return "wompi.Kowari_1.6";
+            }
+        } else {
+            switch(humanrobot) {
+                case 0: return "supersample.SuperBoxBot";
+                case 1: return "supersample.SuperCorners";
+                case 2: return "supersample.SuperCrazy";
+                case 3: return "supersample.SuperMercutio";
+                case 4: return "supersample.SuperRamFire";
+                case 5: return "supersample.SuperSpinBot";
+                case 6: return "supersample.SuperTracker";
+                case 7: return "supersample.SuperTrackFire";
+                case 8: return "supersample.SuperWalls";
+                case 9: return "sample.Walls";
+                case 10: return "blir.nano.Cabbage_R1.0.1";
+                case 11: return "sgp.nano.FurryLeech_1.0";
+                case 12: return "pez.nano.LittleEvilBrother_0.1";
+                case 13: return "NG.LegatusLegionis_1.2";
+                case 14: return "projectx.ProjectNano_2.0";
+                case 15: return "bots.UberBot_1.2c";
+                case 16: return "dggp.haiku.gpBot_0_1.1";
+                case 17: return "zyx.nano.RedBull_1.0";
+                case 18: return "zyx.nano.Ant_1.1";
+                case 19: return "stelo.MirrorNano_1.4";
+                default: return "sample.Walls";
+            }
+        }
+        */
     }
 	else {
- 
-	makeName(thisParasiteDeltaNumber,false);
-	return javaPName;
-}
+        
+        makeName(thisParasiteDeltaNumber,false);
+        return javaPName;
+    }
 }
 
 spatialRobocodeParasiteDelta::spatialRobocodeParasiteDelta(bool make) {
@@ -885,7 +982,7 @@ bool spatialRobocodeParasiteDelta::isParticipating() {
 
 
 void spatialRobocodeParasiteDelta::inLayerWithLocation(int layer,int x) {
-    if (layer == layerLives.size()-1) {
+    if (layer == layerLives.size()-2) {
         if (x>=110 && x<115) participates = false;
         if (x>=130 && x<135) participates = false;
         if (x>=150 && x<155) participates = false;
@@ -899,9 +996,24 @@ void spatialRobocodeParasiteDelta::inLayerWithLocation(int layer,int x) {
         if (x>=390 && x<395) participates = false;
         if (!participates) humanrobot= randomint(MAXROBOTNUMBER);
         // need some code to change some of the locations to not participating and human robots.
-    }
-    if (!participates) cout << "Set location " << x << " in layer to not participate (parasite)\n";
+    } else if (layer == layerLives.size()-1) {
+            topLevel = true;
+            if (x>=100 && x<105) participates = false;
+            if (x>=120 && x<125) participates = false;
+            if (x>=140 && x<145) participates = false;
+            if (x>=160 && x<165) participates = false;
+            if (x>=180 && x<185) participates = false;
+            
+            if (x>=300 && x<305) participates = false;
+            if (x>=320 && x<325) participates = false;
+            if (x>=340 && x<345) participates = false;
+            if (x>=360 && x<365) participates = false;
+            if (x>=380 && x<385) participates = false;
+            if (!participates) humanrobot= randomint(MAXROBOTNUMBER);
+            // need some code to change some of the locations to not participating and human robots.
+        }
 
+    if (!participates) cout << "Set location " << x << " in layer " << layer << "to not participate (parasite) assigned robot " << humanrobot << " which is " << getName() << "\n";
 }
 
 

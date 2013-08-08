@@ -151,7 +151,7 @@ void doit() {
 	// since we "save" robots when they are created (as well as before each battle)
 	// we need to set up the CurrentWorkingDirectory to the right one before
 	// we create the spacial world.
-	int startGen = 0;
+	int startGen = 135;
 	currentGen = startGen;
 	
 	// As an aside: the reason we save robots in the creation of them (as well as before each calcScore
@@ -173,18 +173,12 @@ void doit() {
 	layerLives.push_back(-1);
 	
 	myWorldPtr aWorld;
-	changeDirectory();
 	
-    
-    // If you are starting a new one we want the line below
-	aWorld.reset(new spatialWorld<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta>(SizeofX,SizeofY));
-
-    // If you are resuming a run, set startGen, comment the line above and uncomment below. NOTE you need to replace the number with the number of layers you are loading.
-
-    // If you are unsure see how many (.pop) files are in the directory you are restarting from.
-//    aWorld.reset(spatialWorld<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta>::makeWorldFromLoadFile(SizeofX,SizeofY,3,fileToUse));
-
+	//aWorld.reset(new spatialWorld<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta>(SizeofX,SizeofY));
+	changeDirectory();
+    aWorld.reset(spatialWorld<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta>::makeWorldFromLoadFile(SizeofX,SizeofY,3,fileToUse));
 	reportSome(aWorld.get());
+	changeDirectory();
 	initialiseServerStuff(9000);
 	
 	for (currentGen=startGen;currentGen<GensToDo;currentGen++) {

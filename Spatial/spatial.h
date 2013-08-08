@@ -833,15 +833,25 @@ public:
                 // we want to remove from neighboursAndPrevious (temporarily) any critter that
                 // does not have the same isParticipating as the owner of this location.
                 // now with c++11 syntax!
-                vector<simpleLocPtr> candidates(p->neighboursAndPrevious.size());
+                vector<simpleLocPtr> candidates;
                 if (p->creature->isParticipating()) {
-                    std::remove_copy_if(p->neighboursAndPrevious.begin(),p->neighboursAndPrevious.end(),candidates.begin(),[](simpleLocPtr p){return !(p->creature->isParticipating());});
+                    // this didn't do what I hoped as it moved null versions of the non-matching one into the vector, i.e. it wasn't a shrunk copy
+                    //std::remove_copy_if(p->neighboursAndPrevious.begin(),p->neighboursAndPrevious.end(),candidates.begin(),[](simpleLocPtr p){return !(p->creature->isParticipating());});
+
+                    // this kept crashing xcode - so Ill just do it the long way.
+                    //auto forward = std::remove_if(candidates.begin(),(),[](simpleLocPtr p){return !(p->creature->isParticipating());});
+                    //candidates.resize(std::distance(candidates.begin(),forward));
+
+                    candidates.clear();
+                    for (auto ctr=p->neighboursAndPrevious.begin();ctr < p->neighboursAndPrevious.end(); ctr++) {
+                        if ((*ctr)->creature->isParticipating()) candidates.push_back(*ctr);
+                    }
                 } else {
-                    std::remove_copy_if(p->neighboursAndPrevious.begin(),p->neighboursAndPrevious.end(),candidates.begin(),[](simpleLocPtr p){return p->creature->isParticipating();});
-                     
+                    candidates.clear();
+                    for (auto ctr=p->neighboursAndPrevious.begin();ctr < p->neighboursAndPrevious.end(); ctr++) {
+                        if (!((*ctr)->creature->isParticipating())) candidates.push_back(*ctr);
+                    }
                 }
-                
-                candidates = p->neighboursAndPrevious;
                 int nSize = candidates.size();
                 if (nSize > 0) {
                     // SelectOne randomly selects a number eg. 1..nSize based on a (0.5)^n distribution (i.e. 50% its 1, 25% its 2, 12.5% its 3 etc.)
@@ -874,12 +884,16 @@ public:
                 
                 candidates.clear();
                 if (p->parasite->isParticipating()) {
-                    std::remove_copy_if(p->neighboursAndPrevious.begin(),p->neighboursAndPrevious.end(),candidates.begin(),[](simpleLocPtr p){return !(p->parasite->isParticipating());});
+                    candidates.clear();
+                    for (auto ctr=p->neighboursAndPrevious.begin();ctr < p->neighboursAndPrevious.end(); ctr++) {
+                        if ((*ctr)->parasite->isParticipating()) candidates.push_back(*ctr);
+                    }
                 } else {
-                    std::remove_copy_if(p->neighboursAndPrevious.begin(),p->neighboursAndPrevious.end(),candidates.begin(),[](simpleLocPtr p){return p->parasite->isParticipating();});
+                    candidates.clear();
+                    for (auto ctr=p->neighboursAndPrevious.begin();ctr < p->neighboursAndPrevious.end(); ctr++) {
+                        if (!((*ctr)->parasite->isParticipating())) candidates.push_back(*ctr);
+                    }
                 }
-                
-                candidates= p->neighboursAndPrevious;
                 nSize = candidates.size();
                 if (nSize > 0) {
                     int select = selectOne(nSize);
@@ -897,6 +911,7 @@ public:
          *************************************************************************/
         
         template <class creatureType, class parasiteType> void spatialWorld<creatureType,parasiteType>::selectBestCritters() {
+            cout << "Layer " << layerNo << endl;
             for_each(theWorld.begin(),theWorld.end(),selectFromNeighbourhood<creatureType,parasiteType>());
         }
         
@@ -910,7 +925,6 @@ public:
         
         template <class creatureType, class parasiteType> void spatialWorld<creatureType,parasiteType>::doCrossover() {
             // kind of assuming here that the active critter population is roughly the same as the active parasite population.
-            // also probably not necessary - just showing off that I am now using lambda functions.
             //int activePop = count_if(theWorld.begin(),theWorld.end(),[] (boost::shared_ptr<location<creatureType,parasiteType> > &loc) { return loc->creature->isParticipating(); });
             int activePop = totalPop;
             for (int count = 0;count<(activePop*4)/10;count ++) { // 40% will be crossed over
@@ -925,33 +939,42 @@ public:
                 
                 
                 int chosen= randomint(totalPop);
-                // this is a bit sucky - what happens if only a tiny portion are participating.
+                // we need to find one of the "nodes" where we have a candidate that is partcipating
+                // this is a bit quick and dirty as it assumes we will stuble on one quickly. 
+                // query - what happens if only a tiny portion are participating, then we would be better sorting out the participants
+                // and choosing one of them. (or counting them, rolling the "die" and choosing the rolled one.
                 while (!theWorld[chosen]->creature->isParticipating()) {
                     chosen = randomint(totalPop);
                 }
-                vector<simpleLocPtr> candidates(theWorld[chosen]->neighbours.size());
-                std::remove_copy_if(theWorld[chosen]->neighbours.begin(),theWorld[chosen]->neighbours.end(),candidates.begin(),[](simpleLocPtr p){return !(p->creature->isParticipating());});
-                candidates = theWorld[chosen]->neighbours;
+                // we have our node, now we need to find a participating mate.
+                
+                vector<simpleLocPtr> candidates;
+                
+                // so ideally I would have used something like copy_if, but I was having problems with the vector being too large and null stuff in it
+                // this works exactly as needed.
+                for (auto counter=theWorld[chosen]->neighbours.begin();counter < theWorld[chosen]->neighbours.end(); counter++) {
+                    if ((*counter)->creature->isParticipating()) { candidates.push_back(*counter);  }
+                }
                 
                 if (candidates.size() > 0) {
                     int mate = randomint(candidates.size());
-                //      Call the doCrossover in the creature,this replaces the critter contained
-                //      in the creature class with the results of the crossover (if any)
-                
+                    //      Call the doCrossover in the creature,this replaces the critter contained
+                    //      in the creature class with the results of the crossover (if any)
                     theWorld[chosen]->newCreature->doCrossover(*(candidates[mate]->newCreature));
-                }
-                //      rinse and repeat for parasites.
+               }
+                //      rinse and repeat for parasites. 
                 
                 chosen= randomint(totalPop);
-                // this is a bit sucky - what happens if only a tiny portion are participating.
+                // see above - what happens if only a tiny portion are participating.
                 while (!theWorld[chosen]->creature->isParticipating()) {
                     chosen = randomint(totalPop);
                 }
                 
                 candidates.clear();
-                candidates=theWorld[chosen]->neighbours;
                 // grab a vector of the parasites with the isParticipating() flag.
-                std::remove_copy_if(theWorld[chosen]->neighbours.begin(),theWorld[chosen]->neighbours.end(),candidates.begin(),[](simpleLocPtr p){return !(p->parasite->isParticipating());});
+                for (auto counter=theWorld[chosen]->neighbours.begin();counter < theWorld[chosen]->neighbours.end(); counter++) {
+                    if ((*counter)->parasite->isParticipating()) candidates.push_back(*counter);
+                }
                 if (candidates.size() > 0) { // i.e. we have something to choose from - if there are none just ignore and carry on.
                     int mate = randomint(candidates.size()); // choose one.
                     theWorld[chosen]->newParasite->doCrossover(*(candidates[mate]->newParasite));
@@ -1008,55 +1031,58 @@ public:
                 } else {
                     //				cout << "New Creature was invalid, not updating " << p->id << endl;
                 }
-                if (maxGenerationAge < 0) p->creature->geneticAge++;
-                else if (p->creature->geneticAge++ > maxGenerationAge) {
-                    // creature in too old to live!
-                    if (previousLayer == NULL) {
-                        p->creature.reset(new creatureType());
-                        if (!p->creature->isReallyValid()) {
-                            cout << "UpdateLocation created a new creature - which is not really valid!\n";
-                            exit(1);
-                        }
-                        // automatically sets the genetic Age to zero.
-                    } else {
-                        if ((previousLayer->theWorld[p->locationNumber])->newCreature->isReallyValid())
-                            p->creature->makeCopyOfCreature((previousLayer->theWorld[p->locationNumber])->newCreature);
-                        else p->creature->makeCopyOfCreature((previousLayer->theWorld[p->locationNumber])->creature);
-                        if (!p->creature->isReallyValid()) {
+                if (p->creature->isParticipating()) { // only do the age stuff if the creature is participating
+                    if (maxGenerationAge < 0 ) p->creature->geneticAge++;
+                    else if (p->creature->geneticAge++ > maxGenerationAge) {
+                        // creature is too old to live!
+                        if (previousLayer == NULL) {
                             p->creature.reset(new creatureType());
                             if (!p->creature->isReallyValid()) {
-                                // of couse this doesn't need to be fatal and is quite easily handled, but the nature of GP/GE is that if I just through an error message and
-                                // carried on the chances are the msg wouldn't be seen.
-                                // Since this is a situation which really shouldn't occur a fatal error is the best way of making sure its noticed (and hopefully sorted).
-                                cout << "Fatal Error: UpdateLocation created a new creature as the once it copied was not really valid, but the new creature is not really valid!\n";
+                                cout << "UpdateLocation created a new creature - which is not really valid!\n";
                                 exit(1);
+                            }
+                            // automatically sets the genetic Age to zero.
+                        } else {
+                            if ((previousLayer->theWorld[p->locationNumber])->newCreature->isReallyValid())
+                                p->creature->makeCopyOfCreature((previousLayer->theWorld[p->locationNumber])->newCreature);
+                            else p->creature->makeCopyOfCreature((previousLayer->theWorld[p->locationNumber])->creature);
+                            if (!p->creature->isReallyValid()) {
+                                p->creature.reset(new creatureType());
+                                if (!p->creature->isReallyValid()) {
+                                    // of couse this doesn't need to be fatal and is quite easily handled, but the nature of GP/GE is that if I just through an error message and
+                                    // carried on the chances are the msg wouldn't be seen.
+                                    // Since this is a situation which really shouldn't occur a fatal error is the best way of making sure its noticed (and hopefully sorted).
+                                    cout << "Fatal Error: UpdateLocation created a new creature as the once it copied was not really valid, but the new creature is not really valid!\n";
+                                    exit(1);
+                                }
                             }
                         }
                     }
                 }
-                
                 if (p->newParasite->isReallyValid()) {
                     p->parasite->setParasite(p->newParasite);
                 } else {
                     //				cout << "New Parasite was invalid, not updating " << p->id << endl;
                 }
-                if (maxGenerationAge < 0) p->parasite->geneticAge++;
-                else if ( p->parasite->geneticAge++ > maxGenerationAge) {
-                    if (previousLayer == NULL) {
-                        p->parasite.reset(new parasiteType());
-                        if (!p->parasite->isReallyValid()) {
-                            cout << "Fatal Error: Update created a new parasite which is not really valid!\n";
-                            exit(1);
-                        }
-                    } else {
-                        if ((previousLayer->theWorld[p->locationNumber])->newParasite->isReallyValid())
-                            p->parasite->makeCopyOfParasite((previousLayer->theWorld[p->locationNumber])->newParasite);
-                        else p->parasite->makeCopyOfParasite((previousLayer->theWorld[p->locationNumber])->parasite);
-                        if (!p->parasite->isReallyValid()) {
+                if (p->parasite->isParticipating()) {
+                    if (maxGenerationAge < 0) p->parasite->geneticAge++;
+                    else if ( p->parasite->geneticAge++ > maxGenerationAge) {
+                        if (previousLayer == NULL) {
                             p->parasite.reset(new parasiteType());
                             if (!p->parasite->isReallyValid()) {
-                                cout << "Update created a new parasite (since the previous one was not valid, but the new one was not really valid!\n";
+                                cout << "Fatal Error: Update created a new parasite which is not really valid!\n";
                                 exit(1);
+                            }
+                        } else {
+                            if ((previousLayer->theWorld[p->locationNumber])->newParasite->isReallyValid())
+                                p->parasite->makeCopyOfParasite((previousLayer->theWorld[p->locationNumber])->newParasite);
+                            else p->parasite->makeCopyOfParasite((previousLayer->theWorld[p->locationNumber])->parasite);
+                            if (!p->parasite->isReallyValid()) {
+                                p->parasite.reset(new parasiteType());
+                                if (!p->parasite->isReallyValid()) {
+                                    cout << "Update created a new parasite (since the previous one was not valid, but the new one was not really valid!\n";
+                                    exit(1);
+                                }
                             }
                         }
                     }

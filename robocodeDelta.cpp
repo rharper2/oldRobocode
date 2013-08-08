@@ -3192,12 +3192,12 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
 			case INHITWALLLOOP: {output_stream << " INHITWALLLOOP ";break;}
 			case IF: {output_stream << " if ";break;}
 			case ELSE: {output_stream << " else ";break;}
-			case SETTURNRIGHT_OB: {output_stream << " setTurnRight( ";break;}
-			case SETTURNLEFT_OB: {output_stream << " setTurnLeft( ";break;}
-			case SETTURNGUNRIGHT_OB: {output_stream << " setTurnGunRight( ";break;}
-			case SETTURNGUNLEFT_OB: {output_stream << " setTurnGunLeft( ";break;}
-			case SETTURNRADARRIGHT_OB: {output_stream << " setTurnRadarRight( ";break;}
-			case SETTURNRADARLEFT_OB: {output_stream << " setTurnRadarLeft( ";break;}
+			case SETTURNRIGHT_OB: {output_stream << " setTurnRightRadians( ";break;}
+			case SETTURNLEFT_OB: {output_stream << " setTurnLeftRadians( ";break;}
+			case SETTURNGUNRIGHT_OB: {output_stream << " setTurnGunRightRadians( ";break;}
+			case SETTURNGUNLEFT_OB: {output_stream << " setTurnGunLeftRadians( ";break;}
+			case SETTURNRADARRIGHT_OB: {output_stream << " setTurnRadarRightRadians( ";break;}
+			case SETTURNRADARLEFT_OB: {output_stream << " setTurnRadarLeftRadians( ";break;}
 			case SETAHEAD_OB: {output_stream << " setAhead( ";break;}
 			case SETBACK_OB: {output_stream << " setBack( ";break;}
 			case RESUME__: {output_stream << " resume() ";break;}
@@ -3216,17 +3216,17 @@ void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_exp
 			case OR: {output_stream << " | ";break;}
 			case GETX__: {output_stream << " getX() ";break;}
 			case GETY__: {output_stream << " getY() ";break;}
-			case GETHEADING__: {output_stream << " getHeading() ";break;}
-			case GETGUNHEADING__: {output_stream << " getGunHeading() ";break;}
+			case GETHEADING__: {output_stream << " getHeadingRadians() ";break;}
+			case GETGUNHEADING__: {output_stream << " getGunHeadingRadians() ";break;}
 			case GETGUNHEAT__: {output_stream << " getGunHeat() ";break;}
-			case GETRADARHEADING__: {output_stream << " getRadarHeading() ";break;}
+			case GETRADARHEADING__: {output_stream << " getRadarHeadingRadians() ";break;}
 			case GETBATTLEFIELDWIDTH__: {output_stream << " getBattleFieldWidth() ";break;}
 			case GETENERGY__: {output_stream << " getEnergy() ";break;}
 			case SAFEPOP_OB: {output_stream << " safePop( ";break;}
 			case SAFEPEEK_OB: {output_stream << " safePeek( ";break;}
 			case GLOBALSTACK1: {output_stream << " globalStack1 ";break;}
-            case E_DOTGETBEARING__: {output_stream << " e.getBearing() ";break;}
-			case E_DOTGETHEADING__: {output_stream << " e.getHeading() ";break;}
+            case E_DOTGETBEARING__: {output_stream << " e.getBearingRadians() ";break;}
+			case E_DOTGETHEADING__: {output_stream << " e.getHeadingRadians() ";break;}
 			case E_DOTGETVELOCITY__: {output_stream << " e.getVelocity() ";break;}
 			case E_DOTGETENERGY__: {output_stream << " e.getEnergy() ";break;}
 			case E_DOTGETDISTANCE__: {output_stream << " e.getDistance() ";break;}
