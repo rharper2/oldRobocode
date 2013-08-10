@@ -21,6 +21,34 @@
 #include <vector>
 #include <string.h>
 
+
+/* The idea behind this class it that it encapsulates the creatures/parasites that can reside in the locations of a spatial world.
+   The algorithm in the spatial world pits creatures against parasites by telling the creature (and then the parasites) to calcScore
+   Here we just use the call to the creature and push the mandated battle into a battlelist. At the end of the "calcScore" round all
+   the matches wanted by spatial.h will be in the list.
+ 
+   Then when spatial.h tries to retrieve the score of the first creature (aside: spatial.h uses the scores to decide which creatures from the neighbourhood will
+   occupy the location for the next genration) then the first time this happens (see getScore), we run all the battles by handing of to 
+   client battlerunners (java programs in the robocode directory that are listing to the port set up in initialiseServerStuff(int port)
+   default  = 9000, and waiting for them to come back. In theory we can have lots of clients - as long as they have access to the robots.
+   We could stream the robots out as well if we don't have shared filestorage, but currently I don't do that.
+ 
+   Anyway the clients come back with a score for the two competitors and its stored appropriately (addToScore if its a competitor in the same "layer")
+   (addToLayeredScore if its a competitor in a different layer).
+ 
+   Once all the battles have been run and the scores stored, getScore returns the creatures score. Subsequent calls to getScore just return
+   the creatures stored scores (all the battles having been run for this generation).
+ 
+   There are a number of methods that spatial.h requires these classes to have, its kind of documented in spatial.h - I should update.
+   Struggling with some of the concepts needed to have a virtual base creature class which can then be substantiated. If I can overcome them
+   then thats probably the way to go.
+ 
+   Finally just a reminder, here a low score is bad, high score is good. A creature score is the sum of all the scores it receives in a battle
+   a parasite score, on the otherhand, is the worst score it achieves (I believe this results in different behaviour - one aggressive the other defensive).
+   the addToScore and addToLayered score and the getScore all achieve this.
+ 
+*/
+
 extern vector<int> layerLives;
 
 void streamout(ostream &pout,crPtr &item,int age) {
@@ -88,6 +116,17 @@ void makeName(long id,bool CreatureDelta) {
 	else sprintf(javaPName,"ParasiteDelta%ld",id);
 }
 
+// These are the different human written (well gpBot is evolved I think) robots
+// that we will add to some of the locations in the top two layers.
+// Note they are initially chosen randomly, can mutate into any other
+// but otherwise - as between themselves - they will select depending on
+// how well they do i.e. what there score is against the parasites (in this case)
+// in the 18 node neighbourhood (9 this level and 9 below).
+// There is no realy rhyme or reason as to the choices made here, the top level
+// ones are the top 20 on the rumble at the time I grabbed them
+// the others were all just above the rank of the initial SCALPBOT
+// after about 160 gens of evolution just against co-evolving robots.
+
 const char *spatialRobocodeCreatureDelta::getName() {
     if (!participates) {
         if (topLevel) {
@@ -124,18 +163,18 @@ const char *spatialRobocodeCreatureDelta::getName() {
                 case 6: return "supersample.SuperTracker";
                 case 7: return "supersample.SuperTrackFire";
                 case 8: return "supersample.SuperWalls";
-                case 9: return "sample.Walls";
+                case 9: return "supersample.SuperBoxBot";
                 case 10: return "blir.nano.Cabbage";
                 case 11: return "sgp.nano.FurryLeech";
                 case 12: return "pez.nano.LittleEvilBrother";
                 case 13: return "NG.LegatusLegionis";
                 case 14: return "projectx.ProjectNano";
-                case 15: return "bots.UberBot";
-                case 16: return "dggp.haiku.gpBot";
+                case 15: /*return "bots.UberBot";*/
+                case 16: return "dggp.haiku.gpBot_0";
                 case 17: return "zyx.nano.RedBull";
                 case 18: return "zyx.nano.Ant";
                 case 19: return "stelo.MirrorNano";
-                default: return "sample.Walls";
+                default: return "supersample.SuperWalls";
             }
         }
         
@@ -146,7 +185,7 @@ const char *spatialRobocodeCreatureDelta::getName() {
     }
 }
 
-// Need to test ptc2 with this grammar.
+
 spatialRobocodeCreatureDelta::spatialRobocodeCreatureDelta() {
     participates = true;
 	geneticAge = 0;
@@ -156,6 +195,7 @@ spatialRobocodeCreatureDelta::spatialRobocodeCreatureDelta() {
 	do {
 		maxTree = randomint(8)+2;
 		critter.reset(new cr_data);
+        // makeptc2 is probabilistic tree creation method 2 - afaik the best way to create intial robots in ge
 		critter->makeptc2(maxTree);
 	    done = critter->isValid();
 	} while (!done);
@@ -447,12 +487,13 @@ double spatialRobocodeCreatureDelta::getScore() {
 										currPtr++;
 										ParasiteDeltaScore = strtol(currPtr,NULL,10);
 									}
+                                    battleLinePtr battleLineResult = found->second;
 									if ((ParasiteDeltaScore == 0) || (CreatureDeltaScore == 0)) {
 										cout << "Got a ParasiteDelta score of " << ParasiteDeltaScore << " and a CreatureDeltaScore of " << CreatureDeltaScore << endl;
+                                        cout << "With competitors " << battleLineResult->CreatureDelta->getName() << " and " << battleLineResult->ParasiteDelta->getName() << endl;
 										cout << "It should not be possible to get a zero score.\n";
 										cout << "The input buffer was " << inputBuffer << endl;
 									}
-									battleLinePtr battleLineResult = found->second;
 									double totalScore = CreatureDeltaScore + ParasiteDeltaScore;
 									if (battleLineResult->location == -1) {
 										battleLineResult->CreatureDelta->addToLayeredScore((CreatureDeltaScore*100)/totalScore);
@@ -479,6 +520,8 @@ double spatialRobocodeCreatureDelta::getScore() {
 		stateFlag = false;
 	}
 	// both fall through and every other invocation once the scores have been calculated.
+    /* Temporary lines to give output if not participating, this might help me see how we are going*/
+    if (!isParticipating()) { cout << getName() << " scored " << storedScore+storedLayeredScore << " this round\n"; }
 	return storedScore+storedLayeredScore;
 }
 
@@ -513,7 +556,7 @@ void spatialRobocodeCreatureDelta::loadCreature(ifstream &fin) {
 	long dnaL;
 	int *dna;
 	fin >> geneticAge; 
-	cout << "CreatureDelta Age:" << geneticAge << endl;
+	//cout << "CreatureDelta Age:" << geneticAge << endl;
 	fin >> dnaL;
 	if (!fin) return; 
 	if (dnaL<10 || dnaL>800000) {
@@ -531,13 +574,13 @@ void spatialRobocodeCreatureDelta::loadCreature(ifstream &fin) {
 	critter.reset(new cr_data(dna,dnaL));
 	isInvalid = false; // assume that its not isInvalid until proven otherwise.
 	if (critter->isValid()) {
-		cout << "A CreatureDelta loaded tha t was valid\n";
+		//cout << "A CreatureDelta loaded tha t was valid\n";
 		if (isReallyValid()) {
-				cout << "... and it really is valid\n";
-		} else { cout << "odd, its not really valid\n";
+				//cout << "... and it really is valid\n";
+		} else { cout << "A valid creature delta was loaded but oddly, its not really valid\n";
 		}
 	} else {
-		cout << "Its not valid\n";
+		cout << "An invalid creature delta was loaded\n";
 	}
 	//	cout << "Loaded a CreatureDelta!\n";
 }
@@ -660,6 +703,7 @@ spatialRobocodeParasiteDelta::spatialRobocodeParasiteDelta() {
 }
 
 
+
 const char *spatialRobocodeParasiteDelta::getName() {
     if (!participates) {
         if (topLevel) {
@@ -696,18 +740,18 @@ const char *spatialRobocodeParasiteDelta::getName() {
                 case 6: return "supersample.SuperTracker";
                 case 7: return "supersample.SuperTrackFire";
                 case 8: return "supersample.SuperWalls";
-                case 9: return "sample.Walls";
+                case 9: return "supersample.SuperBoxBot";
                 case 10: return "blir.nano.Cabbage";
                 case 11: return "sgp.nano.FurryLeech";
                 case 12: return "pez.nano.LittleEvilBrother";
                 case 13: return "NG.LegatusLegionis";
                 case 14: return "projectx.ProjectNano";
-                case 15: return "bots.UberBot";
-                case 16: return "dggp.haiku.gpBot";
+                case 15: /*return "bots.UberBot";*/
+                case 16: return "dggp.haiku.gpBot_0";
                 case 17: return "zyx.nano.RedBull";
                 case 18: return "zyx.nano.Ant";
                 case 19: return "stelo.MirrorNano";
-                default: return "sample.Walls";
+                default: return "supersample.SuperWalls";
             }
         }
 /*
@@ -873,12 +917,11 @@ void spatialRobocodeParasiteDelta::clearLayeredScore() {
 
 
 void spatialRobocodeParasiteDelta::calcScore(spatialRobocodeCreatureDelta &c1,int loc) {
-	//    cout << "An animal CreatureDeltas is getting its score. ";
 	return;
-	// ParasiteDelta dont calc scores
 }
 
 
+// For parasites they are judged by their worst score, here its their lowest.
 void spatialRobocodeParasiteDelta::addToScore(double toAdd) {
 	//competitions++;
 	//storedScore += toAdd;
@@ -887,6 +930,7 @@ void spatialRobocodeParasiteDelta::addToScore(double toAdd) {
 	return;
 }
 
+// Ditto keep the worst (lowest) layered score.
 void spatialRobocodeParasiteDelta::addToLayeredScore(double toAdd) {
 	//competitions++;
 	//storedScore += toAdd;
@@ -896,15 +940,17 @@ void spatialRobocodeParasiteDelta::addToLayeredScore(double toAdd) {
 	}
 }
 
-// So the Lower the better, we need to return the "worst"
-// score i.e. the highest.
+// So here, the higher score is the better score, we want to return the worst score the parasite has
+// i.e. the lowest.
 
 double spatialRobocodeParasiteDelta::getScore() {
 	if ((storedLayeredScore == 0) || (storedScore < storedLayeredScore)) {
 		//cout << "ParasiteDelta " << getName() << "returning score " << storedScore << "rather than " << storedLayeredScore << endl;
-		return storedScore;
+        if (!isParticipating()) { cout << "Parasite: " << getName() << " scored " << storedScore<< " this round\n"; }
+ 		return storedScore;
 	} else {
 			//cout << "ParasiteDelta " << getName() << "returning score " << storedLayeredScore << " rather than " << storedScore << endl;
+            if (!isParticipating()) { cout << "Parasite: " << getName() << " scored " << storedScore<< " this round\n"; }
 			return storedLayeredScore;
 		}
 }
@@ -945,7 +991,7 @@ void spatialRobocodeParasiteDelta::loadParasite(ifstream &fin,int i) {
 	long dnaL;
 	int *dna;
 	fin >> geneticAge; 
-	cout << "ParasiteDelta Age:" << geneticAge << endl;
+	//cout << "ParasiteDelta Age:" << geneticAge << endl;
 	fin >> dnaL;
 	if (!fin) return; 
 	if (dnaL<10 || dnaL>800000) {
@@ -963,13 +1009,13 @@ void spatialRobocodeParasiteDelta::loadParasite(ifstream &fin,int i) {
 	ParasiteDelta.reset(new cr_data(dna,dnaL));
 	isInvalid = false; // assume that its not isInvalid until proven otherwise.
 	if (ParasiteDelta->isValid()) {
-		cout << "A ParasiteDelta was loaded that was valid\n";
+		//cout << "A ParasiteDelta was loaded that was valid\n";
 		if (isReallyValid()) {
-			cout << "... and it really is valid\n";
-		} else { cout << "odd, its not really valid\n";
+		//	cout << "... and it really is valid\n";
+		} else { cout << "odd, A valid Parasite was loaded but its not really valid\n";
 		}
 	} else {
-		cout << "Its not valid\n";
+		cout << "An invalid Parasite Delta was loaded\n";
 	}
 	//	cout << "Loaded a ParasiteDelta!\n";
 	

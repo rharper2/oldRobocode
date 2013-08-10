@@ -1,6 +1,9 @@
 This contains the code for the servers that conduct the actual battle.
 
+Bascially they are little java programs that contact the "evolver" and run battle for it.
+
 These ones assume we are on a local machine (can probably map network drives) and that the robots are found in the usual robots/ directory - they will be by generations.
+The code is really straightforward to modify.
 
 They use port 9000, basically register with the server fetch the names of the two contestants and deliver the scores. Sweet and simple. There is a bit of system output so you can see how its going.
 
@@ -15,6 +18,8 @@ You may have to add more to your classpath etc, but I don't.
 
 :)
 
-Also now in this directory is a tar of the (non standard) human competitors used by spatialRobocodeCreatureDelta. This should be untarred (but leave the jar files) in the robots subdirectory of your robocode directory.
+Also now in this directory is a tar of the (non standard) human competitors used by spatialRobocodeCreatureDelta. This should be untarred to produce their jar files. In theory I think we should just be able to use them from the jar files, but it wasn't working for me, so run the shell script also in this directory (expandBots), which basically inflates any jars found in the directory.
+
+This will expand the robots. Obviously feel free to change the robots with updated participants etc, but make sure you have their names altered in bot the creature and parasite class in the file spatialRobocodeCreatureDelta (or equivalent) in the main c++ robocode program. A word of warning don't leave excess (i.e. uneeded robots) lying around the robocode directory it slows down the loading of each battle as robocode scans the files present (This is why each evolved generation is tard and the original files deleted after it has been done).
 
 
