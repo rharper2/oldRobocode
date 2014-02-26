@@ -555,8 +555,8 @@ bool spatialRobocodeCreatureDelta::isReallyValid() {
 void spatialRobocodeCreatureDelta::loadCreature(ifstream &fin) {
 	long dnaL;
 	int *dna;
-	fin >> geneticAge; 
-	//cout << "CreatureDelta Age:" << geneticAge << endl;
+	fin >> geneticAge;
+	cout << "CreatureDelta Age:" << geneticAge << endl;
 	fin >> dnaL;
 	if (!fin) return; 
 	if (dnaL<10 || dnaL>800000) {
@@ -630,33 +630,23 @@ void spatialRobocodeCreatureDelta::inLayerWithLocation(int layer,int x) {
     myLocation = x;
     topLevel = false;
     if (layer == layerLives.size()-2) {
-        if (x>=100 && x<105) participates = false;
-        if (x>=120 && x<125) participates = false;
-        if (x>=140 && x<145) participates = false;
-        if (x>=160 && x<165) participates = false;
-        if (x>=180 && x<185) participates = false;
-            
-        if (x>=300 && x<305) participates = false;
-        if (x>=320 && x<325) participates = false;
-        if (x>=340 && x<345) participates = false;
-        if (x>=360 && x<365) participates = false;
-        if (x>=380 && x<385) participates = false;
+        if (x>=27 && x<=29) participates = false;
+        if (x>=39 && x<=41) participates = false;
+        if (x>=51 && x<=53) participates = false;
+        
+        if (x>=105 && x<=107) participates = false;
+        if (x>=117 && x<=119) participates = false;
+        if (x>=129 && x<=131) participates = false;
         humanRobot=randomint(MAXROBOTNUMBER);
             // need some code to change some of the locations to not participating and human robots.
     } else {
         if (layer == layerLives.size()-1) {
             topLevel = true;
-            if (x>=90 && x<95) participates = false;
-            if (x>=110 && x<115) participates = false;
-            if (x>=130 && x<135) participates = false;
-            if (x>=150 && x<155) participates = false;
-            if (x>=170 && x<175) participates = false;
+            if (x>=7 && x<=9) participates = false;
+            if (x>=13 && x<=15) participates = false;
             
-            if (x>=290 && x<295) participates = false;
-            if (x>=310 && x<315) participates = false;
-            if (x>=330 && x<335) participates = false;
-            if (x>=350 && x<355) participates = false;
-            if (x>=370 && x<375) participates = false;
+            if (x>=61 && x<=64) participates = false;
+            if (x>=73 && x<=75) participates = false;
             humanRobot=randomint(MAXROBOTNUMBER);
         }
     } 
@@ -990,8 +980,8 @@ void spatialRobocodeParasiteDelta::saveParasite(ofstream &fout)
 void spatialRobocodeParasiteDelta::loadParasite(ifstream &fin,int i) {
 	long dnaL;
 	int *dna;
-	fin >> geneticAge; 
-	//cout << "ParasiteDelta Age:" << geneticAge << endl;
+	fin >> geneticAge;
+	cout << "ParasiteDelta Age:" << geneticAge << endl;
 	fin >> dnaL;
 	if (!fin) return; 
 	if (dnaL<10 || dnaL>800000) {
@@ -1029,32 +1019,22 @@ bool spatialRobocodeParasiteDelta::isParticipating() {
 
 void spatialRobocodeParasiteDelta::inLayerWithLocation(int layer,int x) {
     if (layer == layerLives.size()-2) {
-        if (x>=110 && x<115) participates = false;
-        if (x>=130 && x<135) participates = false;
-        if (x>=150 && x<155) participates = false;
-        if (x>=170 && x<175) participates = false;
-        if (x>=190 && x<195) participates = false;
+        if (x>=58 && x<=60) participates = false;
+        if (x>=70 && x<=72) participates = false;
+        if (x>=82 && x<=84) participates = false;
         
-        if (x>=310 && x<315) participates = false;
-        if (x>=330 && x<335) participates = false;
-        if (x>=350 && x<355) participates = false;
-        if (x>=370 && x<375) participates = false;
-        if (x>=390 && x<395) participates = false;
+        if (x>=85 && x<=87) participates = false;
+        if (x>=97 && x<=99) participates = false;
         if (!participates) humanrobot= randomint(MAXROBOTNUMBER);
         // need some code to change some of the locations to not participating and human robots.
     } else if (layer == layerLives.size()-1) {
             topLevel = true;
-            if (x>=100 && x<105) participates = false;
-            if (x>=120 && x<125) participates = false;
-            if (x>=140 && x<145) participates = false;
-            if (x>=160 && x<165) participates = false;
-            if (x>=180 && x<185) participates = false;
-            
-            if (x>=300 && x<305) participates = false;
-            if (x>=320 && x<325) participates = false;
-            if (x>=340 && x<345) participates = false;
-            if (x>=360 && x<365) participates = false;
-            if (x>=380 && x<385) participates = false;
+            if (x>=53 && x<=55) participates = false;
+            if (x>=66 && x<=68) participates = false;
+            if (x>=78 && x<=80) participates = false;
+        
+            if (x>=121 && x<=123) participates = false;
+            if (x>=133 && x<=135) participates = false;
             if (!participates) humanrobot= randomint(MAXROBOTNUMBER);
             // need some code to change some of the locations to not participating and human robots.
         }

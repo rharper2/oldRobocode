@@ -872,7 +872,7 @@ public:
                     // The copy is quite an expensive operation (being a new cr_data) but its what we need to do!
                     // Note when we update creature to point to newCreature - we can just change pointers
                     // (the update so p takes the value of p' - using the nomenclature in the papers.
-                    p->newCreature->makeCopyOfCreature(p->neighboursAndPrevious[select]->creature);
+                    p->newCreature->makeCopyOfCreature(candidates[select]->creature);
 				}
                 else {
                     p->newCreature->makeCopyOfCreature(p->creature); // if none to select from copy the current occupier.
@@ -898,7 +898,7 @@ public:
                 if (nSize > 0) {
                     int select = selectOne(nSize);
                     nth_element(candidates.begin(),candidates.begin()+select,candidates.end(),parasiteBetterThan<creatureType,parasiteType>);
-                    p->newParasite->makeCopyOfParasite(p->neighboursAndPrevious[select]->parasite);
+                    p->newParasite->makeCopyOfParasite(candidates[select]->parasite);
                 } else {
                     p->newParasite->makeCopyOfParasite(p->parasite);
                 }

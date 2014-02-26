@@ -2395,17 +2395,16 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
                 }
-                case (16): {
-                    for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=RAND; //Maths.random(
-					curr_expr[*curr+1]=POPTREE;
+ 				case(16):{
+					for(int i=*length-1;i>*curr;i--)
+						curr_expr[i+2]=curr_expr[i];
+					*length = *length + 2;
+					curr_expr[*curr+0]=SAFEPOP_OB; //safePop_OB
+					curr_expr[*curr+1]=CRB; //)
+					curr_expr[*curr+2]=POPTREE;
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
-                }
-                    
-					
+				}
 			}//of switch
 			if (!terminating && ExtractingGrammarInfo)
 				codons[codonPos] = ( (codons[codonPos] & FCODONMASK) | ((expr_t - 1000) << CODON));
@@ -2534,10 +2533,11 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 				}
 				case(10):{
 					for(int i=*length-1;i>*curr;i--)
-						curr_expr[i+1]=curr_expr[i];
-					*length = *length + 1;
-					curr_expr[*curr+0]=ZERO; //0
-					curr_expr[*curr+1]=POPTREE;
+						curr_expr[i+2]=curr_expr[i];
+					*length = *length + 2;
+					curr_expr[*curr+0]=SAFEPEEK_OB; //safePeek_OB
+					curr_expr[*curr+1]=CRB; //)
+					curr_expr[*curr+2]=POPTREE;
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
 				}

@@ -122,15 +122,20 @@ void saveEm(theWorld *thePtr) {
 
 void reportSome(rawWorldPointer currentWorld);
 
-int SizeofX = 20;
-int SizeofY = 20;
+int SizeofX = 12;
+int SizeofY = 12;
 int GensToDo = 800;
-int ReportY = 10;   
-int ReportX = 5;
+int ReportY = 6;
+int ReportX = 6;
+
+
+
+
+
 void doit() {
     
     // This is the file the population is saved at, (in each second generation folder)
-	const char *fileToUse = "TestRoboCodeDelta";
+	const char *fileToUse = "NewTest";
     
 	
 	robocodeDelta *grammar = robocodeDelta::Instance();
@@ -151,7 +156,7 @@ void doit() {
 	// since we "save" robots when they are created (as well as before each battle)
 	// we need to set up the CurrentWorkingDirectory to the right one before
 	// we create the spacial world.
-	int startGen = 135;
+	int startGen = 529;
 	currentGen = startGen;
 	
 	// As an aside: the reason we save robots in the creation of them (as well as before each calcScore
@@ -166,9 +171,9 @@ void doit() {
 	// the battles will take hours for each generation.
 	
 	
-	layerLives.push_back(40);
+	layerLives.push_back(60);
 	//layerLives.push_back(70);
-	layerLives.push_back(130);
+	layerLives.push_back(115);
 	//layerLives.push_back(258);
 	layerLives.push_back(-1);
 	
@@ -277,7 +282,7 @@ void reportSome(rawWorldPointer currentWorld) {
 	cout << endl;
 	at = layerList.begin();
 	while (at != layerList.end()) {
-		cout << "Age: (CR): " << setw(4) << (*at)->theWorld[SizeofY+1]->creature->geneticAge;
+		cout << "Age: (CR): " << setw(4) << (*at)->theWorld[0]->creature->geneticAge;
 		for (int i=0;i<ReportX-1;i++) cout << "               ";
 		cout << " ** ";
 		at++;
@@ -285,7 +290,7 @@ void reportSome(rawWorldPointer currentWorld) {
 	cout << endl;
 	at = layerList.begin();
 	while (at != layerList.end()) {
-		cout << "Age: (PA): " << setw(4) << (*at)->theWorld[SizeofY+1]->creature->geneticAge;
+		cout << "Age: (PA): " << setw(4) << (*at)->theWorld[0]->creature->geneticAge;
 		for (int i=0;i<ReportX-1;i++) cout << "               ";
 		cout << " ** ";
 		at++;
