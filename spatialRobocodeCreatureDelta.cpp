@@ -49,6 +49,13 @@
  
 */
 
+/* PARTICIPATES:
+      I have added some functionality that allows "human" robots to be incorporated into the nodes, using a participates flag. Just don't set 
+      any of the nodes to particpates = false if you don't want to use it. We have access to the layer and the node which can be used to set the 
+      robot that lives there. The hook is the "inLayerWithLocation" method which is called when a node is set up. You can alter the participates flag there
+      and limit the node to "human" robots.
+ */
+
 extern vector<int> layerLives;
 
 void streamout(ostream &pout,crPtr &item,int age) {
@@ -122,7 +129,7 @@ void makeName(long id,bool CreatureDelta) {
 // but otherwise - as between themselves - they will select depending on
 // how well they do i.e. what there score is against the parasites (in this case)
 // in the 18 node neighbourhood (9 this level and 9 below).
-// There is no realy rhyme or reason as to the choices made here, the top level
+// There is no real rhyme or reason as to the choices made here, the top level
 // ones are the top 20 on the rumble at the time I grabbed them
 // the others were all just above the rank of the initial SCALPBOT
 // after about 160 gens of evolution just against co-evolving robots.
@@ -369,6 +376,8 @@ void spatialRobocodeCreatureDelta::addToLayeredScore(double toAdd) {
 	storedLayeredScore += toAdd;
 	competitions++;
 }
+
+// Has all the code to farm battles off to and get results back from the java robocode clients.
 double spatialRobocodeCreatureDelta::getScore() {
 	if (stateFlag) {
 		// So spatial.h told us to calc the scores, but all we have done is scheduled them (in battleFront)
@@ -596,6 +605,8 @@ bool spatialRobocodeCreatureDelta::isBetterThan(double lhsScore,spatialRobocodeC
 		exit(1);
 	}
 	if (lhsScore == rhsScore) {
+        // not sure about keeping this in - it doesn't seem to be necessary and may not be a good selective pressure.
+        // however for robocode v. unlikely robots in nodes that compare will have identical scores.
 		    crPtr lhsC = getCreature();
 			if (!lhsC) return false;
 			crPtr rhsC = rhs->getCreature();
@@ -628,8 +639,11 @@ bool spatialRobocodeCreatureDelta::isParticipating() {
 
 void spatialRobocodeCreatureDelta::inLayerWithLocation(int layer,int x) {
     myLocation = x;
-    topLevel = false;
-    if (layer == layerLives.size()-2) {
+    // you can set the partipates flag here for certain nodes, if you want.
+    // some code left in comments to show an example of how to do it.
+    /*
+     topLevel = false;
+     if (layer == layerLives.size()-2) {
         if (x>=27 && x<=29) participates = false;
         if (x>=39 && x<=41) participates = false;
         if (x>=51 && x<=53) participates = false;
@@ -651,7 +665,7 @@ void spatialRobocodeCreatureDelta::inLayerWithLocation(int layer,int x) {
         }
     } 
     if (!participates) cout << "Set location " << x << " in layer " << layer << " to not participate (creature), assigned robot " << humanRobot << " which is " << getName() << "\n";
-
+     */
 }
 
 
@@ -659,6 +673,9 @@ void spatialRobocodeCreatureDelta::inLayerWithLocation(int layer,int x) {
 /************************************************************************
  spatialRobocodeParasiteDelta and spatialRobocodeParasiteDelta(bool)
  *************************************************************************/
+
+// All the critter comments also apply to this class.
+
 spatialRobocodeParasiteDelta::spatialRobocodeParasiteDelta() {
     participates=true;
 	geneticAge = 0;
@@ -672,13 +689,11 @@ spatialRobocodeParasiteDelta::spatialRobocodeParasiteDelta() {
 	    done = ParasiteDelta->isValid();
 	} while (!done);
 	isInvalid = false;
-	//cout << "New valid spatialRobocodeParasiteDelta CreatureDelta created, with max size " << maxTree << "and id " << thisParasiteDeltaNumber << endl;
 	char fname[200];
 	char jname[200];
 	char gname[200];
 	sprintf(gname,"Gen%d",currentGen);
 
-	//cout << "Thinking of saving " << getName() <<  endl;
 	if (!(ParasiteDelta->isValid())) {
 		cout << "Weird, newly created ParasiteDelta is not valid\n";
 		exit(1);
@@ -744,55 +759,6 @@ const char *spatialRobocodeParasiteDelta::getName() {
                 default: return "supersample.SuperWalls";
             }
         }
-/*
-            switch(humanrobot) {
-                case 0: return "jk.sheldor.nano.Yatagan_1.2.3";
-                case 1: return "mld.LittleBlackBook_1.69e";
-                case 2: return "mld.Moebius_2.9.3";
-                case 3: return "mld.jdc.nano.LittleBlackBook_1.0";
-                case 4: return "nat.nano.OcnirpSNG_1.0b";
-                case 5: return "nz.jdc.nano.AralR_1.1";
-                case 6: return "nz.jdc.nano.AralT_1.1";
-                case 7: return "nz.jdc.nano.NeophytePRAL_1.4";
-                case 8: return "nz.jdc.nano.NeophytePattern_1.1";
-                case 9: return "nz.jdc.nano.NeophyteSRAL_1.3";
-                case 10: return "nz.jdc.nano.PatternAdept_1.0";
-                case 11: return "nz.jdc.nano.PralDeGuerre_1.2";
-                case 12: return "oog.nano.Caligula_1.15";
-                case 13: return "oog.nano.Fuatisha_1.1";
-                case 14: return "robar.nano.BlackWidow_1.3";
-                case 15: return "robar.nano.Pugio_1.49";
-                case 16: return "sheldor.nano.Sabreur_1.1.2";
-                case 17: return "simonton.nano.WeekendObsession_S_1.7";
-                case 18: return "fromHell.C22H30N2O2S_2.2";
-                default:    return "wompi.Kowari_1.6";
-            }
-        } else {
-            switch(humanrobot) {
-                case 0: return "supersample.SuperBoxBot";
-                case 1: return "supersample.SuperCorners";
-                case 2: return "supersample.SuperCrazy";
-                case 3: return "supersample.SuperMercutio";
-                case 4: return "supersample.SuperRamFire";
-                case 5: return "supersample.SuperSpinBot";
-                case 6: return "supersample.SuperTracker";
-                case 7: return "supersample.SuperTrackFire";
-                case 8: return "supersample.SuperWalls";
-                case 9: return "sample.Walls";
-                case 10: return "blir.nano.Cabbage_R1.0.1";
-                case 11: return "sgp.nano.FurryLeech_1.0";
-                case 12: return "pez.nano.LittleEvilBrother_0.1";
-                case 13: return "NG.LegatusLegionis_1.2";
-                case 14: return "projectx.ProjectNano_2.0";
-                case 15: return "bots.UberBot_1.2c";
-                case 16: return "dggp.haiku.gpBot_0_1.1";
-                case 17: return "zyx.nano.RedBull_1.0";
-                case 18: return "zyx.nano.Ant_1.1";
-                case 19: return "stelo.MirrorNano_1.4";
-                default: return "sample.Walls";
-            }
-        }
-        */
     }
 	else {
         
@@ -816,13 +782,11 @@ spatialRobocodeParasiteDelta::spatialRobocodeParasiteDelta(bool make) {
 			done = ParasiteDelta->isValid();
 		} while (!done);
 		isInvalid = false;
-		//cout << "New valid spatialRobocodeParasiteDelta(true) CreatureDelta created, with max size " << maxTree << "and id " << thisParasiteDeltaNumber << endl;
 		char fname[200];
 		char jname[200];
 		char gname[200];
 		sprintf(gname,"Gen%d",currentGen);
 
-		//cout << "Thinking of saving " << getName() <<  endl;
 		if (!(ParasiteDelta->isValid())) {
 			cout << "Weird, newly created ParasiteDelta is not valid\n";
 			exit(1);
@@ -854,10 +818,8 @@ void spatialRobocodeParasiteDelta::doCrossover(spatialRobocodeParasiteDelta &p2)
 		return;
 	}
 	do {
-		//		cout << "CreatureDelta crossover ";
 		cr_data::variableCrossover(ParasiteDelta,p2.getParasite(),c1,c2);
 		if ( c1 && c1->isValid()) {
-			//		  cout << " success on child1\n";
 			isInvalid = false;
 			if (p2.geneticAge > geneticAge) geneticAge = p2.geneticAge; 
 			done = true;
@@ -867,10 +829,8 @@ void spatialRobocodeParasiteDelta::doCrossover(spatialRobocodeParasiteDelta &p2)
 			isInvalid = false;
 			ParasiteDelta = c2;
   		    if (p2.geneticAge > geneticAge) geneticAge = p2.geneticAge; 
-			//			cout << " success on child2\n";
 		} else {
 			count++;
-			//			cout << " failed: " << count << " ";
 			if (count > 10) {
 				cout << "Failed to create a valid child after 10 crossover attempts, abandoning it\n";
 				done = true;
@@ -1018,6 +978,8 @@ bool spatialRobocodeParasiteDelta::isParticipating() {
 
 
 void spatialRobocodeParasiteDelta::inLayerWithLocation(int layer,int x) {
+// used to set the participates flag to false if you want occupation by non-evolving bots.
+    /*
     if (layer == layerLives.size()-2) {
         if (x>=58 && x<=60) participates = false;
         if (x>=70 && x<=72) participates = false;
@@ -1040,6 +1002,7 @@ void spatialRobocodeParasiteDelta::inLayerWithLocation(int layer,int x) {
         }
 
     if (!participates) cout << "Set location " << x << " in layer " << layer << "to not participate (parasite) assigned robot " << humanrobot << " which is " << getName() << "\n";
+  */
 }
 
 

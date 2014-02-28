@@ -2433,7 +2433,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 		}
 																  
 		case(GLOBALVARIABLE):{ /* globalVariable */
-			divisor = 12;
+			divisor = 13;
 			if (growing) {
 				nonTerminals.clear();
 				terminals.clear();
@@ -2541,7 +2541,17 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 					if (ExtractingGrammarInfo) stack.push_back(codonPos);
 					break;
 				}
-				case(11):{
+                case(11):{
+					for(int i=*length-1;i>*curr;i--)
+						curr_expr[i+2]=curr_expr[i];
+					*length = *length + 2;
+					curr_expr[*curr+0]=SAFEPOP_OB; //safePeek_OB
+					curr_expr[*curr+1]=CRB; //)
+					curr_expr[*curr+2]=POPTREE;
+					if (ExtractingGrammarInfo) stack.push_back(codonPos);
+					break;
+				}
+                case(12):{
 					for(int i=*length-1;i>*curr;i--)
 						curr_expr[i+1]=curr_expr[i];
 					*length = *length + 1;
@@ -3113,7 +3123,7 @@ void robocodeDelta::apply_one_grammar(int curr_expr[],int *curr,int *length)
 	}//Of switch
 }
 /***************************************************************/
-void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_expr[],int length, char *name, char *gen){
+void robocodeDelta::print_grammar_individual(ostream& output_stream,int curr_expr[],int length, const char *name, const char *gen){
 	int indent = 0;
 	for(int i=0;i<length;i++)
 		switch(curr_expr[i]){

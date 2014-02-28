@@ -38,7 +38,7 @@ public:
 	static robocodeDelta* Instance();
 	bool parse(int *exp,int *length,int maxExp,long codons_list[],int max_codons,int &used,vector<GEfunction> *funcVec);
 	void print_grammar_individual(ostream& output_stream,int expr[],int length) { print_grammar_individual(output_stream,expr,length,"NAME","0"); }
-	void print_grammar_individual(ostream& output_stream,int expr[],int length, char *name , char *gen);
+	void print_grammar_individual(ostream& output_stream,int expr[],int length, const char *name , const char *gen);
 	void AllowFunctions(bool);
 	bool doACreate(int *exp,int *length,int maxExp,long codons_list[],int max_codons,int &used,vector<GEfunction> *funcVec,int maxD = 6,
 				   int minD = 2, bool maxG = false);

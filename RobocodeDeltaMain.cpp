@@ -6,7 +6,10 @@
 //
 //
 
-// Main class for the Delta Grammar.
+// Runs the experiments. Uses the Delta Grammar.
+
+#define STARTAT 0
+
 
 #include <iostream>
 #include <sys/stat.h>
@@ -49,8 +52,6 @@ void changeDirectory() {
     
 	char dirname[200];
 	sprintf(dirname,"/Development/robocode/robots/Gen%d",currentGen);
-	// if (opendir(dirname)==NULL) {
-	//		printf("Errno %d\n",errno);
 	printf("Creating directory %s\n",dirname);
 	int j;
 	j=mkdir(dirname,0775);
@@ -58,9 +59,6 @@ void changeDirectory() {
 		int en=errno;
 		printf("Mkdir returned %d, with errno %d\n",j,en);
 	}
-	//	} else {
-	//		cout << "Directory already existed odd \n";
-	//	}
 	chdir(dirname);
 }
 
@@ -77,7 +75,6 @@ void saveEm(theWorld *thePtr) {
 	vector<boost::shared_ptr<location<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta> > >::iterator vat,vend;
 	vat = thePtr->theWorld.begin();
 	while (vat != thePtr->theWorld.end()) {
-		//cout << "Thinking of saving " << (*vat)->creature->getName() << " and parasite " << (*vat)->parasite->getName() << endl;
 		if ((*vat)->creature->isParticipating()) {
             if ( (*vat)->creature->getCreature()->isValid()) {
                 sprintf(fname,"%s",(*vat)->creature->getName());
@@ -110,11 +107,6 @@ void saveEm(theWorld *thePtr) {
 	}
 }
 
-// highly descriptive function name - err it does it.
-// some user parameters here, bascially the file you want the population saved to
-// (its saved periodically - every two generations)
-// the size of the layers and the layer lives (oh and the server socket, you will need to alter the clients
-// if you alter that.
 
 // ReportY and ReportX are lazy globals, basically controls the height and width of the print out
 // on the console - useful just to check if anything appears to be going wrong.
@@ -131,32 +123,29 @@ int ReportX = 6;
 
 
 
+// Do the run.
+// some user parameters here, bascially the file you want the population saved to
+// (its saved periodically - every two generations (its huge)
+// the size of the layers and the layer lives (oh and the server socket, you will need to alter the clients
+// if you alter that.
 
 void doit() {
     
     // This is the file the population is saved at, (in each second generation folder)
-	const char *fileToUse = "NewTest";
+	const char *fileToUse = "NewTest2";
     
 	
 	robocodeDelta *grammar = robocodeDelta::Instance();
 	cr_data::setGrammar(grammar);
 	
 	   
-	
-	// We also need to provided to iterators "at" and "end" to allow the
-	// the locations in a world to be iterated.
-	// at and end need to be iterators to the locations in myWorld
-	
-	vector<boost::shared_ptr<location<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta> > >::iterator vat,vend;
-	
-	
 	// Size and number of layers **********
 	// currentGen is a global declared in spatialRobocodeCreature.cpp
 	// it is used to make sure that each generation is put in its own directory
 	// since we "save" robots when they are created (as well as before each battle)
 	// we need to set up the CurrentWorkingDirectory to the right one before
 	// we create the spacial world.
-	int startGen = 529;
+	int startGen = STARTAT;
 	currentGen = startGen;
 	
 	// As an aside: the reason we save robots in the creation of them (as well as before each calcScore
@@ -171,17 +160,17 @@ void doit() {
 	// the battles will take hours for each generation.
 	
 	
-	layerLives.push_back(60);
-	//layerLives.push_back(70);
-	layerLives.push_back(115);
-	//layerLives.push_back(258);
+	layerLives.push_back(40);
+	layerLives.push_back(70);
+	layerLives.push_back(125);
 	layerLives.push_back(-1);
 	
 	myWorldPtr aWorld;
 	
-	//aWorld.reset(new spatialWorld<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta>(SizeofX,SizeofY));
+	aWorld.reset(new spatialWorld<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta>(SizeofX,SizeofY));
 	changeDirectory();
-    aWorld.reset(spatialWorld<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta>::makeWorldFromLoadFile(SizeofX,SizeofY,3,fileToUse));
+    // Below is the command to use to load an existing file.
+    // aWorld.reset(spatialWorld<spatialRobocodeCreatureDelta,spatialRobocodeParasiteDelta>::makeWorldFromLoadFile(SizeofX,SizeofY,3,fileToUse));
 	reportSome(aWorld.get());
 	changeDirectory();
 	initialiseServerStuff(9000);
@@ -331,10 +320,8 @@ void testSome() {
 }
 
 int main (int argc, char * const argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    std::cout << "Hello, ready to rumble?\n";
 	doit();
-	//testSome();
     return 0;
 }
 

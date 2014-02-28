@@ -10,7 +10,7 @@
 #ifndef dataCollectorH
 #define dataCollectorH
 
-using namespace std;
+// using namespace std;
 
 
 
