@@ -9,7 +9,7 @@
 #ifndef SPATIALWORLD
 #define SPATIALWORLD
 
-#include "critter.h"
+#include "../Base/critter.h"
 #include <iostream>
 #include <iomanip>
 
