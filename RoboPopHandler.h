@@ -20,7 +20,7 @@ class dwBattleLine;
 
 
 
-class RoboPopHandler: public popHandlerBase {
+class RoboPopHandler {
 public:
     RoboPopHandler();
     void fileSave(const char *fname);
@@ -33,11 +33,16 @@ public:
     vector<wrappedDeltaPtr>::iterator dWpopStart() { return population.begin(); }
     vector<wrappedDeltaPtr>::iterator dWpopEnd() { return population.end(); }
     //void sortIt() { sort(population.begin(),population.end(),crPtrGreaterThan); }
-    
-    
+    int currentGen;
+    void breed();
+        
 protected:
+    int popSize;
     BreederBase *breeder;
     vector<wrappedDeltaPtr> population;
+    void doTheBattles();
+    void changeDirectory();
+    void saveEm();
 };
 
 #endif /* defined(__Robocode__RoboPopHandler__) */

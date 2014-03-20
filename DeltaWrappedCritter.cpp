@@ -8,6 +8,8 @@
 
 #include "DeltaWrappedCritter.h"
 
+long DeltaWrappedCritter::id_count = 0;
+
 
 namespace dWCritter {
     void streamout(ostream &pout,crPtr &item) {
@@ -22,6 +24,7 @@ namespace dWCritter {
 
 DeltaWrappedCritter::DeltaWrappedCritter(bool make) {
     storedScore = 0;
+    theId  = id_count++;
     if (make) {
 		int maxTree;
 		bool done = false;
@@ -33,6 +36,16 @@ DeltaWrappedCritter::DeltaWrappedCritter(bool make) {
 		} while (!done);
 		
 	}	
+}
+
+
+char javaCName[200];
+
+string DeltaWrappedCritter::getName()
+{
+	sprintf(javaCName,"Critter%ld",theId);
+    string answer = javaCName;
+    return answer;
 }
 
 void DeltaWrappedCritter::clearScore() {
@@ -51,9 +64,8 @@ bool DeltaWrappedCritter::isBetterThan(double lhsScore,DeltaWrappedCritter *rhs,
 }
 
 
-void DeltaWrappedCritter::makeCopyOfCreature(boost::shared_ptr<DeltaWrappedCritter>  tocopy) {
-    cr_data *newCopy;
-    newCopy = new cr_data(*(tocopy->getCreature())); // dereference the crPtr to refer to the cr_data
+void DeltaWrappedCritter::replaceWithCopyOfCreature(crPtr  tocopy) {
+    critter.reset(new cr_data(*tocopy)); // dereference the crPtr to refer to the cr_data
     storedScore = 0;
 };
 
