@@ -10,7 +10,6 @@
 		00DA2AB712863B77003F9E66 /* robocodeBeta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0080AE5C1263ACEC00631E8B /* robocodeBeta.cpp */; };
 		00DA2ABC12863B77003F9E66 /* Robocode.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Robocode.1 */; };
 		00DA2AD512863BBC003F9E66 /* RobocodeMvPMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00DA2AD412863BBC003F9E66 /* RobocodeMvPMain.cpp */; };
-		00DA2ADE12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00DA2ADC12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp */; };
 		00F5E26D1777CE6000E8A810 /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFE3173B41E600FF8C02 /* myrandom.cpp */; };
 		00F5E26E1777CE7B00E8A810 /* spatialRobocodeCreatureDelta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00ADF28E17448CB2004FCE54 /* spatialRobocodeCreatureDelta.cpp */; };
 		00F5E26F1777CE8500E8A810 /* RobocodeDeltaMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 004F5110173A503900E9BF62 /* RobocodeDeltaMain.cpp */; };
@@ -27,6 +26,9 @@
 		00F5E27B1777D36200E8A810 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFDB173B41E600FF8C02 /* functions.cpp */; };
 		00F5E27C1777D36600E8A810 /* myrandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0098DFE3173B41E600FF8C02 /* myrandom.cpp */; };
 		00FCD2F21744CCCB00AB6E47 /* spatial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00FCD2EF1744CCCB00AB6E47 /* spatial.cpp */; };
+		4D55926F18D2A95300175012 /* DeltaWrappedCritter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D55926D18D2A95300175012 /* DeltaWrappedCritter.cpp */; };
+		4D55927118D2B03700175012 /* spatialRobocodeCreatureMvP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00DA2ADC12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp */; };
+		4DAB1DC518D2CBF9008CD4A1 /* RoboPopHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB1DC318D2CBF9008CD4A1 /* RoboPopHandler.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,6 +93,10 @@
 		00FCD2EF1744CCCB00AB6E47 /* spatial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = spatial.cpp; path = Spatial/spatial.cpp; sourceTree = "<group>"; };
 		00FCD2F01744CCCB00AB6E47 /* spatial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spatial.h; path = Spatial/spatial.h; sourceTree = "<group>"; };
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4D55926D18D2A95300175012 /* DeltaWrappedCritter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeltaWrappedCritter.cpp; sourceTree = "<group>"; };
+		4D55926E18D2A95300175012 /* DeltaWrappedCritter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeltaWrappedCritter.h; sourceTree = "<group>"; };
+		4DAB1DC318D2CBF9008CD4A1 /* RoboPopHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoboPopHandler.cpp; sourceTree = "<group>"; };
+		4DAB1DC418D2CBF9008CD4A1 /* RoboPopHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoboPopHandler.h; sourceTree = "<group>"; };
 		C6859E8B029090EE04C91782 /* Robocode.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Robocode.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +176,10 @@
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
 				004F5110173A503900E9BF62 /* RobocodeDeltaMain.cpp */,
 				00DA2AD412863BBC003F9E66 /* RobocodeMvPMain.cpp */,
+				4D55926D18D2A95300175012 /* DeltaWrappedCritter.cpp */,
+				4D55926E18D2A95300175012 /* DeltaWrappedCritter.h */,
+				4DAB1DC318D2CBF9008CD4A1 /* RoboPopHandler.cpp */,
+				4DAB1DC418D2CBF9008CD4A1 /* RoboPopHandler.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -269,7 +279,9 @@
 				00F5E26F1777CE8500E8A810 /* RobocodeDeltaMain.cpp in Sources */,
 				00F5E2701777CF3400E8A810 /* robocodeDelta.cpp in Sources */,
 				00F5E2711777CF4700E8A810 /* critter.cpp in Sources */,
+				4DAB1DC518D2CBF9008CD4A1 /* RoboPopHandler.cpp in Sources */,
 				00F5E2721777CF4F00E8A810 /* DataCollector.cpp in Sources */,
+				4D55926F18D2A95300175012 /* DeltaWrappedCritter.cpp in Sources */,
 				00F5E2731777CF5200E8A810 /* functions.cpp in Sources */,
 				00F5E2751777CF6000E8A810 /* ptc2Grow.cpp in Sources */,
 				00F5E2761777CF7700E8A810 /* entity.cpp in Sources */,
@@ -281,8 +293,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				00DA2AB712863B77003F9E66 /* robocodeBeta.cpp in Sources */,
+				4D55927118D2B03700175012 /* spatialRobocodeCreatureMvP.cpp in Sources */,
 				00DA2AD512863BBC003F9E66 /* RobocodeMvPMain.cpp in Sources */,
-				00DA2ADE12863BFA003F9E66 /* spatialRobocodeCreatureMvP.cpp in Sources */,
 				00F5E2771777D35600E8A810 /* spatial.cpp in Sources */,
 				00F5E2781777D35A00E8A810 /* critter.cpp in Sources */,
 				00F5E2791777D35C00E8A810 /* DataCollector.cpp in Sources */,
