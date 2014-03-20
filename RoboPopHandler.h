@@ -17,7 +17,9 @@
 #include <string>
 
 class dwBattleLine;
-
+namespace DWHandler {
+    void initialiseServerStuff(short portNo);
+}
 
 
 class RoboPopHandler {
@@ -25,17 +27,18 @@ public:
     RoboPopHandler();
     void fileSave(const char *fname);
     string fileLoad(const char *fname);
-    
-    void rampedptc2(int startExp,int endExp,int maxDepth=16);
-    
+    string fileName;
+    void rampedptc2();
+    void setFileName(string st) { fileName = st; }
     long getPopSize() { return population.size(); }
     string breed(int cycles,int termination = 0);
     vector<wrappedDeltaPtr>::iterator dWpopStart() { return population.begin(); }
     vector<wrappedDeltaPtr>::iterator dWpopEnd() { return population.end(); }
     //void sortIt() { sort(population.begin(),population.end(),crPtrGreaterThan); }
     int currentGen;
+    void setGen(int sg) { currentGen = sg; }
     void breed();
-        
+    void setPopulationSize(int x) { popSize = x; }
 protected:
     int popSize;
     BreederBase *breeder;

@@ -77,7 +77,7 @@ namespace DWHandler { // avoids collisions with, say spatialRobocodeCreatureDelt
         return answer;
     }
 
-#define numberOfParasites 20
+#define numberOfParasites 19
     string getGenName(int parasite) {
         switch (parasite) {
             case 0: return "supersample.SuperBoxBot";
@@ -95,11 +95,10 @@ namespace DWHandler { // avoids collisions with, say spatialRobocodeCreatureDelt
             case 12: return "pez.nano.LittleEvilBrother";
             case 13: return "NG.LegatusLegionis";
             case 14: return "projectx.ProjectNano";
-            case 15: /*return "bots.UberBot";*/
-            case 16: return "dggp.haiku.gpBot_0";
-            case 17: return "zyx.nano.RedBull";
-            case 18: return "zyx.nano.Ant";
-            case 19: return "stelo.MirrorNano";
+            case 15: return "dggp.haiku.gpBot_0";
+            case 16: return "zyx.nano.RedBull";
+            case 17: return "zyx.nano.Ant";
+            case 18: return "stelo.MirrorNano";
             default:    return "Bum parasite";
         }
     }
@@ -232,7 +231,7 @@ string RoboPopHandler::fileLoad(const char *fname){
     return outs.str();
 }
 
-void RoboPopHandler::rampedptc2(int startExp,int endExp,int maxDepth) {
+void RoboPopHandler::rampedptc2() {
     population.clear();
     for (int i=0;i<popSize;i++) {
         wrappedDeltaPtr tp;
@@ -294,6 +293,7 @@ void RoboPopHandler::breed() {
     // Compile the bots
    
     changeDirectory();
+    fileSave(fileName.c_str());
     saveEm();
     DWHandler::battleFront.clear();
     cout << "Cleared the battle list.\n";
@@ -315,6 +315,12 @@ void RoboPopHandler::breed() {
     // So - sort them and then breed a new population to replace the old one.
     // reverse as we want top near the beginning.
     std::sort(population.begin(),population.end(), [](wrappedDeltaPtr a, wrappedDeltaPtr b){ return b->getScore() < a->getScore(); });
+    
+    // since we have a sorted population. Lets show the fittest 20
+    cout << "Top 20 scores were:\n";
+    for (int i=0;i<20;i++) {
+        cout << population[i]->getScore() << (i==19 ? "\n":", ");
+    }
     
     // could invoke the generic breeders, but I'll just implement a simple tournament breeder now.
     int tournamentSize=5;
