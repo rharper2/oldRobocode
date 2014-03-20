@@ -183,7 +183,7 @@ void doit() {
 		cout << "Update\n";
 		reportSome(aWorld.get());
 		aWorld->update();
-		if (currentGen%2) aWorld->savePop(fileToUse);
+		aWorld->savePop(fileToUse);
 	}
 	
 	
