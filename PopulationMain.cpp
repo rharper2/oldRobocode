@@ -20,12 +20,38 @@
 
 using namespace std;
 
+void changeToGen(int gen) {
+    char dirname[200];
+	sprintf(dirname,"/Development/robocode/robots/Gen%d",gen);
+    chdir(dirname);
+	
+}
+
+void letsCombine(int start,int stop, int skip) {
+    string fileName="ResultsofTop.csv";
+    ofstream combinedFile;
+    ifstream currentFile;
+    string myline;
+    combinedFile.open("/Development/CombinedResultsCoEvolution.csv");
+    for (int i=start;i<=stop;i+=skip) {
+        changeToGen(i);
+        currentFile.open(fileName.c_str());
+        getline(currentFile,myline);
+        combinedFile << myline << endl;
+        cout << "Gen " << i << myline << endl;
+        currentFile.close();
+    }
+    combinedFile.close();
+}
+
 int main (int argc, char * const argv[]) {
 	
 	//****** The following initialisation code is all GE run specific
     // if you are using a different system you will have your own stuff
     // to initialise.
     myrandomize();
+    //letsCombine(165,577,2);
+    //exit(1);
     
 	// Some user parameters
 	int RunsToDo = 25;
@@ -40,7 +66,7 @@ int main (int argc, char * const argv[]) {
     const char *baseFile = "RoboSaver";
 	
 	// Calculate some other paramaters from the data given
-	int PopulationSize = 500;
+	int PopulationSize = 1000;
 	
     cr_data::setGrammar(robocodeDelta::Instance());
 
@@ -65,6 +91,38 @@ int main (int argc, char * const argv[]) {
     theHandler.setPopulationSize(PopulationSize);
     theHandler.setGen(0);
     DWHandler::initialiseServerStuff(9000);
+    
+    // ******* Temporary hijace of this main file!
+    /*//for (int i=0;i<5;i++) {
+    {   theHandler.setPopulationSize(200);
+        theHandler.setGen(577);
+        theHandler.changeDirectory();
+        string theFile;
+      //  if (i<5) theHandler.fileLoad("savedPop.pop");
+        //else
+        theHandler.spatialFileLoad("NewTest2.layer3.pop");
+        theHandler.workOutTheBestFewAndReallyTestThem();
+    }
+    */
+    
+    //******* Temporary hijack of this main file!
+    PopulationSize=1000;
+    theHandler.setPopulationSize(PopulationSize);
+    for (int i=99;i>2;i-=5) {
+//        if (i>1001) theHandler.setPopulationSize(1000);
+        theHandler.setGen(i);
+        theHandler.changeDirectory();
+        string theFile;
+        theHandler.fileLoad("RoboSaverrun2.csv");
+        theHandler.workOutTheBestFewAndReallyTestThem();
+    }
+    
+    
+    exit(1);
+    
+    
+    
+    
 	// ************** Tell them the system we are running, just in case its not what they want.
 	
 	cout << "****************************\n";
@@ -81,9 +139,15 @@ int main (int argc, char * const argv[]) {
         theHandler.rampedptc2();
         theHandler.setFileName(fname);
         int gen =0;
+        if (count == 0) {
+            gen = 65;
+            theHandler.setGen(gen);
+            theHandler.changeDirectory();
+            theHandler.fileLoad(fname);
+        }
         cout << "\nGenerated the population, lets see how we go...\n";
         sprintf(fname,"%sRun%dGen%d",baseFile,count,gen);
-        for (gen = 0;gen < GensToRunFor;gen++) {
+        for (;gen < GensToRunFor;gen++) {
             theHandler.setGen(gen);
             cout << "Generation: " << gen;
             theHandler.breed();

@@ -41,6 +41,7 @@ public:
     void display() { if (critter) cout << critter->display(); }
     
     void loadCreature(ifstream &istream);
+    void loadSpatialCreature(ifstream &istream);
     void saveCreature(ofstream &ostream);
     string getName();
 

@@ -54,6 +54,7 @@ void DeltaWrappedCritter::clearScore() {
 
 void DeltaWrappedCritter::addToScore(double ats) {
     storedScore += ats;
+    if (theId==0) cout << "adding " << ats << " its now " << storedScore << endl;
 }
 
 bool DeltaWrappedCritter::isBetterThan(double lhsScore,DeltaWrappedCritter *rhs,double rhsScore) {
@@ -106,5 +107,34 @@ void DeltaWrappedCritter::loadCreature(ifstream &fin) {
 	}
 	
 }
+
+void DeltaWrappedCritter::loadSpatialCreature(ifstream &fin) {
+	long dnaL;
+	int *dna;
+    int geneticAge;
+	fin >> geneticAge; // we dont care just now, so throw away.
+    fin >> dnaL;
+	if (!fin) return;
+	if (dnaL<10 || dnaL>800000) {
+		cout << "Encountered an unusual dna length of " << dnaL << "\n";
+	}
+	dna = new int[dnaL];
+	for (int i=0;i<dnaL;i++) {
+		fin >> dna[i];
+    }
+	int j;
+	fin >> j;
+	if (j!=-1) {
+		cout << "Potential error, CreatureDelta \"stream\" not properly terminated\n";
+	}
+	critter.reset(new cr_data(dna,dnaL));
+	if (critter->isValid()) {
+		//cout << "A ParasiteDelta was loaded that was valid\n";
+	} else {
+		cout << "An invalid DeltaWrappedCritter was loaded\n";
+	}
+	
+}
+
 
 

@@ -1,4 +1,13 @@
 //
+//  LightHandler.cpp
+//  Robocode
+//
+//  Created by robin on 11/04/2014.
+//
+//
+
+#include "LightHandler.h"
+//
 //  RoboPopHandler.cpp
 //  Robocode
 //
@@ -37,18 +46,18 @@
 #include <stdlib.h>
 #include "robocodeDelta.h"
 
-namespace DWHandler { // avoids collisions with, say spatialRobocodeCreatureDelta
+namespace LWHandler { // avoids collisions with, say spatialRobocodeCreatureDelta
     
     
-    class dwBattleLine {
+    class LWBattleLine {
     public:
-        dwBattleLine(wrappedDeltaPtr cr,int pa): CreatureDelta(cr),ParasiteDelta(pa) { }
-        wrappedDeltaPtr CreatureDelta;
+        LWBattleLine(lightlywrappedDeltaPtr cr,int pa): lightlywrappedDeltaPtr(cr),ParasiteDelta(pa) { }
+        lightlywrappedDeltaPtr CreatureDelta;
         int ParasiteDelta;
     };
-
     
-    typedef boost::shared_ptr<dwBattleLine> battleLinePtr;
+    
+    typedef boost::shared_ptr<LWBattleLine> battleLinePtr;
     list<battleLinePtr> battleFront; // a list of battles to be fought.
     list<int> currentFds; // list of clients that have joined
     list<int> readyForWork; // the clients that are awaiting work.
@@ -76,7 +85,7 @@ namespace DWHandler { // avoids collisions with, say spatialRobocodeCreatureDelt
         string answer=outputB;
         return answer;
     }
-
+    
     int numberOfParasites = 15;
     int sampleSet = 0;
     void setSampleSet(int sample) {
@@ -98,7 +107,7 @@ namespace DWHandler { // avoids collisions with, say spatialRobocodeCreatureDelt
                 exit(1);
         }
     }
-
+    
     string getGenName(int parasite) {
         switch (sampleSet) {
             case 0:{
@@ -176,7 +185,7 @@ namespace DWHandler { // avoids collisions with, say spatialRobocodeCreatureDelt
         }
     }
     
-
+    
     
     void sigchld_handler(int s)
     {
@@ -269,79 +278,17 @@ RoboPopHandler::RoboPopHandler() {
     
 }
 
-void RoboPopHandler::fileSave(const char *fname) {
-    ofstream fout;
-    if (population.size() == 0) {
-        cout << "Nothing to save\n";
-        return;
-    }
-    fout.open(fname,ios::out);
-    vector<wrappedDeltaPtr>::iterator it = population.begin();
-    while (it != population.end()) {
-        (*it)->saveCreature(fout);
-        it++;
-    };
-    fout.close();
-}
-
-string RoboPopHandler::fileLoad(const char *fname){
-    // might want to save popSize, but we will just assume its correct
-    ifstream fin(fname);
-    cout << "Opened file\n";
-    ostringstream outs;
-    if (!fin) {
-        cout <<  "Error trying to open " << fname << " for loading\n";
-        return outs.str();
-    } else { // the following isnt very robust if we dont have a well formed file
-        population.clear();
-        for (int i=0;i<popSize;i++) {
-            wrappedDeltaPtr tp;
-            tp.reset(new DeltaWrappedCritter(false));
-            tp->loadCreature(fin);
-            population.push_back(tp);
-        }
-    }
-    fin.close();
-    outs << "OK";
-    return outs.str();
-}
-
-string RoboPopHandler::spatialFileLoad(const char *fname){
-    // might want to save popSize, but we will just assume its correct
-    ifstream fin(fname);
-    cout << "Opened file\n";
-    ostringstream outs;
-    if (!fin) {
-        cout <<  "Error trying to open " << fname << " for loading\n";
-        return outs.str();
-    } else { // the following isnt very robust if we dont have a well formed file
-        population.clear();
-        for (int i=0;i<popSize;i++) {
-            wrappedDeltaPtr tp;
-            tp.reset(new DeltaWrappedCritter(false));
-            tp->loadSpatialCreature(fin);
-            population.push_back(tp);
-        }
-    }
-    fin.close();
-    outs << "OK";
-    return outs.str();
-}
-
-
-void RoboPopHandler::rampedptc2() {
-    population.clear();
-    for (int i=0;i<popSize;i++) {
-        wrappedDeltaPtr tp;
-        tp.reset(new DeltaWrappedCritter(true));
-        population.push_back(tp);
-    }
-}
 
 /* Hmm not sure where we set the generation - the conrolling program on here.
-   Just now I am assuming currentGen is set correctly
+ Just now I am assuming currentGen is set correctly
  */
 
+vod addRobot(string name) {
+    LightlyWrappedCritter *lwc = new LightlyWrappedCritter(name);
+    lightlywrappedDeltaCritter toadd;
+    toadd.reset(lwc);
+    population.push_back(toadd);
+}
 
 
 void RoboPopHandler::changeDirectory() {
@@ -367,45 +314,21 @@ void RoboPopHandler::changeDirectory() {
 // saving the phenotype (as a .java) file of each critter and parasite
 // into the current working directory (which has been set up by changeDirectory)
 
-void RoboPopHandler::saveEm() {
-	char fname[200];
-	char jname[200];
-	char gname[200];
-	sprintf(gname,"Gen%d",currentGen);
-    for_each(population.begin(),population.end(),[&] (wrappedDeltaPtr pt) {
-        sprintf(fname,"%s",pt->getName().c_str());
-        sprintf(jname,"%s.java",fname);
-        ofstream robotout;
-        robotout.open(jname);
-        robocodeDelta::Instance()->print_grammar_individual(robotout,pt->getCreature()->getExpression(),pt->getCreature()->getExpressionLength(),fname,gname);
-        robotout.close();
-    });
-    
-}
-
 
 // Assumes that population contains the robots you want to give a really good workout!
 // Oh and assumes you have properly set Generation. so watchout.
 // Currently selects the best set on set0, then does 50 runs on the two top bots with set0 set1 and set2
-void RoboPopHandler::workOutTheBestFewAndReallyTestThem() {
-    DWHandler::setSampleSet(0);
+void RoboPopHandler::reallyTestThem() {
+    LWHandler::setSampleSet(0);
     // clear their scores
     for_each(population.begin(),population.end(),[] (wrappedDeltaPtr pt) { pt->clearScore(); });
-    //setGen(999); // oh well something out the way.
-    // Compile the bots
-    changeDirectory();
-    fileSave(fileName.c_str());
-    saveEm();
-    DWHandler::battleFront.clear();
-    cout << "Cleared the battle list.\n";
-    system("javac -J-Xmx1024m -classpath ../../libs/robocode.jar *.java");
-    cout << "Compiled the bots.\n";
     
+    fileSave(fileName.c_str());
     // Schedule each populaiton member to battle each parasite. <- this could be made more sophisticated.
-    for_each(population.begin(),population.end(),[&] (wrappedDeltaPtr pt) {
-        for (int i=0;i<DWHandler::numberOfParasites;i++) {
-            DWHandler::battleLinePtr nptr(new DWHandler::dwBattleLine(pt,i));
-            DWHandler::battleFront.push_back(nptr); // this will be autodeleted when battleFront cleared (the power of shared_ptr!)
+    for_each(population.begin(),population.end(),[&] (lightlywrappedDeltaPtr pt) {
+        for (int i=0;i<LWHandler::numberOfParasites;i++) {
+            LWHandler::battleLinePtr nptr(new LWHandler::LWBattleLine(pt,i));
+            LWHandler::battleFront.push_back(nptr); // this will be autodeleted when battleFront cleared (the power of shared_ptr!)
         }
     });
     
@@ -418,214 +341,102 @@ void RoboPopHandler::workOutTheBestFewAndReallyTestThem() {
     // get rid of the dross
    	system("rm *.class *.java");
     saveEm(); // works as we are down to a few in the population
-    DWHandler::battleFront.clear();
+    LWHandler::battleFront.clear();
     cout << "Cleared the battle list.\n";
     system("javac -J-Xmx1024m -classpath ../../libs/robocode.jar *.java");
     cout << "Compiled the bots.\n";
     // quick and dirty
-    vector<double> bot1;
-    vector<double> bot2;
     char  fname[200];
-    sprintf(fname,"ResultsofTopNowWith%dSetsR2.csv",3);
+    sprintf(fname,"ResultsofTopNowWith%dSets.csv",3);
     ofstream of(fname);
+    of.open("LightWrapWrapUp.csv");
     for (int set=0;set<3;set++) {
-        bot1.clear();
-        bot2.clear();
-        DWHandler::setSampleSet(set);
+        of << "Set " << set << endl;
+        
+        LWHandler::setSampleSet(set);
+        for_each(population.begin(),population.end(),[&] (lightywrappedDeltaPtr pt) {
+            of << pt->getName() << ",";
+        });
         for (int i=0;i<50;i++) {
-            for_each(population.begin(),population.end(),[] (wrappedDeltaPtr pt) { pt->clearScore(); });
-            for_each(population.begin(),population.end(),[&] (wrappedDeltaPtr pt) {
-                for (int i=0;i<DWHandler::numberOfParasites;i++) {
-                    DWHandler::battleLinePtr nptr(new DWHandler::dwBattleLine(pt,i));
-                    DWHandler::battleFront.push_back(nptr); // this will be autodeleted when battleFront cleared (the power of shared_ptr!)
+            for_each(population.begin(),population.end(),[] (lightlywrappedDeltaPtr pt) { pt->clearScore(); });
+            for_each(population.begin(),population.end(),[&] (lightlywrappedDeltaPtr pt) {
+                for (int i=0;i<LWHandler::numberOfParasites;i++) {
+                    LWHandler::battleLinePtr nptr(new LWHandler::LWBattleLine(pt,i));
+                    LWHandler::battleFront.push_back(nptr); // this will be autodeleted when battleFront cleared (the power of shared_ptr!)
                 }
             });
             doTheBattles();
-            bot1.push_back(population[0]->getScore());
-            bot2.push_back(population[1]->getScore());
-            cout << "Keeping up with the scores:\n";
-            cout << "Bot1: ";
-            for_each(bot1.begin(),bot1.end(),[] (double score) {cout << score << ", ";});
-            cout << "\nBot2: ";
-            for_each(bot2.begin(),bot2.end(),[] (double score) {cout << score << ", ";});
+            for_each(population.begin(),population.end(),[&] (lightywrappedDeltaPtr pt) {
+                of << pt->getScore() << ",";
+            });
+            of << endl;
         }
-        for_each(bot1.begin(),bot1.end(),[&] (double score) {of << score << ", ";});
-        of << "\n";
-        for_each(bot2.begin(),bot2.end(),[&] (double score) {of << score << ", ";});
-        of << "\n";
+        of << endl;
     }
     of.close();
 }
 
 
-void RoboPopHandler::breed() {
-    // clear their scores
-    for_each(population.begin(),population.end(),[] (wrappedDeltaPtr pt) { pt->clearScore(); });
-    // Compile the bots
-   
-    changeDirectory();
-    fileSave(fileName.c_str());
-    saveEm();
-    DWHandler::battleFront.clear();
-    cout << "Cleared the battle list.\n";
-    system("javac -J-Xmx1024m -classpath ../../libs/robocode.jar *.java");
-    cout << "Compiled the bots.\n";
-
-    // Schedule each populaiton member to battle each parasite. <- this could be made more sophisticated.
-    for_each(population.begin(),population.end(),[&] (wrappedDeltaPtr pt) {
-        for (int i=0;i<DWHandler::numberOfParasites;i++) {
-            DWHandler::battleLinePtr nptr(new DWHandler::dwBattleLine(pt,i));
-            DWHandler::battleFront.push_back(nptr); // this will be autodeleted when battleFront cleared (the power of shared_ptr!)
-        }
-    });
-    
-    doTheBattles();
-    
-    // So recap - for the "currentGeneration" we have compiled the robots, battled them against the parasites and stored their scores
-    
-    // So - sort them and then breed a new population to replace the old one.
-    // reverse as we want top near the beginning.
-    std::sort(population.begin(),population.end(), [](wrappedDeltaPtr a, wrappedDeltaPtr b){ return b->getScore() < a->getScore(); });
-    
-    // since we have a sorted population. Lets show the fittest 20
-    cout << "Top 20 scores were:\n";
-    for (int i=0;i<20;i++) {
-        cout << population[i]->getScore() << (i==19 ? "\n":", ");
-    }
-    
-    // could invoke the generic breeders, but I'll just implement a simple tournament breeder now.
-    int tournamentSize=5;
-    int mutate_chance=2000; // 0.2
-    int eliteRetain = 10; // keep this number of the best ones
-    
-    vector<wrappedDeltaPtr> nextgen;
-    nextgen.clear();
-    crPtr c1,c2;
-    wrappedDeltaPtr cw1,cw2;
-    crPtr p1,p2;
-    nextgen.reserve(popSize+1); // really only need pop_size+1, but what the heck..
-    crPtr t1,t2;
-    while (((int) nextgen.size()) < (popSize-eliteRetain)) { // this is how many we need to make.
-        int firstChosen=popSize-1;
-        int secondChosen=popSize-1;
-        int canditate;
-        
-        // Population is ordered best first, so we just need to roll the dice tournamentSize times and pick the lowest one.
-        for (int i = 0; i < tournamentSize;i++) {
-                canditate = randomint(popSize);
-                if (canditate < firstChosen) firstChosen = canditate;
-        }
-        for (int i = 0; i < tournamentSize;i++) {
-                canditate = randomint(popSize);
-                if (canditate < secondChosen)  secondChosen = canditate;
-        }
-        
-        // cout << "Going to choose " << first << " and then " << second << "\n";
-        
-        // Obviously you can use any operator.
-        cr_data::variableCrossover(p1=population[firstChosen]->getCreature(),p2=population[secondChosen]->getCreature(),c1,c2);
-        
-        if (c1 != NULL) {
-            if (c1->isValid()) {
-               c1->smartSureMutate(mutate_chance);
-               if (c1->isValid()) { // is it still valid after mutation?
-                    DeltaWrappedCritter *newChild1= new DeltaWrappedCritter(false);
-                    cw1.reset(newChild1);
-                    cw1->replaceWithCopyOfCreature(c1);
-                    nextgen.push_back(cw1);
-                }
-            }
-            c1.reset();  // its okay to reset it as nextgen has a copy of the smart pointer.
-            cw1.reset();
-        }
-        if (c2 != NULL) {
-            if (c2->isValid()) {
-                
-                // NOTE I am only mutating valid children, which might not be right
-                // some operators will create invalid children - do I want to mutate them
-                // in the hope they become valid?
-                
-                c2->smartSureMutate(mutate_chance);
-                if (c2->isValid()) { // is it still valid after mutation?
-                    DeltaWrappedCritter *newChild2= new DeltaWrappedCritter(false);
-                    cw2.reset(newChild2);
-                    cw2->replaceWithCopyOfCreature(c2);
-                    nextgen.push_back(cw2);
-                }
-            }
-            c2.reset();  // its okay to reset it as nextgen has a copy of the smart pointer.
-            cw2.reset();
-        }
-    }
-    population.resize(eliteRetain); // get rid of any that aren't saved by being elite.
-    population.insert(population.end(),nextgen.begin(),nextgen.end());
-    population.resize(popSize); // sometimes we can get one extra because we create two children per pop.
-    
-    // So we have a new population, but remember their scores aren't valid yet. Lets just reset them to zero so we don't accidentally use them.
-    for_each(population.begin(),population.end(),[] (wrappedDeltaPtr pt) { pt->clearScore(); });
-   
-}
-
 /*
- Assumes all the scheduled battles are in DWHandler::battleFront
+ Assumes all the scheduled battles are in LWHandler::battleFront
  */
-using namespace DWHandler;
+using namespace LWHandler;
 
 void RoboPopHandler::doTheBattles() {
     int fd,nread;
-    DWHandler::sockfdToCritter.clear(); // none have been assigned
+    LWHandler::sockfdToCritter.clear(); // none have been assigned
     int result;
-    int nearestHundred = (DWHandler::battleFront.size()/100);
-    int battlesWeNeed = DWHandler::battleFront.size();
+    int nearestHundred = (LWHandler::battleFront.size()/100);
+    int battlesWeNeed = LWHandler::battleFront.size();
     int battlesSoFar = 0;
     cout << "About to schedule " << battlesWeNeed << " matches.\n";
-    while (! (DWHandler::battleFront.empty() && DWHandler::sockfdToCritter.empty())) { // so as long as there are battles or we await outcomes
-        if (DWHandler::battleFront.size()/100 < nearestHundred) {
+    while (! (LWHandler::battleFront.empty() && LWHandler::sockfdToCritter.empty())) { // so as long as there are battles or we await outcomes
+        if (LWHandler::battleFront.size()/100 < nearestHundred) {
             nearestHundred--;
             cout << "Down to about " << (nearestHundred+1)*100 << " matches\n";
         }
-        if (!DWHandler::battleFront.empty()) { // more battles to send out
-            while ( (!(DWHandler::battleFront.empty())) && (!(DWHandler::readyForWork.empty()))) { // so whilst we still have battles and workers
-                int sdf = DWHandler::readyForWork.front();
-                DWHandler::readyForWork.pop_front();
-                DWHandler::battleLinePtr battleToFarm = DWHandler::battleFront.front();
-                DWHandler::battleFront.pop_front();
+        if (!LWHandler::battleFront.empty()) { // more battles to send out
+            while ( (!(LWHandler::battleFront.empty())) && (!(LWHandler::readyForWork.empty()))) { // so whilst we still have battles and workers
+                int sdf = LWHandler::readyForWork.front();
+                LWHandler::readyForWork.pop_front();
+                LWHandler::battleLinePtr battleToFarm = LWHandler::battleFront.front();
+                LWHandler::battleFront.pop_front();
                 // quick hack
-                sprintf(DWHandler::outputBuffer,"%s*,%s\n",getGenName(currentGen,battleToFarm->CreatureDelta).c_str(),getGenName(battleToFarm->ParasiteDelta).c_str());
+                sprintf(LWHandler::outputBuffer,"%s*,%s\n",getGenName(currentGen,battleToFarm->CreatureDelta).c_str(),getGenName(battleToFarm->ParasiteDelta).c_str());
                 //cout << "Sending instructions as follows: " << outputBuffer;
                 int cr;
-                if ( (cr = write(sdf,DWHandler::outputBuffer,strlen(DWHandler::outputBuffer))) != strlen(DWHandler::outputBuffer)) {
+                if ( (cr = write(sdf,LWHandler::outputBuffer,strlen(LWHandler::outputBuffer))) != strlen(LWHandler::outputBuffer)) {
                     perror("Write error, writing battle robot names on socket ");
-                    DWHandler::battleFront.push_back(battleToFarm); // put it back in the battleFront
+                    LWHandler::battleFront.push_back(battleToFarm); // put it back in the battleFront
                     // lets see what happens, maybe I need to close the fd.
                     close(sdf);
-                    FD_CLR(sdf,&DWHandler::readfds);
-                    list<int>::iterator at = find<list<int>::iterator,int>(DWHandler::currentFds.begin(),DWHandler::currentFds.end(),sdf);
-                    if (at != DWHandler::currentFds.end()) DWHandler::currentFds.erase(at);
+                    FD_CLR(sdf,&LWHandler::readfds);
+                    list<int>::iterator at = find<list<int>::iterator,int>(LWHandler::currentFds.begin(),LWHandler::currentFds.end(),sdf);
+                    if (at != LWHandler::currentFds.end()) LWHandler::currentFds.erase(at);
                     
                     else { cout << "Strange couldn't find it in currentFds\n";
                     }
                     
                     //exit(1);
-                } else 	DWHandler::sockfdToCritter.insert(pair<int,DWHandler::battleLinePtr>(sdf,battleToFarm));
+                } else 	LWHandler::sockfdToCritter.insert(pair<int,LWHandler::battleLinePtr>(sdf,battleToFarm));
                 
             }
         }
-        DWHandler::testfds=DWHandler::readfds;
+        LWHandler::testfds=LWHandler::readfds;
         // so wait for something to happen (maybe should timeout this
-        result = select(FD_SETSIZE,&DWHandler::testfds,(fd_set *) 0,(fd_set *) 0,(struct timeval *) 0);
+        result = select(FD_SETSIZE,&LWHandler::testfds,(fd_set *) 0,(fd_set *) 0,(struct timeval *) 0);
         if (result < 1) {
             perror("Error in spatialRobocodeCreater, select returned less than 1 whilst I was trying to do all my battle stuff.");
             //				exit(1);
         }
-        list<int>::iterator at = DWHandler::currentFds.begin();
-        while (at!= DWHandler::currentFds.end()) {  // loop through the fds looking for one that has been set.
-            if (FD_ISSET((*at),&DWHandler::testfds)) {
+        list<int>::iterator at = LWHandler::currentFds.begin();
+        while (at!= LWHandler::currentFds.end()) {  // loop through the fds looking for one that has been set.
+            if (FD_ISSET((*at),&LWHandler::testfds)) {
                 fd = *at;
-                if (fd == DWHandler::server_sockfd) {
+                if (fd == LWHandler::server_sockfd) {
                     // it was ths server, which means we have a client connecting
-                    DWHandler::client_len = sizeof(DWHandler::client_address);
-                    DWHandler::client_sockfd = accept(DWHandler::server_sockfd,(struct sockaddr *) &DWHandler::client_address,(socklen_t *) &client_len);
+                    LWHandler::client_len = sizeof(LWHandler::client_address);
+                    LWHandler::client_sockfd = accept(LWHandler::server_sockfd,(struct sockaddr *) &LWHandler::client_address,(socklen_t *) &client_len);
                     FD_SET(client_sockfd,&readfds);
                     currentFds.push_back(client_sockfd);
                     printf("Adding client on fd %d.\n",client_sockfd);
@@ -701,7 +512,7 @@ void RoboPopHandler::doTheBattles() {
             } // end of if FD_ISSET
             at++;
         } // end of looping through the currentfds while.
-    } 
+    }
     cout << "All the battles done, we believed we had to carry out " << battlesWeNeed << " battles and we got " << battlesSoFar << " results.\n";
 }
 
