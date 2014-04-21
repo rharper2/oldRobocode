@@ -28,16 +28,9 @@ extern vector<int> layerLives;
 // lets assume you were writing a new creature type and a new parasite type of types
 // yourCreatureType and yourParasiteType.
 
-// the classes would need to encapsulate the following methods:
-//		(THIS IS OUT OF DATE)
-//      A default constructor
-//      void doCrossover(yourCreatureType&) = replaces the creature/parasite with the result of the crossover
-//      double getScore(yourParasiteType &)  - or double getScore(yourCreatureType &) for the parasite
-//      static bool isBetterThan(double,double) - give the two score returns true if the lhs "is better than" the rhs
-//
-//
-// They would also likely have some form of pointer to the underlying cr_data for a creature type and whatever
-// data you need for the test cases in parasite (could be more cr_data for a competitive evolving environment).
+// the classes would need to encapsulate the methods contained in spatialRobocodeCreatureDelta
+// easiest to follow that as template - its reasonably well documents.
+
 // Then you create a spatial world by the following:
 
 // ******************************************************************

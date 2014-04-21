@@ -28,14 +28,41 @@ void changeToGen(int gen) {
 }
 
 void letsCombine(int start,int stop, int skip) {
-    string fileName="ResultsofTop.csv";
+    string fileName="ResultsofTopNowWith3SetsR2.csv";
     ofstream combinedFile;
     ifstream currentFile;
     string myline;
-    combinedFile.open("/Development/CombinedResultsCoEvolution.csv");
+    combinedFile.open("/Development/ControlGPF1.csv");
     for (int i=start;i<=stop;i+=skip) {
         changeToGen(i);
         currentFile.open(fileName.c_str());
+        getline(currentFile,myline);
+        combinedFile << myline << endl;
+        cout << "Gen " << i << myline << endl;
+        currentFile.close();
+    }
+    combinedFile.close();
+    combinedFile.open("/Development/ControlGPF2.csv");
+    for (int i=start;i<=stop;i+=skip) {
+        changeToGen(i);
+        currentFile.open(fileName.c_str());
+        getline(currentFile,myline);
+        getline(currentFile,myline);
+        getline(currentFile,myline);
+        combinedFile << myline << endl;
+        
+        cout << "Gen " << i << myline << endl;
+        currentFile.close();
+    }
+    combinedFile.close();
+    combinedFile.open("/Development/ControlGPF3.csv");
+    for (int i=start;i<=stop;i+=skip) {
+        changeToGen(i);
+        currentFile.open(fileName.c_str());
+        getline(currentFile,myline);
+        getline(currentFile,myline);
+        getline(currentFile,myline);
+        getline(currentFile,myline);
         getline(currentFile,myline);
         combinedFile << myline << endl;
         cout << "Gen " << i << myline << endl;
@@ -50,8 +77,8 @@ int main (int argc, char * const argv[]) {
     // if you are using a different system you will have your own stuff
     // to initialise.
     myrandomize();
-    //letsCombine(165,577,2);
-    //exit(1);
+    letsCombine(4,100,5);
+    exit(1);
     
 	// Some user parameters
 	int RunsToDo = 25;

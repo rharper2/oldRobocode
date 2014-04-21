@@ -77,8 +77,16 @@ namespace DWHandler { // avoids collisions with, say spatialRobocodeCreatureDelt
         return answer;
     }
 
+    
+// For RoboPopHandler, I went with having a number of possible fitness teams we could assess against.
+// Basically you need to set the numberOfParasites (historical reasons - think - opponents)
+// This is the number in the team. Then the function setSampleSet sets up the correct opponents.
+// Its pretty basic and doesn't really check anything, but it does allow the team that fitness is
+// assessed against to be chosen.
+    
     int numberOfParasites = 15;
     int sampleSet = 0;
+    
     void setSampleSet(int sample) {
         switch (sample) {
             case 0:
@@ -264,6 +272,10 @@ namespace DWHandler { // avoids collisions with, say spatialRobocodeCreatureDelt
     }
 }
 
+// So from herein is the actual RoboPopHandler class, comments sprinkled thoughout, but basically
+// if you are using it to evolve robots, you need the breed function!
+
+
 RoboPopHandler::RoboPopHandler() {
     popSize = 300;
     
@@ -306,6 +318,9 @@ string RoboPopHandler::fileLoad(const char *fname){
     return outs.str();
 }
 
+// The spatial population handlers actually save a bit more information namely the genetic age of the individuals.
+// Thats why we need a separate method to load them. The only difference is we load the age (and then throw it away).
+
 string RoboPopHandler::spatialFileLoad(const char *fname){
     // might want to save popSize, but we will just assume its correct
     ifstream fin(fname);
@@ -328,6 +343,7 @@ string RoboPopHandler::spatialFileLoad(const char *fname){
     return outs.str();
 }
 
+// The DeltaWrappedCritter takes care of the initialisation for us.
 
 void RoboPopHandler::rampedptc2() {
     population.clear();
@@ -366,6 +382,7 @@ void RoboPopHandler::changeDirectory() {
 // goes through the world (and each layer recursively)
 // saving the phenotype (as a .java) file of each critter and parasite
 // into the current working directory (which has been set up by changeDirectory)
+// ready to compile the .java into a .class
 
 void RoboPopHandler::saveEm() {
 	char fname[200];
@@ -377,7 +394,7 @@ void RoboPopHandler::saveEm() {
         sprintf(jname,"%s.java",fname);
         ofstream robotout;
         robotout.open(jname);
-        robocodeDelta::Instance()->print_grammar_individual(robotout,pt->getCreature()->getExpression(),pt->getCreature()->getExpressionLength(),fname,gname);
+        pt->printItOut(robotout,fname,gname);
         robotout.close();
     });
     
@@ -495,16 +512,12 @@ void RoboPopHandler::breed() {
     
     // could invoke the generic breeders, but I'll just implement a simple tournament breeder now.
     int tournamentSize=5;
-    int mutate_chance=2000; // 0.2
     int eliteRetain = 10; // keep this number of the best ones
     
     vector<wrappedDeltaPtr> nextgen;
     nextgen.clear();
-    crPtr c1,c2;
     wrappedDeltaPtr cw1,cw2;
-    crPtr p1,p2;
     nextgen.reserve(popSize+1); // really only need pop_size+1, but what the heck..
-    crPtr t1,t2;
     while (((int) nextgen.size()) < (popSize-eliteRetain)) { // this is how many we need to make.
         int firstChosen=popSize-1;
         int secondChosen=popSize-1;
@@ -523,37 +536,13 @@ void RoboPopHandler::breed() {
         // cout << "Going to choose " << first << " and then " << second << "\n";
         
         // Obviously you can use any operator.
-        cr_data::variableCrossover(p1=population[firstChosen]->getCreature(),p2=population[secondChosen]->getCreature(),c1,c2);
-        
-        if (c1 != NULL) {
-            if (c1->isValid()) {
-               c1->smartSureMutate(mutate_chance);
-               if (c1->isValid()) { // is it still valid after mutation?
-                    DeltaWrappedCritter *newChild1= new DeltaWrappedCritter(false);
-                    cw1.reset(newChild1);
-                    cw1->replaceWithCopyOfCreature(c1);
-                    nextgen.push_back(cw1);
-                }
-            }
-            c1.reset();  // its okay to reset it as nextgen has a copy of the smart pointer.
+        population[firstChosen]->variableCrossover(population[secondChosen],cw1,cw2);
+        if (cw1!=NULL) {
+            nextgen.push_back(cw1);
             cw1.reset();
         }
-        if (c2 != NULL) {
-            if (c2->isValid()) {
-                
-                // NOTE I am only mutating valid children, which might not be right
-                // some operators will create invalid children - do I want to mutate them
-                // in the hope they become valid?
-                
-                c2->smartSureMutate(mutate_chance);
-                if (c2->isValid()) { // is it still valid after mutation?
-                    DeltaWrappedCritter *newChild2= new DeltaWrappedCritter(false);
-                    cw2.reset(newChild2);
-                    cw2->replaceWithCopyOfCreature(c2);
-                    nextgen.push_back(cw2);
-                }
-            }
-            c2.reset();  // its okay to reset it as nextgen has a copy of the smart pointer.
+        if (cw2!=NULL) {
+            nextgen.push_back(cw2);
             cw2.reset();
         }
     }

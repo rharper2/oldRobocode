@@ -50,9 +50,10 @@
 */
 
 /* PARTICIPATES:
-      I have added some functionality that allows "human" robots to be incorporated into the nodes, using a participates flag. Just don't set 
-      any of the nodes to particpates = false if you don't want to use it. We have access to the layer and the node which can be used to set the 
-      robot that lives there. The hook is the "inLayerWithLocation" method which is called when a node is set up. You can alter the participates flag there
+      I have added some functionality that allows "human" robots to be incorporated into the nodes, using a participates flag. 
+      If you don't want to use this participates concept, then don't set any of the nodes to particpates = false. 
+      We have access to the layer and the node which can be used to set the robot that lives there. 
+      The hook is the "inLayerWithLocation" method which is called when a node is set up. You can alter the participates flag there
       and limit the node to "human" robots.
  */
 
@@ -92,6 +93,9 @@ int server_sockfd, client_sockfd;
 char inputBuffer[BUFFERSIZE];
 char outputBuffer[BUFFERSIZE];
 
+
+// The next bit is really just the server client stuff to allow the battles to be farmed out to helper java applications
+// Porbably skip on a first read.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -208,7 +212,7 @@ void makeName(long id,bool CreatureDelta) {
 }
 
 // These are the different human written (well gpBot is evolved I think) robots
-// that we will add to some of the locations in the top two layers.
+// that we might add to some of the locations in the top two layers.
 // Note they are initially chosen randomly, can mutate into any other
 // but otherwise - as between themselves - they will select depending on
 // how well they do i.e. what there score is against the parasites (in this case)
@@ -310,6 +314,9 @@ spatialRobocodeCreatureDelta::spatialRobocodeCreatureDelta() {
 	robocodeDelta::Instance()->print_grammar_individual(robotout,getCreature()->getExpression(),getCreature()->getExpressionLength(),fname,gname);
 	robotout.close();
 }
+// The make switch allows light-weight versions to be created (i.e. no undelying genetic creature)
+// This is used when, for intstance, we need to create this class to contain a creature we load from a file
+// or one that is being copied from a different layer etc.
 
 spatialRobocodeCreatureDelta::spatialRobocodeCreatureDelta(bool make) {
     participates= true;
@@ -425,7 +432,8 @@ void spatialRobocodeCreatureDelta::calcScore(spatialRobocodeParasiteDelta &p1,in
 	//cout << "Scheduled a battle betwen CreatureDelta " << thisCreatureDeltaNumber << " and ParasiteDelta " << p1.thisParasiteDeltaNumber << " loc given as " << loc << endl;
 	
 	// so spatial.h calls calcScore for every battle it wants that round
-	// and our global battleFront will have at the end of this all the many battles scheduled.
+	// and our global battleFront will have stored all the many battles scheduled at the end of the calling calcScore process
+    // (although it won't have run the battles yet - we do this when spatial.h tries to retrieve the first score).
 	
 }
 
@@ -435,6 +443,7 @@ void spatialRobocodeCreatureDelta::addToScore(double toAdd) {
 }
 
 // Terrible quick hack, that will have to be rethought if we thread this - buffers collide.
+// basically we need to give the robots a name that robocode can find, i.e. prefix their name with the GEN directory they reside in.
 char outputB[200];
 char outputC[200];
 
@@ -468,7 +477,7 @@ double spatialRobocodeCreatureDelta::getScore() {
 		// here we are going to cause them all to be fought!
 		// I am going to assume that all the robots have been saved to the correct directory
 		// and compiled.
-		
+		// statFlag tells us if we need to schedule the fights or if we already have them done.
 		// at this tender stage just list the battles.
 		
 		int fd,nread;
@@ -613,11 +622,14 @@ double spatialRobocodeCreatureDelta::getScore() {
 		stateFlag = false;
 	}
 	// both fall through and every other invocation once the scores have been calculated.
-    /* Temporary lines to give output if not participating, this might help me see how we are going*/
+    
+    /* Temporary line re isParticipating() to give output if not participating, this might help me see how we are going*/
     if (!isParticipating()) { cout << getName() << " scored " << storedScore+storedLayeredScore << " this round\n"; }
-	return storedScore+storedLayeredScore;
+	
+    return storedScore+storedLayeredScore;
 }
 
+// does not take a 'deep' copy
 void spatialRobocodeCreatureDelta::setCreature(boost::shared_ptr<spatialRobocodeCreatureDelta> toSetTo) { 
 	geneticAge = toSetTo->geneticAge;
 	critter = toSetTo->getCreature();
@@ -626,6 +638,7 @@ void spatialRobocodeCreatureDelta::setCreature(boost::shared_ptr<spatialRobocode
 	//cout << "New critter set " << getName() << endl;
 }
 
+// Makes a complete copy of the creature - in this case down to copying the genome bit stream. (relies on cr_data to do this for us).
 void spatialRobocodeCreatureDelta::makeCopyOfCreature(boost::shared_ptr<spatialRobocodeCreatureDelta> /*crPtr*/ tocopy) {
     if (!participates) humanRobot = tocopy->humanRobot;
 	cr_data *newCopy;

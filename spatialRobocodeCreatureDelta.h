@@ -50,8 +50,9 @@ public:
     virtual ~spatialRobocodeCreatureDelta() { critter.reset();  } 
     virtual void doCrossover(spatialRobocodeCreatureDelta &p2);
     virtual void doMutation();
-		const char *getName();
-	// Works as follows, clear scores clears the scores ready for the scores
+    const char *getName();
+	
+    // Works as follows, clear scores clears the scores ready for the scores
 	// in a generation to be calculated
 	// Layered Scores (for layered systems) are the scores achieved against different layers.
 	// Either the layer below, or later, the layer above.

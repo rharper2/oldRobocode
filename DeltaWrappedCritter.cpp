@@ -7,6 +7,7 @@
 //
 
 #include "DeltaWrappedCritter.h"
+#include "robocodeDelta.h"
 
 long DeltaWrappedCritter::id_count = 0;
 
@@ -22,6 +23,10 @@ namespace dWCritter {
     }
 }
 
+// If make is true we need to actually create the underlying wrapped critter
+// If make is false, we can create a light-weight version of the class
+// i.e. no critter. This will normally be because we will copy a critter in
+// for instance a child made or a copy taken.
 DeltaWrappedCritter::DeltaWrappedCritter(bool make) {
     storedScore = 0;
     theId  = id_count++;
@@ -108,6 +113,8 @@ void DeltaWrappedCritter::loadCreature(ifstream &fin) {
 	
 }
 
+// the spatially bred critters have an age parameter saved.
+// This method allows us to read them in here, but we just through away the genetic age.
 void DeltaWrappedCritter::loadSpatialCreature(ifstream &fin) {
 	long dnaL;
 	int *dna;
@@ -135,6 +142,45 @@ void DeltaWrappedCritter::loadSpatialCreature(ifstream &fin) {
 	}
 	
 }
+// crosses over this DeltaWrappedCritter with the supplied one, returning up to two valid children.
+void DeltaWrappedCritter::variableCrossover(wrappedDeltaPtr secondParent,wrappedDeltaPtr &cw1,wrappedDeltaPtr &cw2) {
+    crPtr c1,c2;
+    cr_data::variableCrossover(getCreature(),getCreature(),c1,c2);
+    int mutate_chance=2000; // 0.2
+    cw1=NULL;
+    if (c1 != NULL) {
+        if (c1->isValid()) {
+            c1->smartSureMutate(mutate_chance);
+            if (c1->isValid()) { // is it still valid after mutation?
+                 DeltaWrappedCritter *newChild1= new DeltaWrappedCritter(false);
+                 cw1.reset(newChild1);
+                 cw1->replaceWithCopyOfCreature(c1);
+            }
+         }
+    }
+    cw2=NULL;
+    if (c2 != NULL) {
+        if (c2->isValid()) {
+            
+                // NOTE I am only mutating valid children, which might not be right
+                // some operators will create invalid children - do I want to mutate them
+                // in the hope they become valid?
+                                       
+                c2->smartSureMutate(mutate_chance);
+                if (c2->isValid()) { // is it still valid after mutation?
+                     DeltaWrappedCritter *newChild2= new DeltaWrappedCritter(false);
+                     cw2.reset(newChild2);
+                     cw2->replaceWithCopyOfCreature(c2);
+                }
+        }
+    }
+}
 
+
+// printout the robot into the ofstream, with the fname and gname supplied.
+// robocodeDelta is the grammar we are using just now, which contains the static method need to translate the genome to a printed java program.
+void DeltaWrappedCritter::printItOut(ofstream &roboout,const char *fname,const char *gname) {
+    robocodeDelta::Instance()->print_grammar_individual(roboout,getCreature()->getExpression(),getCreature()->getExpressionLength(),fname,gname);
+}
 
 
